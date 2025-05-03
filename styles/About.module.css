@@ -1,0 +1,219 @@
+/* Reusing key styles from Home.module.css for consistency */
+.container {
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nameText, .roleText {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.25em;
+  letter-spacing: -2%;
+  color: #000000;
+}
+
+.menuContainer {
+  position: relative;
+}
+
+.menuButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 50%;
+  margin: 0 2px;
+}
+
+.menuDropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  z-index: 10;
+}
+
+.main {
+  flex: 1;
+  padding: 0;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 0;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.imageContainer {
+  flex: 0 0 auto;
+  max-width: 350px;
+  margin: 0;
+  padding: 0;
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.infoContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0 40px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.jobTitle, .schoolName {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.period, .role, .degree {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.description {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  color: #000000;
+  max-width: 600px;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 6px 12px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  color: #000000;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .contentContainer {
+    padding: 0;
+  }
+  
+  .nameText, .roleText {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contentContainer {
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .imageContainer {
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+  
+  .profileImage {
+    max-height: 350px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .infoContainer {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nameText, .roleText {
+    font-size: 36px;
+  }
+  
+  .infoContainer {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nameText, .roleText {
+    font-size: 30px;
+  }
+  
+  .description {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nameText, .roleText {
+    font-size: 24px;
+  }
+} 

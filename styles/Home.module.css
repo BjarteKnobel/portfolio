@@ -1,0 +1,375 @@
+.container {
+  background: #FEFEFB;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 40px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(254, 254, 251, 0);
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1431px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.logoGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.svgAnimationRole {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.logoText, .animatedText {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.25em;
+  letter-spacing: -2%;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Animation effect for the animated text */
+.animatedText {
+  display: inline-block;
+  min-width: 1ch;
+  position: relative;
+  overflow: visible;
+}
+
+.menuButton {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.menuButton:hover {
+  background: #f0f0f0;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.imageSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 10px;
+  width: 100%;
+  height: 945px;
+  max-width: 1432px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 60px;
+}
+
+.imageGroup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainImage {
+  object-fit: cover;
+  z-index: 1;
+}
+
+.overlayImage {
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fallback {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  color: #333;
+  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.svgAnimation {
+  display: inline-block;
+  height: 57px;
+  width: auto;
+  overflow: visible;
+  transform: translateY(-2px);
+  vertical-align: middle;
+}
+
+@media (max-width: 1200px) {
+  .logoText, .animatedText {
+    font-size: clamp(32px, 4vw, 52px);
+  }
+  
+  .imageSection {
+    height: auto;
+    aspect-ratio: 1432 / 945;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 30px 20px;
+  }
+  
+  .navbar {
+    gap: 20px;
+  }
+  
+  .svgAnimationRole {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logoGroup {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .svgAnimationRole {
+    margin-left: 8px;
+  }
+  
+  .logoText, .animatedText {
+    font-size: clamp(28px, 3.5vw, 40px);
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 20px 15px;
+  }
+  
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .logoGroup {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+  
+  .svgAnimationRole {
+    margin-left: 4px;
+    padding: 0;
+  }
+  
+  .logoText, .animatedText {
+    font-size: clamp(22px, 3vw, 28px);
+    white-space: nowrap;
+  }
+  
+  .menuButton {
+    padding: 6px;
+  }
+  
+  .dot {
+    width: 7px;
+    height: 7px;
+    margin: 0 1px;
+  }
+  
+  .imageSection {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .logoText, .animatedText {
+    font-size: 18px;
+  }
+  
+  .svgAnimationRole {
+    margin-left: 3px;
+  }
+  
+  .dot {
+    width: 5px;
+    height: 5px;
+    margin: 0 1px;
+  }
+}
+
+.menuDropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #FEFEFB;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.04);
+  border-radius: 0;
+  padding: 0;
+  z-index: 1000;
+  min-width: fit-content;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0px;
+  overflow: visible;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 40px;
+  padding: 10px 10px 10px 10px;
+  border: none;
+  background-color: #FEFEFB;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 22px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background-color 0.3s ease-in-out;
+  text-align: left;
+}
+
+.menuItem:hover, .menuItem:active {
+  background-color: #04FF00;
+}
+
+.menuIcon {
+  flex-shrink: 0;
+}
+
+.menuLabel {
+  flex: 1;
+  text-align: left;
+  letter-spacing: -2%;
+}
+
+.menuItemActive {
+  background-color: #04FF00;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Separator line between menu items */
+.menuItem:not(:last-child) {
+  border-bottom: 1px solid #696969;
+}
+
+.header, .navbar, .container {
+  overflow: visible !important;
+}
+
+.bodyText {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0px 10px 10px;
+  width: 1432px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.bodyText p {
+  color: #000;
+  font-family: Wittgenstein;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 65px; /* 130% */
+  margin: 0;
+  text-align: left;
+}
+
+.emphasisText {
+  color: #000;
+  font-family: Wittgenstein;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 65px;
+  display: inline;
+}
+
+@media (max-width: 1200px) {
+  .bodyText {
+    padding: 0 20px 80px;
+  }
+  
+  .bodyText p {
+    font-size: clamp(32px, 4vw, 50px);
+  }
+} 

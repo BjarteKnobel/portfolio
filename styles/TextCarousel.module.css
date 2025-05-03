@@ -1,0 +1,41 @@
+.carouselWrapper {
+  width: 100%;
+  overflow: hidden;
+  background: #04FF00;
+  padding: 12px 30px;
+  height: 77px;
+  display: flex;
+  align-items: center;
+}
+
+.firstCarousel {
+  margin-bottom: 100px;
+}
+
+.carouselContainer {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.carouselContent {
+  display: flex;
+  align-items: center;
+}
+
+.carouselItem {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 2.95em;
+  letter-spacing: -2%;
+  color: #000000;
+  margin-right: 80px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.carouselItem:hover {
+  opacity: 0.8;
+} 

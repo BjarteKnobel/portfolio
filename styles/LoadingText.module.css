@@ -1,0 +1,65 @@
+.loadingText {
+  color: #FFFFFF;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 1.25em;
+  letter-spacing: -2%;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dots {
+  display: inline-flex;
+  letter-spacing: 2px;
+}
+
+.lastDot {
+  width: 15px; /* Fixed width for the last dot */
+  display: inline-block;
+  text-align: left;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .loadingText {
+    font-size: 46px;
+    padding-left: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .loadingText {
+    font-size: 40px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    line-height: 1.3em;
+  }
+  
+  .lastDot {
+    width: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loadingText {
+    font-size: 32px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    gap: 2px;
+  }
+  
+  .dots {
+    letter-spacing: 1px;
+  }
+  
+  .lastDot {
+    width: 10px;
+  }
+} 

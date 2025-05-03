@@ -1,0 +1,119 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 60px 40px 300px 40px;
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 635px;
+  margin: 0;
+}
+
+.contactTitle {
+  color: #000;
+  text-align: left;
+  font-family: "Azeret Mono";
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 65px; /* 118.182% */
+  letter-spacing: -3.3px;
+  margin: 0;
+}
+
+.contactText {
+  color: #000;
+  font-family: "Azeret Mono";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 150% */
+  letter-spacing: -1.2px;
+  margin: 0;
+}
+
+.emailContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 79px;
+  padding: 10px 20px;
+  width: 400px;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  margin: 0;
+}
+
+.emailInput {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.8em;
+  letter-spacing: -6%;
+  color: #000000;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+.emailInput::placeholder {
+  color: #000000;
+}
+
+.arrow {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.8em;
+  letter-spacing: -6%;
+  color: #000000;
+  cursor: pointer;
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  justify-content: left;
+}
+
+.iconFrame {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    width: 100%;
+  }
+
+  .emailContainer {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .contactTitle {
+    font-size: 40px;
+    line-height: 47px;
+    letter-spacing: -2.4px;
+  }
+
+  .contactText {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -1px;
+  }
+} 
