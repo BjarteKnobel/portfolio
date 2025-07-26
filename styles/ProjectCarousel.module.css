@@ -1,0 +1,600 @@
+.carousel {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-width: none; /* Firefox */
+  font-family: 'Azeret Mono', monospace;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Hero image full screen */
+.heroImage {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.fullScreenImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.heroImage:hover .fullScreenImage {
+  transform: scale(1.02);
+}
+
+/* Click Overlay */
+.clickOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: 60px 40px 40px 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.heroImage:hover .clickOverlay {
+  opacity: 1;
+}
+
+.overlayText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'Azeret Mono', monospace;
+}
+
+.overlayText > span:first-child {
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.projectMeta {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Quick Description */
+.quickDescription {
+  max-width: calc(100% - 80px);
+  margin: 40px auto 20px auto;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.8;
+  background: #fff;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.readMoreLink {
+  color: #000;
+  text-decoration: underline;
+  margin-left: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.readMoreLink:hover {
+  opacity: 0.6;
+}
+
+/* Navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  z-index: 100;
+}
+
+/* Project Navigation Styles */
+.projectNavigation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+.navButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 15px;
+  transition: all 0.2s ease;
+  font-family: 'Azeret Mono', monospace;
+}
+
+.navButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.projectCounter {
+  font-family: 'Azeret Mono', monospace;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  min-width: 60px;
+  text-align: center;
+}
+
+.logoGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.25em;
+  letter-spacing: -2%;
+  color: #000;
+  text-shadow: none;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.projectTitle {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.25em;
+  letter-spacing: -2%;
+  color: #000;
+  text-shadow: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.menuGroup {
+  cursor: pointer;
+}
+
+.menuIcon {
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+/* Next project button styling */
+.nextProjectBtn {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 14px;
+  color: black;
+}
+
+.nextProjectBtn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.arrow {
+  font-size: 16px;
+}
+
+/* Content section styling */
+.contentSection {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background-color: white;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* Project details styling */
+.projectDetails {
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailLine {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
+
+.detailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detailLabel {
+  text-transform: uppercase;
+  color: #888;
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.detailValue {
+  color: black;
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+/* Description styling */
+.description {
+  padding: 20px 40px 60px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  font-family: 'Azeret Mono', monospace;
+}
+
+/* Floorplan section styling */
+.floorplanSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.floorplanHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.floorplanLabel {
+  text-transform: uppercase;
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 20px;
+  color: #888;
+}
+
+.floorplanImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.floorplan {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+}
+
+/* Responsive media queries */
+@media (max-width: 1200px) {
+  .detailsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .floorplan {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+  
+  .logo, .projectTitle {
+    font-size: 32px;
+  }
+  
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .projectDetails, 
+  .description, 
+  .floorplanSection {
+    padding: 20px;
+  }
+  
+  .description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo, .projectTitle {
+    font-size: 24px;
+  }
+  
+  .nextProjectBtn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+.detailsRowFigma {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 40px auto;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  background: #fff;
+}
+
+.detailColFigma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  padding: 32px 0 24px 0;
+  position: relative;
+}
+
+.detailLabelFigma {
+  font-family: 'Azeret Mono', monospace;
+  font-size: 16px;
+  font-weight: 400;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: -2%;
+}
+
+.detailValueFigma {
+  font-family: 'Azeret Mono', monospace;
+  font-size: 22px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: -2%;
+}
+
+.detailDividerFigma {
+  position: absolute;
+  right: 0;
+  top: 32px;
+  height: calc(100% - 56px);
+  width: 1px;
+  background: #000;
+  content: '';
+  z-index: 2;
+}
+
+.descriptionFigma {
+  max-width: calc(100% - 80px);
+  margin: 40px auto 60px auto;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  line-height: 2.25;
+  background: #fff;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.floorplanSectionFigma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 60px;
+}
+
+.floorplanHeaderFigma {
+  font-family: 'Azeret Mono', monospace;
+  font-size: 16px;
+  font-weight: 400;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  letter-spacing: -2%;
+}
+
+.floorplanImageFigma {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .detailsRowFigma {
+    flex-direction: column;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+  .detailColFigma {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .detailDividerFigma {
+    display: none;
+  }
+}
+
+.detailsTableRow {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: calc(100% - 80px);
+  margin: 0 auto 40px auto;
+  background: #fff;
+  gap: 64px;
+  padding: 40px;
+  border: 0;
+}
+
+.detailsTableCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 100%;
+}
+
+.detailsTableRowItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 18px 0;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 20px;
+  color: #000;
+  width: 100%;
+}
+
+.detailsTableLabel {
+  flex: 0 0 auto;
+  text-align: left;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-right: 20px;
+}
+
+.detailsTableValue {
+  flex: 1;
+  text-align: right;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.detailsTableHLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #000;
+  opacity: 1;
+  width: 100%;
+}
+
+.detailsTableVLine {
+  width: 1px;
+  background: #000;
+  margin: 0 32px;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .detailsTableRow {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .detailsTableVLine {
+    display: none;
+  }
+  .detailsTableCol {
+    width: 100%;
+  }
+}
+
+.floorplanCaption {
+  font-family: 'Azeret Mono', monospace;
+  font-size: 16px;
+  color: #888;
+  text-align: left;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.bottomRightSection {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  background: rgba(255,255,255,0.85);
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-family: 'Azeret Mono', monospace;
+  font-size: 18px;
+  color: #000;
+  z-index: 2000;
+}
+
+.bottomRightImage {
+  max-width: 220px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+} 
