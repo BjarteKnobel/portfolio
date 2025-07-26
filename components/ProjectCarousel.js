@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Link from 'next/link';
 import { getAllProjects } from '../data/projects';
 import styles from '../styles/ProjectCarousel.module.css';
 
 export default function ProjectCarousel() {
-  const router = useRouter();
   const projects = getAllProjects();
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const currentProject = projects[currentProjectIndex];
@@ -22,29 +20,6 @@ export default function ProjectCarousel() {
     );
   };
 
-  const goToProjectPage = () => {
-    router.push(`/projects/${currentProject.id}`);
-  };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === 'ArrowLeft') {
-        prevProject();
-      } else if (e.key === 'ArrowRight') {
-        nextProject();
-      } else if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        goToProjectPage();
-      } else if (e.key === 'Escape') {
-        router.push('/projects');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentProjectIndex, currentProject]);
-
   if (!currentProject) return null;
 
   return (
@@ -57,16 +32,12 @@ export default function ProjectCarousel() {
           <span className={styles.projectTitle}>{currentProject.title}</span>
         </div>
         
-        {/* Enhanced Project Navigation */}
+        {/* Simple Navigation */}
         <div className={styles.projectNavigation}>
-          <Link href="/projects" legacyBehavior>
-            <a className={styles.navButton} title="View all projects">⊞</a>
-          </Link>
           <button 
             onClick={prevProject}
             className={styles.navButton}
             aria-label="Previous project"
-            title="Previous project (←)"
           >
             ←
           </button>
@@ -77,39 +48,23 @@ export default function ProjectCarousel() {
             onClick={nextProject}
             className={styles.navButton}
             aria-label="Next project"
-            title="Next project (→)"
           >
             →
-          </button>
-          <button 
-            onClick={goToProjectPage}
-            className={styles.navButton}
-            title="View project details (Enter)"
-          >
-            ↗
           </button>
         </div>
       </header>
 
-      <div className={styles.heroImage} onClick={goToProjectPage}>
+      <div className={styles.heroImage}>
         <img 
           src={currentProject.image} 
           alt={currentProject.title} 
           className={styles.fullScreenImage} 
         />
-        <div className={styles.clickOverlay}>
-          <div className={styles.overlayText}>
-            <span>click to explore</span>
-            <span className={styles.projectMeta}>
-              {currentProject.details.find(d => d.label === 'type')?.value} • {currentProject.details.find(d => d.label === 'date')?.value}
-            </span>
-          </div>
-        </div>
       </div>
 
-      {/* Content Section (below hero image) */}
+      {/* Content Section */}
       <div className={styles.contentSection}>
-        {/* Project Details Table Row */}
+        {/* Project Details Table */}
         <div className={styles.detailsTableRow}>
           <div className={styles.detailsTableCol}>
             {currentProject.details.slice(0, 3).map((detail, idx) => (
@@ -131,32 +86,19 @@ export default function ProjectCarousel() {
           </div>
         </div>
         
-        {/* Quick Project Description */}
-        <div className={styles.quickDescription}>
-          {currentProject.description.substring(0, 200)}...
-          <Link href={`/projects/${currentProject.id}`} legacyBehavior>
-            <a className={styles.readMoreLink}>read more</a>
-          </Link>
+        {/* Floorplan Section */}
+        <div className={styles.floorplanSectionFigma}>
+          <div className={styles.floorplanImageFigma}>
+            <img src={currentProject.floorplan} alt="Floorplan" className={styles.floorplan} />
+          </div>
+          <div className={styles.floorplanCaption}>{currentProject.title}</div>
         </div>
-
-        {/* Navigation Help */}
-        <div className={styles.navigationHelp}>
-          <p>Use ← → arrow keys to navigate • Enter to view details • ESC for overview</p>
+        
+        {/* Project Description */}
+        <div className={styles.descriptionFigma}>
+          {currentProject.description}
         </div>
       </div>
-    </div>
-  );
-}
-
-// Floating section at bottom right
-export function BottomRightSection() {
-  return (
-    <div className={styles.bottomRightSection}>
-      <img
-        src="/assets/hus.jpg"
-        alt="Hus"
-        className={styles.bottomRightImage}
-      />
     </div>
   );
 } 

@@ -1,11 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import styles from '../styles/TextCarousel.module.css';
 
-export default function TextCarousel({ text, speed = 1, className, href, clickable = false }) {
+export default function TextCarousel({ text, speed = 1, className }) {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
-  const router = useRouter();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -40,21 +38,11 @@ export default function TextCarousel({ text, speed = 1, className, href, clickab
     };
   }, [speed]);
 
-  const handleClick = () => {
-    if (clickable && href) {
-      router.push(href);
-    }
-  };
-
   const items = Array(9).fill(text); // Create 9 instances as per Figma design
 
   return (
-    <div 
-      className={styles.carouselWrapper}
-      onClick={handleClick}
-      style={clickable ? { cursor: 'pointer' } : {}}
-    >
-      <div className={`${styles.carouselContainer} ${className || ''} ${clickable ? styles.clickable : ''}`} ref={containerRef}>
+    <div className={styles.carouselWrapper}>
+      <div className={`${styles.carouselContainer} ${className || ''}`} ref={containerRef}>
         <div className={styles.carouselContent} ref={contentRef}>
           {items.map((item, index) => (
             <span key={index} className={styles.carouselItem}>
@@ -63,11 +51,6 @@ export default function TextCarousel({ text, speed = 1, className, href, clickab
           ))}
         </div>
       </div>
-      {clickable && (
-        <div className={styles.clickHint}>
-          <span>click to explore</span>
-        </div>
-      )}
     </div>
   );
 } 

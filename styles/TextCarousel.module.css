@@ -1,104 +1,41 @@
 .carouselWrapper {
-  position: relative;
   width: 100%;
-  padding: 20px 0;
   overflow: hidden;
-  background: #F9F9F9;
-  border-top: 1px solid #E0E0E0;
-  border-bottom: 1px solid #E0E0E0;
-  margin: 40px 0;
-  transition: all 0.3s ease;
+  background: #04FF00;
+  padding: 12px 30px;
+  height: 77px;
+  display: flex;
+  align-items: center;
 }
 
-.carouselWrapper:hover.clickable {
-  background: #F0F0F0;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.firstCarousel {
+  margin-bottom: 100px;
 }
 
 .carouselContainer {
   display: flex;
-  align-items: center;
   white-space: nowrap;
-  overflow: hidden;
-  user-select: none;
-  transition: opacity 0.3s ease;
-}
-
-.clickable:hover {
-  opacity: 0.8;
+  will-change: transform;
 }
 
 .carouselContent {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
 .carouselItem {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
   font-family: 'Azeret Mono', monospace;
-  font-size: 52px;
-  font-weight: 400;
-  color: #000;
-  margin-right: 100px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 2.95em;
   letter-spacing: -2%;
-  line-height: 1.25em;
-}
-
-/* Click Hint */
-.clickHint {
-  position: absolute;
-  top: 50%;
-  right: 40px;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 8px 16px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  opacity: 0;
+  color: #000000;
+  margin-right: 80px;
+  white-space: nowrap;
+  cursor: pointer;
   transition: opacity 0.3s ease;
-  pointer-events: none;
 }
 
-.carouselWrapper:hover .clickHint {
-  opacity: 1;
-}
-
-.clickHint span {
-  font-family: 'Azeret Mono', monospace;
-  font-size: 14px;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .carouselItem {
-    font-size: 36px;
-    margin-right: 60px;
-  }
-
-  .clickHint {
-    right: 20px;
-  }
-
-  .clickHint span {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carouselItem {
-    font-size: 28px;
-    margin-right: 40px;
-  }
-
-  .carouselWrapper {
-    margin: 20px 0;
-    padding: 15px 0;
-  }
+.carouselItem:hover {
+  opacity: 0.8;
 } 

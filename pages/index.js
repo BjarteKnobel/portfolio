@@ -29,13 +29,7 @@ export default function Home() {
       </section>
 
       {/* Projects Carousel */}
-      <TextCarousel 
-        text="projects →" 
-        speed={0.5} 
-        className="firstCarousel" 
-        href="/projects"
-        clickable={true}
-      />
+      <TextCarousel text="projects →" speed={0.5} className="firstCarousel" />
 
       {/* Body Text */}
       <section className={styles.bodyText}>
@@ -51,12 +45,7 @@ export default function Home() {
       </section>
 
       {/* About Carousel */}
-      <TextCarousel 
-        text="about →" 
-        speed={0.5} 
-        href="/about"
-        clickable={true}
-      />
+      <TextCarousel text="about →" speed={0.5} />
     </Layout>
   );
 } 
