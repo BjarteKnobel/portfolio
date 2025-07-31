@@ -3,12 +3,13 @@ import Head from 'next/head';
 import styles from '../styles/Projects.module.css';
 import PendulumLoader from '../components/PendulumLoader';
 import LoadingText from '../components/LoadingText';
+import ProjectCarousel from '../components/ProjectCarousel';
 
 export default function Projects() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time (you can replace this with real data fetching)
+    // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
     }, 6000);
@@ -37,15 +38,10 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Projects</title>
-        <meta name="description" content="View my projects" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bjarte Knobel | Projects</title>
+        <meta name="description" content="Architecture and design projects by Bjarte Knobel" />
       </Head>
-      <div className={styles.container}>
-        <div className={styles.projectsContent}>
-          {/* Projects content will go here */}
-        </div>
-      </div>
+      <ProjectCarousel />
     </>
   );
 } 
