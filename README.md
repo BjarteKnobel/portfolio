@@ -28,6 +28,3 @@ npm run build
 npm start
 ```
 
----
-
-If you have any issues or questions, feel free to ask! 
