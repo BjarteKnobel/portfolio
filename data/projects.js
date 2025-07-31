@@ -19,28 +19,28 @@ export const projects = [
     ]
   },
   {
-    id: 'urban-density-housing',
-    title: 'urban density housing',
-    image: '/assets/project1.jpg',
+    id: 'additiv-manufacturing',
+    title: 'additiv manufacturing',
+    image: '/assets/3d_printing_hero.png',
     details: [
-      { label: 'type', value: 'new construction' },
-      { label: 'location', value: 'bakklandet, trondheim' },
-      { label: 'status', value: 'concept phase' },
-      { label: 'size', value: '1,200 sqm' },
-      { label: 'date', value: '2024' },
-      { label: 'collaborators', value: 'urban planning lab' },
+      { label: 'type', value: 'transformation' },
+      { label: 'location', value: 'sverresborg alle 13' },
+      { label: 'status', value: 'student project' },
+      { label: 'size', value: '200 sqm' },
+      { label: 'date', value: '2020' },
+      { label: 'collaborators', value: 'none' },
     ],
-    description: `A response to increasing urban density demands while maintaining neighborhood character. The project explores vertical densification through carefully positioned modular units that preserve existing sightlines and maintain human scale. Each residential unit features private outdoor space and shared communal areas, creating a gradient from private to public space. The design integrates passive environmental strategies including natural ventilation, daylight optimization, and rainwater management. Material choices emphasize local timber construction with contemporary detailing, creating dialogue between traditional Trondheim architecture and modern living needs.`,
-    floorplan: '/assets/floorplan1.jpg',
+    description: `My master's thesis was carried out in collaboration with Sintef and the Norwegian Defence Estates Agency (Forsvarsbygg), and aimed to conduct a feasibility study as well as realize Norway's first construction built using 3D printing technology (3DCP). The construction industry is currently facing significant challenges, including stagnating productivity, rising construction costs, and shortages of labor and resources. This calls for radical rethinking of how we build. By using 3D printing technology, architects can challenge traditional material and design choices, optimize design processes, and take the lead in the transition to more sustainable, innovative, and efficient construction methods.`,
+    floorplan: '/assets/3d_printing_diagram.png',
     gallery: [
-      '/assets/project1.jpg',
-      '/assets/floorplan1.jpg'
+      '/assets/3d_printing_hero.png',
+      '/assets/3d_printing_diagram.png'
     ]
   },
   {
     id: 'landscape-pavilion',
-    title: 'landscape pavilion',
-    image: '/assets/cabin_interior.jpg',
+    title: 'sit student housing',
+    image: '/assets/p13_7 - Photo-2-kopi 2 2.png',
     details: [
       { label: 'type', value: 'public architecture' },
       { label: 'location', value: 'bymarka forest' },
@@ -52,8 +52,26 @@ export const projects = [
     description: `A minimal intervention in the forest landscape that serves as both shelter and observation platform. The structure emerges from the topography using locally sourced materials and traditional joinery techniques. The pavilion creates framed views of the surrounding landscape while providing gathering space for outdoor education programs. Construction details prioritize disassembly and minimal site impact, with all materials selected for weathering and biodegradability. The project demonstrates how contemporary architecture can enhance rather than dominate natural settings.`,
     floorplan: '/assets/floor_plan.jpg',
     gallery: [
-      '/assets/cabin_interior.jpg',
+      '/assets/p13_7 - Photo-2-kopi 2 2.png',
       '/assets/floor_plan.jpg'
+    ]
+  },
+  {
+    id: 'project-3',
+    title: 'project 3',
+    image: '/assets/project_4.png',
+    details: [
+      { label: 'type', value: 'TBD' },
+      { label: 'location', value: 'TBD' },
+      { label: 'status', value: 'TBD' },
+      { label: 'size', value: 'TBD' },
+      { label: 'date', value: 'TBD' },
+      { label: 'collaborators', value: 'TBD' },
+    ],
+    description: `Project description to be added...`,
+    floorplan: '/assets/project_4.png',
+    gallery: [
+      '/assets/project_4.png'
     ]
   }
 ];
