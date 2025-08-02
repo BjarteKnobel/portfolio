@@ -16,10 +16,10 @@ export default function Home() {
             <Image
               src="/assets/body-image-1.png"
               alt="Main visual"
-              layout="fill"
-              objectFit="cover"
+              fill
               priority
               className={styles.mainImage}
+              style={{ objectFit: 'cover' }}
               onError={() => setImgError(true)}
             />
           ) : (
@@ -35,7 +35,7 @@ export default function Home() {
       <section className={styles.bodyText}>
         <p>
           I am an <span className={styles.emphasisText}>architect</span> in tech pursuing a career in real estate development
-          with a passion for innovation, and entrepreunship.
+          with a passion for innovation, and entrepreneurship.
         </p>
         <p>
           I'm <span className={styles.emphasisText}>passionate</span> about solving productivity challenges in the AEC sector

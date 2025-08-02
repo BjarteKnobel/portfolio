@@ -8,13 +8,14 @@ export default function Footer() {
       <div className={styles.contact}>
         <h2 className={styles.contactTitle}>Contact</h2>
         <p className={styles.contactText}>
-          if you have any questions for any project, help etc. when it comes to architectute
+          if you have any questions for any project, help etc. when it comes to architecture
         </p>
         <div className={styles.emailContainer}>
           <input 
             type="email" 
             placeholder="your@email.com" 
             className={styles.emailInput}
+            aria-label="Email address"
           />
           <span className={styles.arrow}>→</span>
         </div>

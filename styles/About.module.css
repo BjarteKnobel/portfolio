@@ -1,31 +1,45 @@
-/* Reusing key styles from Home.module.css for consistency */
+/* Figma About Page Design Implementation */
 .container {
   min-height: 100vh;
-  background-color: #FFFFFF;
+  background-color: #FEFEFB;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 40px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
   position: sticky;
   top: 0;
-  z-index: 100;
-  background-color: #FFFFFF;
-  width: 100%;
+  z-index: 1000;
+  background: rgba(254, 254, 251, 0);
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  padding: 10px;
+  justify-content: space-between;
   width: 100%;
+  max-width: 1432px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
 }
 
 .logoGroup {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 0;
+  padding: 0;
 }
 
 .nameText, .roleText {
@@ -37,35 +51,66 @@
   color: #000000;
 }
 
+.nameText {
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.nameText:hover {
+  opacity: 0.7;
+}
+
 .menuContainer {
   position: relative;
 }
 
 .menuButton {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
   background: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.menuButton:hover {
+  background: #f0f0f0;
 }
 
 .dot {
+  display: inline-block;
   width: 8px;
   height: 8px;
-  background-color: #000;
   border-radius: 50%;
-  margin: 0 2px;
+  background: #000;
 }
 
 .menuDropdown {
   position: absolute;
-  right: 0;
   top: 40px;
-  z-index: 10;
+  right: 0;
+  background: #FEFEFB;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.04);
+  border-radius: 0;
+  padding: 0;
+  z-index: 1000;
+  min-width: fit-content;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0px;
+  overflow: visible;
+}
+
+.header, .navbar, .container {
+  overflow: visible !important;
 }
 
 .main {
@@ -73,96 +118,366 @@
   padding: 0;
 }
 
+/* Two-Column Layout */
 .contentContainer {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 40px;
-  padding: 0;
-  max-width: 1600px;
+  padding: 0 40px;
+  max-width: 1432px;
   margin: 0 auto;
+  width: 100%;
+}
+
+/* Left Column */
+.leftColumn {
+  flex: 0 0 auto;
+  width: 326px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .imageContainer {
-  flex: 0 0 auto;
-  max-width: 350px;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .profileImage {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 0;
+  display: block;
 }
 
-.infoContainer {
-  flex: 1;
+.profileInfo {
+  background: #ffffff;
+  padding: 20px 0 20px 0; /* Remove ALL horizontal padding */
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 0 40px;
+  gap: 8px; /* Reduced gap between location and skills */
 }
 
-.section {
-  margin-bottom: 40px;
+.nameSection {
+  padding: 10px 10px 10px 10px; /* Keep padding for name section only */
+  text-align: right; /* Align name and location to RIGHT */
 }
 
-.sectionTitle {
+.fullName {
   font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 20px;
-  margin-bottom: 15px;
+  line-height: 23.34px;
   color: #000000;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
 }
 
-.jobTitle, .schoolName {
+.tagline {
   font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 20px;
-  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
   color: #000000;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
 }
 
-.period, .role, .degree {
+.locationContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0 10px 0;
+  justify-content: flex-end; /* Align location to RIGHT */
+}
+
+.locationContainer img:hover {
+  filter: invert(1);
+  transition: filter 0.3s ease;
+}
+
+.location {
   font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 20px;
-  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
   color: #000000;
+  line-height: 16px;
+  letter-spacing: 1px;
 }
 
-.description {
-  font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.5;
-  margin-bottom: 25px;
-  color: #000000;
-  max-width: 600px;
+/* Skills Section */
+.skillsSection {
+  padding: 10px 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
 }
 
-.skillsList {
+.skillsGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .skill {
   font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
   padding: 6px 12px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  border-radius: 20px;
+  margin: 0;
+  letter-spacing: 1px;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+}
+
+.skillWhite {
+  background: #ffffff;
   color: #000000;
+  border: 1px solid #000000;
+}
+
+.skillGreen {
+  background: #04ff00;
+  color: #000000;
+  border: 1px solid #04ff00;
+}
+
+.skillPurple {
+  background: #fa01fb;
+  color: #ffffff;
+  border: 1px solid #fa01fb;
+}
+
+/* Right Column */
+.rightColumn {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.iconPurple {
+  width: 30px;
+  height: 30px;
+  background: #fa01fb;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.iconPurple:hover {
+  background: #04ff00;
+}
+
+.iconPurple:hover img {
+  filter: invert(1);
+}
+
+.iconGreen {
+  width: 30px;
+  height: 30px;
+  background: #04ff00;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.iconGreen:hover {
+  background: #fa01fb;
+}
+
+.iconGreen:hover img {
+  filter: invert(1);
+}
+
+.sectionTitle {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Experience Items */
+.experienceItem {
+  background: #ffffff;
+  padding: 15px 15px 15px 0; /* Reduced padding for tighter spacing */
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Reduced gap between elements */
+}
+
+.experienceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px; /* Reduced gap between company name and period */
+}
+
+.companyName {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23.34px;
+  color: #000000;
+  margin: 0 0 3px 0; /* Small bottom margin */
+  flex: 1;
+  letter-spacing: 1px;
+}
+
+.companyLink {
+  color: #000000;
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+}
+
+.companyLink:hover {
+  opacity: 0.7;
+}
+
+.period {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.role {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  margin: 0 0 3px 0; /* Small bottom margin */
+  letter-spacing: 1px;
+}
+
+.description {
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+  max-width: 100%;
+  letter-spacing: 1px;
+}
+
+/* Large screen optimizations */
+@media (min-width: 1440px) {
+  .header {
+    padding: 40px 60px;
+  }
+  
+  .navbar {
+    max-width: 1600px;
+  }
+  
+  .contentContainer {
+    max-width: 1600px;
+    padding: 0 60px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .header {
+    padding: 40px 80px;
+  }
+  
+  .navbar {
+    max-width: 1800px;
+  }
+  
+  .contentContainer {
+    max-width: 1800px;
+    padding: 0 80px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .header {
+    padding: 50px 120px;
+  }
+  
+  .navbar {
+    max-width: 2000px;
+  }
+  
+  .nameText, .roleText {
+    font-size: 56px;
+  }
+  
+  .contentContainer {
+    max-width: 2000px;
+    padding: 0 120px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .header {
+    padding: 60px 200px;
+  }
+  
+  .navbar {
+    max-width: 2400px;
+  }
+  
+  .nameText, .roleText {
+    font-size: 60px;
+  }
+  
+  .contentContainer {
+    max-width: 2400px;
+    padding: 0 200px;
+  }
 }
 
 /* Responsive styles */
 @media (max-width: 1200px) {
   .contentContainer {
-    padding: 0;
+    padding: 0 20px;
   }
   
   .nameText, .roleText {
@@ -171,14 +486,23 @@
 }
 
 @media (max-width: 900px) {
-  .contentContainer {
-    flex-direction: column;
-    padding: 0;
+  .header {
+    padding: 30px 20px;
   }
   
-  .imageContainer {
-    max-width: 100%;
-    margin-bottom: 0;
+  .contentContainer {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+  }
+  
+  .leftColumn {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .rightColumn {
+    max-width: none;
   }
   
   .profileImage {
@@ -186,34 +510,107 @@
     object-fit: cover;
     width: 100%;
   }
-  
-  .infoContainer {
-    padding: 30px;
-  }
 }
 
 @media (max-width: 768px) {
-  .nameText, .roleText {
-    font-size: 36px;
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
   
-  .infoContainer {
-    padding: 20px;
+  .nameText, .roleText {
+    font-size: clamp(28px, 3.5vw, 40px);
+  }
+  
+
+  
+  .experienceHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .skillsSection {
+    justify-content: flex-end;
   }
 }
 
 @media (max-width: 600px) {
-  .nameText, .roleText {
-    font-size: 30px;
+  .header {
+    padding: 20px 15px;
   }
   
-  .description {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nameText, .roleText {
+    font-size: clamp(22px, 3vw, 28px);
+    white-space: nowrap;
+  }
+  
+  .menuButton {
+    padding: 6px;
+  }
+  
+  .dot {
+    width: 7px;
+    height: 7px;
+    margin: 0 1px;
+  }
+  
+  .experienceItem {
+    padding: 12px 12px 12px 0; /* Reduced padding on smaller screens */
+    margin-left: 0;
+  }
+  
+  .skillsSection {
+    justify-content: flex-end; /* Align to RIGHT on mobile */
+  }
+  
+  .fullName {
     font-size: 18px;
   }
+  
+  .skillsSection {
+    justify-content: flex-end;
+  }
+  
+
 }
 
 @media (max-width: 400px) {
   .nameText, .roleText {
-    font-size: 24px;
+    font-size: 18px;
   }
-} 
+  
+  .dot {
+    width: 5px;
+    height: 5px;
+    margin: 0 1px;
+  }
+  
+  .experienceItem {
+    padding: 10px 10px 10px 0; /* Reduced padding on very small screens */
+    margin-left: 0;
+  }
+  
+  .skillsSection {
+    justify-content: flex-end;
+  }
+  
+  .fullName {
+    font-size: 16px;
+  }
+  
+
+}
