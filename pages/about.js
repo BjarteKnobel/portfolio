@@ -12,6 +12,12 @@ export default function About() {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const router = useRouter();
+  const [animateBars, setAnimateBars] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimateBars(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -84,33 +90,88 @@ export default function About() {
               <div className={styles.nameSection}>
                 <h1 className={styles.fullName}>bjarte nikolai knobel</h1>
                 <div className={styles.locationContainer}>
-                  <Image
-                    src="/assets/world_icon.svg"
-                    alt="location"
-                    width={16}
-                    height={16}
-                  />
+                  <span className={styles.worldIcon}>
+                    <Image
+                      src="/assets/world_icon.svg"
+                      alt="location"
+                      width={12}
+                      height={12}
+                    />
+                  </span>
                   <span className={styles.location}>oslo, norway</span>
                 </div>
                 <p className={styles.tagline}>architect in tech pursuing a career in real estate development.</p>
               </div>
               
-              <div className={styles.skillsSection}>
-                <div className={styles.skillsGrid}>
-                  <span className={styles.skill}>archicad</span>
-                  <span className={styles.skill}>twinmotion</span>
-                  <span className={styles.skill}>grasshopper</span>
-                  <span className={styles.skill}>rhino</span>
-                  <span className={styles.skill}>adobe</span>
-                  <span className={styles.skill}>revit</span>
-                  <span className={`${styles.skill} ${styles.skillWhite}`}>c#</span>
-                  <span className={`${styles.skill} ${styles.skillWhite}`}>typescript</span>
-                  <span className={`${styles.skill} ${styles.skillGreen}`}>drivers license b</span>
-                  <span className={`${styles.skill} ${styles.skillPurple}`}>spanish</span>
-                  <span className={`${styles.skill} ${styles.skillPurple}`}>norwegian</span>
-                  <span className={`${styles.skill} ${styles.skillPurple}`}>german</span>
-                  <span className={`${styles.skill} ${styles.skillPurple}`}>english</span>
-                  <span className={`${styles.skill} ${styles.skillWhite}`}>more....</span>
+              {/* Toolboxs section with animated load bars */}
+              <div className={styles.toolboxSection}>
+                <div className={styles.toolboxHeaderRow}>
+                  <span className={styles.toolboxHeader}>toolboxs:</span>
+                </div>
+                <div className={styles.skillList}>
+                  {(() => {
+                    const iconFor = (name) => {
+                      const key = name.toLowerCase();
+                      if (['javascript', 'typescript', 'c#'].includes(key)) return '/assets/code.svg';
+                      if (['adobe', 'drawing'].includes(key)) return '/assets/pen.svg';
+                      if (
+                        [
+                          'archicad',
+                          'twinmotion',
+                          'grasshopper',
+                          'rhino',
+                          'revit',
+                          'autocad',
+                          'figma'
+                        ].includes(key)
+                      ) return '/assets/computer.svg';
+                      if (['english', 'spanish', 'norwegian', 'german'].includes(key)) return '/assets/language.svg';
+                      if (key.includes('license') || key.includes('drivers')) return '/assets/car.svg';
+                      return '/assets/computer.svg';
+                    };
+                    // Group order: computer tools -> code -> languages -> rest
+                    return [
+                      // Computer tools
+                      { name: 'archicad', level: 0.85 },
+                      { name: 'twinmotion', level: 0.8 },
+                      { name: 'grasshopper', level: 0.75 },
+                      { name: 'rhino', level: 0.78 },
+                      { name: 'revit', level: 0.6 },
+                      { name: 'autocad', level: 0.55 },
+                      { name: 'figma', level: 0.7 },
+                      // Code
+                      { name: 'javascript', level: 0.7 },
+                      { name: 'typescript', level: 0.6 },
+                      { name: 'c#', level: 0.4 },
+                      // Languages
+                      { name: 'english', level: 0.95 },
+                      { name: 'norwegian', level: 1.0 },
+                      { name: 'german', level: 0.5 },
+                      { name: 'spanish', level: 0.6 },
+                      // Rest
+                      { name: 'adobe', level: 0.65 },
+                    ].map((skill, idx) => {
+                    const percent = Math.round((animateBars ? skill.level : 0) * 100);
+                    return (
+                      <div key={skill.name} className={styles.skillRow}>
+                        <div className={styles.progressBar} style={{ width: `${percent}%`, transitionDelay: `${idx * 120}ms` }} aria-hidden="true" />
+                        <div className={styles.skillTextWrap}>
+                          <span className={styles.skillText}>{skill.name}</span>
+                          <span
+                            className={styles.skillTextFill}
+                            style={{ width: `${percent}%`, transitionDelay: `${idx * 120}ms` }}
+                            aria-hidden="true"
+                          >
+                            <span>{skill.name}</span>
+                          </span>
+                        </div>
+                        <span className={styles.skillIcon} aria-hidden="true">
+                          <Image src={iconFor(skill.name)} alt="" width={12} height={12} />
+                        </span>
+                      </div>
+                    );
+                  });
+                  })()}
                 </div>
               </div>
             </div>
@@ -121,7 +182,7 @@ export default function About() {
             {/* Work Experience Section */}
             <div className={styles.section}>
               <div className={styles.sectionHeader}>
-                <div className={styles.iconPurple}>
+                <div className={styles.sectionIcon}>
                   <Image
                     src="/assets/work_experience.svg"
                     alt="work experience"
@@ -199,7 +260,7 @@ export default function About() {
             {/* Education Section */}
             <div className={styles.section}>
               <div className={styles.sectionHeader}>
-                <div className={styles.iconGreen}>
+                <div className={styles.sectionIcon}>
                   <Image
                     src="/assets/education.svg"
                     alt="education"
