@@ -31,6 +31,11 @@
   position: relative;
 }
 
+/* Ensure dropdown positions relative to the dot button container */
+.menuContainer {
+  position: relative;
+}
+
 .logoGroup {
   display: flex;
   flex-direction: row;
@@ -53,7 +58,7 @@
   font-weight: 400;
   font-size: 52px;
   line-height: 1.25em;
-  letter-spacing: -2%;
+  letter-spacing: 1.04px; /* match About page */
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
@@ -84,15 +89,29 @@
 }
 
 .menuButton:hover {
-  background: #f0f0f0;
+  background: transparent;
 }
 
 .dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: var(--dot-size, 10px);
+  height: var(--dot-size, 10px);
   border-radius: 50%;
   background: #000;
+  transition: transform 220ms ease;
+}
+/* Glide dots and scale middle on hover */
+.menuContainer:hover .menuButton .dot {
+  transition: transform 180ms ease;
+}
+.menuContainer:hover .menuButton .dot:nth-child(1) {
+  transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
+}
+.menuContainer:hover .menuButton .dot:nth-child(3) {
+  transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
+}
+.menuContainer:hover .menuButton .dot:nth-child(2) {
+  transform: scale(1.6);
 }
 
 .imageSection {
@@ -270,7 +289,7 @@
 
 .menuDropdown {
   position: absolute;
-  top: 40px;
+  top: 40px; /* match About page spacing below dots */
   right: 0;
   background: #FEFEFB;
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.04);

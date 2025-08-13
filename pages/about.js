@@ -13,6 +13,7 @@ export default function About() {
   const menuRef = useRef(null);
   const router = useRouter();
   const [animateBars, setAnimateBars] = useState(false);
+  const closeMenuTimerRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimateBars(true), 50);
@@ -21,6 +22,19 @@ export default function About() {
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
+  };
+
+  const openMenu = () => {
+    if (closeMenuTimerRef.current) {
+      clearTimeout(closeMenuTimerRef.current);
+      closeMenuTimerRef.current = null;
+    }
+    setShowMenu(true);
+  };
+
+  const scheduleCloseMenu = () => {
+    if (closeMenuTimerRef.current) clearTimeout(closeMenuTimerRef.current);
+    closeMenuTimerRef.current = setTimeout(() => setShowMenu(false), 200);
   };
 
   useClickOutside([menuRef], () => {
@@ -47,25 +61,38 @@ export default function About() {
             </Link>
             <span className={styles.roleText}>about</span>
           </div>
-          <div className={styles.menuContainer} ref={menuRef}>
-            <button className={styles.menuButton} onClick={toggleMenu}>
+          <div
+            className={styles.menuContainer}
+            ref={menuRef}
+            onMouseEnter={openMenu}
+            onMouseLeave={scheduleCloseMenu}
+          >
+            <button
+              className={styles.menuButton}
+              onClick={toggleMenu}
+              aria-haspopup="true"
+              aria-expanded={showMenu}
+              style={{ "--dot-size": "10px", "--dot-gap": "10px" }}
+            >
               <div className={styles.dot}></div>
               <div className={styles.dot}></div>
               <div className={styles.dot}></div>
             </button>
             {showMenu && (
-              <Menu
-                className={styles.menuDropdown}
-                selected="about"
-                onSelect={(key) => {
-                  if (key === 'home') {
-                    router.push('/');
-                  } else if (key === 'projects') {
-                    router.push('/projects');
-                  }
-                  setShowMenu(false);
-                }}
-              />
+              <div onMouseEnter={openMenu} onMouseLeave={scheduleCloseMenu}>
+                <Menu
+                  className={styles.menuDropdown}
+                  selected="about"
+                  onSelect={(key) => {
+                    if (key === 'home') {
+                      router.push('/');
+                    } else if (key === 'projects') {
+                      router.push('/projects');
+                    }
+                    setShowMenu(false);
+                  }}
+                />
+              </div>
             )}
           </div>
         </nav>
@@ -112,7 +139,7 @@ export default function About() {
                   {(() => {
                     const iconFor = (name) => {
                       const key = name.toLowerCase();
-                      if (['javascript', 'typescript', 'c#'].includes(key)) return '/assets/code.svg';
+                      if (['javascript', 'typescript', 'c#', 'css'].includes(key)) return '/assets/code.svg';
                       if (['adobe', 'drawing'].includes(key)) return '/assets/pen.svg';
                       if (
                         [
@@ -126,51 +153,70 @@ export default function About() {
                         ].includes(key)
                       ) return '/assets/computer.svg';
                       if (['english', 'spanish', 'norwegian', 'german'].includes(key)) return '/assets/language.svg';
-                      if (key.includes('license') || key.includes('drivers')) return '/assets/car.svg';
+                      if (key.includes('license') || key.includes('drivers') || key === 'class b') return '/assets/car.svg';
                       return '/assets/computer.svg';
                     };
-                    // Group order: computer tools -> code -> languages -> rest
-                    return [
-                      // Computer tools
-                      { name: 'archicad', level: 0.85 },
+                    // Groups: programs (computer tools), code, language, other
+                    const programs = [
+                      { name: 'autocad', level: 0.9 },
+                      { name: 'archicad', level: 0.75 },
+                      { name: 'figma', level: 1.0 },
+                      { name: 'adobe', level: 0.75 },
+                      { name: 'rhino', level: 0.6 },
                       { name: 'twinmotion', level: 0.8 },
-                      { name: 'grasshopper', level: 0.75 },
-                      { name: 'rhino', level: 0.78 },
-                      { name: 'revit', level: 0.6 },
-                      { name: 'autocad', level: 0.55 },
-                      { name: 'figma', level: 0.7 },
-                      // Code
-                      { name: 'javascript', level: 0.7 },
+                      { name: 'revit', level: 0.1 },
+                      { name: 'grasshopper', level: 0.4 },
+                    ].map(s => ({ ...s, classification: 'program' }));
+                    const code = [
+                      { name: 'javascript', level: 0.3 },
+                      { name: 'css', level: 0.2 },
                       { name: 'typescript', level: 0.6 },
                       { name: 'c#', level: 0.4 },
-                      // Languages
-                      { name: 'english', level: 0.95 },
+                    ].map(s => ({ ...s, classification: 'code' }));
+                    const language = [
+                      { name: 'english', level: 0.8 },
+                      { name: 'german', level: 1.0 },
                       { name: 'norwegian', level: 1.0 },
-                      { name: 'german', level: 0.5 },
-                      { name: 'spanish', level: 0.6 },
-                      // Rest
-                      { name: 'adobe', level: 0.65 },
-                    ].map((skill, idx) => {
-                    const percent = Math.round((animateBars ? skill.level : 0) * 100);
-                    return (
-                      <div key={skill.name} className={styles.skillRow}>
-                        <div className={styles.progressBar} style={{ width: `${percent}%`, transitionDelay: `${idx * 120}ms` }} aria-hidden="true" />
-                        <div className={styles.skillTextWrap}>
-                          <span className={styles.skillText}>{skill.name}</span>
-                          <span
-                            className={styles.skillTextFill}
-                            style={{ width: `${percent}%`, transitionDelay: `${idx * 120}ms` }}
-                            aria-hidden="true"
-                          >
-                            <span>{skill.name}</span>
+                      { name: 'spanish', level: 0.1 },
+                    ].map(s => ({ ...s, classification: 'language' }));
+                    const other = [
+                      { name: 'class b', level: 1.0 },
+                      { name: 'drawing', level: 0.8 },
+                    ].map(s => ({ ...s, classification: 'other' }));
+
+                    const entries = [];
+                    const groups = [programs, code, language, other];
+                    groups.forEach((group, gIdx) => {
+                      group.forEach((skill) => entries.push({ type: 'item', skill }));
+                      if (gIdx !== groups.length - 1) entries.push({ type: 'divider' });
+                    });
+
+                    return entries.map((entry, idx) => {
+                      if (entry.type === 'divider') {
+                        return <div key={`divider-${idx}`} className={styles.skillGroupDivider} aria-hidden="true" />;
+                      }
+                      const { skill } = entry;
+                      const percent = Math.round((animateBars ? skill.level : 0) * 100);
+                      return (
+                        <div key={skill.name} className={styles.skillRow}>
+                          <div className={styles.skillTextWrap}>
+                            <div className={styles.progressBar} style={{ "--w": `${percent}%`, transitionDelay: `${idx * 120}ms` }} aria-hidden="true" />
+                            <span className={styles.skillText}>{skill.name}</span>
+                            <span
+                              className={styles.skillTextFill}
+                              style={{ "--w": `${percent}%`, transitionDelay: `${idx * 120}ms` }}
+                              aria-hidden="true"
+                            >
+                              <span>{skill.name}</span>
+                            </span>
+                            <span className={styles.skillHoverLabel} aria-hidden="true">{skill.classification}</span>
+                          </div>
+                          <span className={styles.skillIcon} aria-hidden="true">
+                            <Image src={iconFor(skill.name)} alt="" width={12} height={12} />
                           </span>
                         </div>
-                        <span className={styles.skillIcon} aria-hidden="true">
-                          <Image src={iconFor(skill.name)} alt="" width={12} height={12} />
-                        </span>
-                      </div>
-                    );
-                  });
+                      );
+                    });
                   })()}
                 </div>
               </div>
@@ -233,14 +279,14 @@ export default function About() {
                 </div>
                 <p className={styles.role}>intern</p>
                 <p className={styles.description}>
-                  at <a href="https://betongost.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>betong øst</a>, i carried out administrative tasks, on-site construction work and project development.
+                  at <a href="https://betongost.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>betong øst</a>, i carried out administrative tasks, and learned to mix concrete with different features.
                 </p>
               </div>
 
               <div className={styles.experienceItem}>
                 <div className={styles.experienceHeader}>
                   <h3 className={styles.companyName}>broderskabet</h3>
-                  <span className={styles.period}>2020</span>
+                  <span className={styles.period}>2019 - 2022</span>
                 </div>
                 <p className={styles.role}>deputy chairman</p>
                 <p className={styles.description}>
@@ -251,7 +297,7 @@ export default function About() {
               <div className={styles.experienceItem}>
                 <div className={styles.experienceHeader}>
                   <h3 className={styles.companyName}>foodora</h3>
-                  <span className={styles.period}>2020</span>
+                  <span className={styles.period}>2018 - 2019</span>
                 </div>
                 <p className={styles.role}>delivery rider</p>
               </div>
