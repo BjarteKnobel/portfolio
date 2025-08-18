@@ -357,10 +357,9 @@
   gap: 40px;
   padding: 0px 40px 10px;
   width: 100%;
-  max-width: 1432px;
-  margin: 0 auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  max-width: calc(1432px + 80px); /* match imageSection exactly */
+  box-sizing: border-box;
+  margin: 40px auto;
 }
 
 .bodyText p {
@@ -375,13 +374,58 @@
 }
 
 .emphasisText {
-  color: #000;
+  color: inherit;
   font-family: Wittgenstein;
-  font-size: 50px;
   font-style: italic;
   font-weight: 300;
-  line-height: 65px;
+  font-size: inherit; /* scale with parent */
+  line-height: inherit; /* scale with parent */
   display: inline;
+  text-decoration: none; /* remove underline if link */
+}
+
+/* Ensure link variant has no underline and inherits color */
+a.emphasisText {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.emphasisText:hover,
+a.emphasisText:active,
+a.emphasisText:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Custom cursor scope: hide native cursor and position overlay */
+.bodyTextCursorScope {
+  cursor: none; /* hide default cursor only here */
+  position: relative;
+}
+
+.customCursor {
+  position: fixed; /* follow viewport mouse accurately */
+  pointer-events: none; /* do not block clicks */
+  z-index: 2000;
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.cursorImage {
+  display: block;
+}
+
+.cursorLabel {
+  position: absolute;
+  right: 6px; /* bottom-right alignment inside image */
+  bottom: 6px;
+  font-family: 'Space Mono', monospace; /* monospace overlay */
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff; /* white arrow and text */
+  background: transparent;
+  pointer-events: none;
 }
 
 /* Large screen optimizations */
@@ -398,10 +442,7 @@
     max-width: 1600px;
   }
   
-  .bodyText {
-    max-width: 1600px;
-    padding: 0 80px 10px;
-  }
+  .bodyText { max-width: calc(1600px + 120px); padding: 0 60px 10px; margin-top: 40px; margin-bottom: 40px; }
   
   .imageSection {
     max-width: calc(1600px + 120px);
@@ -418,11 +459,7 @@
     max-width: 1800px;
   }
   
-  .bodyText {
-    max-width: 1800px;
-    padding: 0 120px 10px;
-    gap: 60px;
-  }
+  .bodyText { max-width: calc(1800px + 160px); padding: 0 80px 10px; gap: 60px; margin-top: 40px; margin-bottom: 40px; }
   
   .imageSection {
     max-width: calc(1800px + 160px);
@@ -440,13 +477,7 @@
     max-width: 2000px;
   }
   
-  .bodyText {
-    max-width: 2000px;
-    padding: 0 160px 10px;
-    gap: 80px;
-    margin-top: 120px;
-    margin-bottom: 120px;
-  }
+  .bodyText { max-width: calc(2000px + 240px); padding: 0 120px 10px; gap: 80px; margin-top: 40px; margin-bottom: 40px; }
   
   .bodyText p {
     font-size: 54px;
@@ -480,13 +511,7 @@
     max-width: 2400px;
   }
   
-  .bodyText {
-    max-width: 2400px;
-    padding: 0 240px 10px;
-    gap: 100px;
-    margin-top: 140px;
-    margin-bottom: 140px;
-  }
+  .bodyText { max-width: 2400px; padding: 0 240px 10px; gap: 100px; margin-top: 40px; margin-bottom: 40px; }
   
   .bodyText p {
     font-size: 58px;
@@ -514,7 +539,9 @@
 
 @media (max-width: 1200px) {
   .bodyText {
-    padding: 0 20px 80px;
+    padding: 0 20px 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   
   .bodyText p {
@@ -525,3 +552,78 @@
     padding: 0 20px;
   }
 } 
+
+/* ========== Info section under second carousel ========== */
+.infoSection {
+  width: 100%;
+  max-width: calc(1432px + 80px);
+  margin: 40px auto;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.infoContent {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.visualPane {
+  flex: 1; /* 1/3 */
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textPane {
+  flex: 2; /* 2/3 */
+}
+
+.textPane p {
+  color: #000;
+  font-family: Wittgenstein;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 0;
+  text-align: left;
+}
+
+/* alternate custom cursor for info section */
+.altCursorScope { cursor: none; position: relative; }
+.altCustomCursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 2000;
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+/* visually distinguish the alternate cursor */
+.altCursorImage {
+  transform: scaleX(-1);
+}
+
+@media (min-width: 1440px) {
+  .infoSection { max-width: calc(1600px + 120px); padding: 24px 60px; }
+}
+@media (min-width: 1600px) {
+  .infoSection { max-width: calc(1800px + 160px); padding: 24px 80px; }
+}
+@media (min-width: 1920px) {
+  .infoSection { max-width: calc(2000px + 240px); padding: 24px 120px; }
+}
+@media (min-width: 2560px) {
+  .infoSection { max-width: 2400px; padding: 24px 240px; }
+}
+@media (max-width: 1200px) {
+  .infoSection { padding: 16px 20px; }
+  .infoContent { gap: 20px; }
+  .textPane p { font-size: 24px; }
+}
+@media (max-width: 600px) {
+  .infoSection { padding: 12px 0; }
+  .infoContent { flex-direction: column; gap: 16px; }
+}

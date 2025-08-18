@@ -1,6 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+/* Local PixGamer Regular webfont (add files to public/assets/fonts/) */
+@font-face {
+  font-family: 'PixGamer';
+  src: url('/assets/fonts/PixGamer-Regular.woff2') format('woff2'),
+       url('/assets/fonts/PixGamer-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global page load-up animation */
+:root {
+  --enter-duration: 1400ms;
+  --enter-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --enter-translate: 48px;
+}
+
+@keyframes easeUpEnter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--enter-translate));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.easeUp {
+  animation: easeUpEnter var(--enter-duration) var(--enter-ease) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
 
 html, body {
   padding: 0;
@@ -8,6 +43,8 @@ html, body {
   font-family: 'Azeret Mono', monospace;
   background: #FEFEFB;
   color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {

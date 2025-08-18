@@ -1,15 +1,19 @@
 .carouselWrapper {
   width: 100%;
   overflow: hidden;
-  background: #04FF00;
-  padding: 12px 30px;
+  padding: 12px 40px; /* vertical padding for height, horizontal to match imageSection */
   height: 77px;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  max-width: calc(1432px + 80px); /* exactly match imageSection */
+  margin: 0 auto;
 }
 
 .firstCarousel {
-  margin-bottom: 100px;
+  /* Center between image above and body text below */
+  margin-top: 75px; /* moved down 15px */
+  margin-bottom: 105px; /* reduced by 15px to bring text closer */
 }
 
 .carouselContainer {
@@ -24,12 +28,12 @@
 }
 
 .carouselItem {
-  font-family: 'Azeret Mono', monospace;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 2.95em;
-  letter-spacing: -2%;
-  color: #000000;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; /* bold */
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #a0a0a0;
   margin-right: 80px;
   white-space: nowrap;
   cursor: pointer;
@@ -38,4 +42,48 @@
 
 .carouselItem:hover {
   opacity: 0.8;
+}
+
+@media (min-width: 1440px) {
+  .carouselWrapper { 
+    max-width: calc(1600px + 120px); 
+    padding: 12px 60px; 
+  }
+  .firstCarousel { margin-top: 95px; margin-bottom: 145px; }
+}
+@media (min-width: 1600px) {
+  .carouselWrapper { 
+    max-width: calc(1800px + 160px); 
+    padding: 12px 80px; 
+  }
+  .firstCarousel { margin-top: 105px; margin-bottom: 165px; }
+}
+@media (min-width: 1920px) {
+  .carouselWrapper { 
+    max-width: calc(2000px + 240px); 
+    padding: 12px 120px; 
+  }
+  .firstCarousel { margin-top: 115px; margin-bottom: 185px; }
+}
+@media (min-width: 2560px) {
+  .carouselWrapper { 
+    max-width: 2400px; 
+    padding: 12px 240px; 
+  }
+  .firstCarousel { margin-top: 135px; margin-bottom: 225px; }
+}
+
+/* Mobile breakpoints to match imageSection */
+@media (max-width: 1200px) {
+  .carouselWrapper {
+    padding: 12px 20px;
+  }
+  .firstCarousel { margin-top: 55px; margin-bottom: 65px; }
+}
+
+@media (max-width: 600px) {
+  .carouselWrapper {
+    padding: 12px 0; /* match imageSection mobile padding */
+  }
+  .firstCarousel { margin-top: 45px; margin-bottom: 45px; }
 } 

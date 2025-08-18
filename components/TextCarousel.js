@@ -1,9 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import styles from '../styles/TextCarousel.module.css';
 
 export default function TextCarousel({ text, speed = 1, className }) {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
+
+  const displayText = useMemo(() => {
+    // Insert visual separator of five dots between sentences
+    return (text || '').replace(/\.\s+/g, '. ..... ');
+  }, [text]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -38,11 +43,11 @@ export default function TextCarousel({ text, speed = 1, className }) {
     };
   }, [speed]);
 
-  const items = Array(9).fill(text); // Create 9 instances as per Figma design
+  const items = Array(9).fill(displayText); // Create 9 instances as per Figma design
 
   return (
-    <div className={styles.carouselWrapper}>
-      <div className={`${styles.carouselContainer} ${className || ''}`} ref={containerRef}>
+    <div className={`${styles.carouselWrapper} ${className || ''}`}>
+      <div className={styles.carouselContainer} ref={containerRef}>
         <div className={styles.carouselContent} ref={contentRef}>
           {items.map((item, index) => (
             <span key={index} className={styles.carouselItem}>

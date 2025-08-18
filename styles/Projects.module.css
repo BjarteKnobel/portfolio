@@ -1,3 +1,6 @@
+/* Project detail styles were removed as requested */
+
+/* Legacy project listing styles */
 .container {
   background: #FEFEFB;
   min-height: 100vh;
@@ -47,14 +50,12 @@
   width: 100%;
 }
 
-/* Projects Overview Styles */
 .projectsOverview {
   min-height: 100vh;
   background: #FEFEFB;
   font-family: 'Azeret Mono', monospace;
 }
 
-/* Header Styles */
 .header {
   position: sticky;
   top: 0;
@@ -99,7 +100,6 @@
   margin: 0;
 }
 
-/* Projects Grid */
 .projectsGrid {
   max-width: 1400px;
   margin: 0 auto;
@@ -110,7 +110,6 @@
   align-items: start;
 }
 
-/* Project Card */
 .projectCard {
   display: block;
   text-decoration: none;
@@ -171,18 +170,8 @@
   color: #000;
 }
 
-/* Project Info */
 .projectInfo {
   padding: 0 8px;
-}
-
-.projectTitle {
-  font-family: 'Azeret Mono', monospace;
-  font-size: 28px;
-  font-weight: 400;
-  color: #000;
-  margin: 0 0 16px 0;
-  line-height: 1.2;
 }
 
 .projectMeta {
@@ -211,51 +200,6 @@
   color: #CCC;
 }
 
-.projectDescription {
-  font-family: 'Azeret Mono', monospace;
-  font-size: 16px;
-  font-weight: 400;
-  color: #333;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Footer */
-.footer {
-  border-top: 1px solid #E8E8E8;
-  background: #FEFEFB;
-}
-
-.footerContent {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navLink {
-  font-family: 'Azeret Mono', monospace;
-  font-size: 20px;
-  font-weight: 400;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.navLink:hover {
-  opacity: 0.6;
-}
-
-.projectCount {
-  font-family: 'Azeret Mono', monospace;
-  font-size: 16px;
-  font-weight: 400;
-  color: #666;
-}
-
-/* Navigation Help Styles */
 .navigationHelp {
   max-width: calc(100% - 80px);
   margin: 40px auto 60px auto;
@@ -272,116 +216,3 @@
   margin: 0;
   line-height: 1.4;
 }
-
-/* Responsive styles */
-@media (max-width: 1200px) {
-  .loadingContent, .projectsContent {
-    max-width: 1000px;
-  }
-  
-  .projectsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .loadingScreen {
-    padding: 30px;
-  }
-  
-  .loadingContent {
-    gap: 40px;
-  }
-  
-  .loadingText {
-    font-size: 40px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-  }
-  
-  .projectsContent {
-    padding: 30px;
-  }
-
-  .headerContent {
-    padding: 30px;
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .logo, .pageTitle {
-    font-size: 36px;
-  }
-
-  .projectsGrid {
-    grid-template-columns: 1fr;
-    padding: 40px 30px;
-    gap: 40px;
-  }
-
-  .projectImageContainer {
-    height: 250px;
-  }
-
-  .projectTitle {
-    font-size: 24px;
-  }
-
-  .footerContent {
-    padding: 30px;
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .loadingScreen {
-    padding: 20px;
-  }
-  
-  .loadingContent {
-    gap: 30px;
-  }
-  
-  .loadingText {
-    font-size: 32px;
-    padding-left: 20px;
-    padding-bottom: 20px;
-  }
-  
-  .projectsContent {
-    padding: 20px;
-  }
-
-  .headerContent {
-    padding: 20px;
-  }
-
-  .logo, .pageTitle {
-    font-size: 28px;
-  }
-
-  .projectsGrid {
-    padding: 30px 20px;
-    gap: 30px;
-  }
-
-  .projectImageContainer {
-    height: 200px;
-  }
-
-  .projectTitle {
-    font-size: 20px;
-  }
-
-  .footerContent {
-    padding: 20px;
-  }
-
-  .navLink {
-    font-size: 18px;
-  }
-} 

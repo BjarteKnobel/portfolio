@@ -87,7 +87,8 @@ export default function About() {
                     if (key === 'home') {
                       router.push('/');
                     } else if (key === 'projects') {
-                      router.push('/projects');
+                      // Explicitly show loader when entering from dropdown
+                      router.push('/projects?from=menu');
                     }
                     setShowMenu(false);
                   }}

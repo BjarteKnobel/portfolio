@@ -15,17 +15,12 @@
 /* Hero image full screen */
 .heroImage {
   width: 100%;
-  height: 100vh;
+  min-height: 100svh;
   position: relative;
   z-index: 1;
 }
 
-.fullScreenImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
+.fullScreenImage { display: contents; }
 
 /* Navbar styling */
 .navbar {
@@ -36,8 +31,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: max(24px, env(safe-area-inset-top)) max(32px, env(safe-area-inset-right)) 24px max(32px, env(safe-area-inset-left));
   z-index: 100;
+}
+
+.closeBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; /* a bit larger */
+  height: 48px;
+  text-decoration: none;
+  color: transparent; /* hide fallback text */
+  outline: none;
+  border: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.closeBtn::before,
+.closeBtn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px; /* cross arm length */
+  height: 4px;  /* thickness */
+  background: #fff;
+  border-radius: 4px; /* rounded tips */
+  transform-origin: center;
+}
+
+.closeBtn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.closeBtn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.closeBtn:hover::before,
+.closeBtn:hover::after {
+  opacity: 0.85;
 }
 
 /* Project Navigation Styles */
@@ -87,10 +122,11 @@
 .logo {
   font-family: 'Azeret Mono', monospace;
   font-weight: 400;
-  font-size: 52px;
+  /* Start scaling earlier: threshold ~1300px -> 4vw; a bit earlier with 3.8vw */
+  font-size: clamp(20px, 3.8vw, 52px);
   line-height: 1.25em;
   letter-spacing: -2%;
-  color: #000;
+  color: #fff;
   text-shadow: none;
   text-align: center;
   white-space: nowrap;
@@ -101,10 +137,11 @@
 .projectTitle {
   font-family: 'Azeret Mono', monospace;
   font-weight: 400;
-  font-size: 52px;
+  /* Start scaling earlier: threshold ~1445px -> 3.6vw */
+  font-size: clamp(18px, 3.6vw, 52px);
   line-height: 1.25em;
   letter-spacing: -2%;
-  color: #000;
+  color: #fff;
   text-shadow: none;
   text-align: center;
   white-space: nowrap;
@@ -268,32 +305,36 @@
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 20px;
+    padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left));
   }
   
-  .logo, .projectTitle {
-    font-size: 32px;
+  /* Keep in one line; scale down instead of wrapping */
+  .logoGroup {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    max-width: calc(100% - 80px);
   }
   
-  .detailsGrid {
-    grid-template-columns: 1fr;
+  .logo { font-size: clamp(16px, 5.5vw, 26px); line-height: 1; }
+  .projectTitle { 
+    font-size: clamp(14px, 5vw, 24px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
   }
+
+  .closeBtn { width: 44px; height: 44px; }
   
-  .projectDetails, 
-  .description, 
-  .floorplanSection {
-    padding: 20px;
-  }
-  
-  .description {
-    font-size: 16px;
-  }
+  .detailsGrid { grid-template-columns: 1fr; }
+  .projectDetails, .description, .floorplanSection { padding: 20px; }
+  .description { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
-  .logo, .projectTitle {
-    font-size: 24px;
-  }
+  .logo { font-size: clamp(14px, 6vw, 22px); }
+  .projectTitle { font-size: clamp(12px, 5.5vw, 20px); }
   
   .nextProjectBtn {
     font-size: 12px;
