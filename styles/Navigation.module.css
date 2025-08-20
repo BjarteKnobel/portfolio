@@ -54,7 +54,7 @@
   display: grid;
   grid-template-columns: 591px 1fr; /* allow right column to flex */
   gap: 40px; /* more space between image and list */
-  padding: 0 40px 40px; /* 40px bottom to match left border */
+  padding: 60px 40px 40px; /* top padding to create consistent gap from navbar */
   width: 100%;
   margin: 0; /* do not center; align to left like navbar */
 }
@@ -274,7 +274,7 @@
 @media (max-width: 1200px) {
   .logo { font-size: clamp(32px, 4vw, 48px); }
   .navTitle { font-size: clamp(22px, 3.2vw, 40px); }
-  .content { grid-template-columns: minmax(240px, 40%) 1fr; gap: 24px; }
+  .content { grid-template-columns: minmax(240px, 40%) 1fr; gap: 24px; padding-top: 60px; }
   .leftImage { height: 480px; }
 }
 
@@ -326,8 +326,20 @@
 
 @media (max-width: 600px) {
   .navbar { padding: 24px 16px; }
-  .content { padding: 0 16px 32px; gap: 16px; }
+  .content { padding: 60px 16px 32px; gap: 16px; }
   .closeBtn { width: 44px; height: 44px; }
+}
+
+@media (min-width: 1600px) {
+  .content { padding-top: 80px; }
+}
+
+@media (min-width: 1920px) {
+  .content { padding-top: 100px; }
+}
+
+@media (min-width: 2560px) {
+  .content { padding-top: 120px; }
 }
 
 .menuContainer { position: relative; }

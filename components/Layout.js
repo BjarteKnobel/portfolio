@@ -61,7 +61,7 @@ export default function Layout({ children, title = 'Netside' }) {
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-haspopup="true"
                 aria-expanded={menuOpen}
-                style={{ "--dot-size": "10px", "--dot-gap": "10px" }}
+                style={{ "--dot-size": "8px", "--dot-gap": "10px" }}
               >
                 <span className={styles.dot} />
                 <span className={styles.dot} />

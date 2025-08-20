@@ -1,88 +1,94 @@
 .footer {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 60px 40px 300px 40px;
+  flex-direction: row; /* two columns */
+  gap: 40px; /* 40px gap between columns */
+  padding: 40px; /* 40px padding on all sides */
   background: #FFFFFF;
   width: 100%;
+  max-width: calc(1432px + 80px);
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.contact {
+.leftColumn {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 10px;
+  background: #FFF;
   width: 100%;
   max-width: 635px;
-  margin: 0;
+}
+
+.rightColumn {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.nameBlock { display: flex; }
+.nameText {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+/* Header block (title + paragraph) with 10px spacing per Figma */
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .contactTitle {
   color: #000;
   text-align: left;
-  font-family: "Azeret Mono";
-  font-size: 55px;
+  font-family: 'Azeret Mono', monospace; /* match navbar bjarte: */
+  font-size: 52px;
   font-style: normal;
   font-weight: 400;
-  line-height: 65px; /* 118.182% */
-  letter-spacing: -3.3px;
+  line-height: 1.25em;
+  letter-spacing: 1.04px;
   margin: 0;
 }
 
 .contactText {
-  color: #000;
-  font-family: "Azeret Mono";
-  font-size: 20px;
+  color: #000000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 30px; /* 150% */
-  letter-spacing: -1.2px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.2px;
   margin: 0;
 }
 
-.emailContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 79px;
-  padding: 10px 20px;
-  width: 400px;
-  border: 1px solid #000000;
-  border-radius: 50px;
-  margin: 0;
-}
+/* Form block (pill + icons) with 21px spacing per Figma */
+/* remove email pill per new figma */
 
-.emailInput {
-  font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.8em;
-  letter-spacing: -6%;
-  color: #000000;
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 100%;
-}
+/* removed emailContainer */
 
-.emailInput::placeholder {
-  color: #000000;
-}
+/* removed emailInput */
 
-.arrow {
-  font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.8em;
-  letter-spacing: -6%;
-  color: #000000;
-  cursor: pointer;
-}
+/* removed placeholder */
+
+
+
+/* Match responsive max-width/padding with main sections */
+@media (min-width: 1440px) { .footer { max-width: calc(1600px + 120px); padding: 40px 60px; } }
+@media (min-width: 1600px) { .footer { max-width: calc(1800px + 160px); padding: 40px 80px; } }
+@media (min-width: 1920px) { .footer { max-width: calc(2000px + 240px); padding: 40px 120px; } }
+@media (min-width: 2560px) { .footer { max-width: 2400px; padding: 40px 240px; } }
 
 .socialIcons {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  padding: 10px;
+  gap: 10px; /* adjusted per latest design */
+  padding: 0;
   justify-content: left;
 }
 
@@ -91,8 +97,8 @@
   align-items: left;
   justify-content: center;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 30px; /* per Figma icon frame */
+  height: 30px;
 }
 
 @media (max-width: 768px) {

@@ -1,8 +1,8 @@
 .carouselWrapper {
   width: 100%;
   overflow: hidden;
-  padding: 12px 40px; /* vertical padding for height, horizontal to match imageSection */
-  height: 77px;
+  padding: 92px 40px; /* increased vertical padding by another 40px */
+  height: 157px; /* increased height by another 40px to accommodate larger padding */
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -47,28 +47,28 @@
 @media (min-width: 1440px) {
   .carouselWrapper { 
     max-width: calc(1600px + 120px); 
-    padding: 12px 60px; 
+    padding: 92px 60px; 
   }
   .firstCarousel { margin-top: 95px; margin-bottom: 145px; }
 }
 @media (min-width: 1600px) {
   .carouselWrapper { 
     max-width: calc(1800px + 160px); 
-    padding: 12px 80px; 
+    padding: 92px 80px; 
   }
   .firstCarousel { margin-top: 105px; margin-bottom: 165px; }
 }
 @media (min-width: 1920px) {
   .carouselWrapper { 
     max-width: calc(2000px + 240px); 
-    padding: 12px 120px; 
+    padding: 92px 120px; 
   }
   .firstCarousel { margin-top: 115px; margin-bottom: 185px; }
 }
 @media (min-width: 2560px) {
   .carouselWrapper { 
     max-width: 2400px; 
-    padding: 12px 240px; 
+    padding: 92px 240px; 
   }
   .firstCarousel { margin-top: 135px; margin-bottom: 225px; }
 }
@@ -76,14 +76,14 @@
 /* Mobile breakpoints to match imageSection */
 @media (max-width: 1200px) {
   .carouselWrapper {
-    padding: 12px 20px;
+    padding: 92px 20px;
   }
   .firstCarousel { margin-top: 55px; margin-bottom: 65px; }
 }
 
 @media (max-width: 600px) {
   .carouselWrapper {
-    padding: 12px 0; /* match imageSection mobile padding */
+    padding: 92px 0; /* match imageSection mobile padding */
   }
   .firstCarousel { margin-top: 45px; margin-bottom: 45px; }
 } 

@@ -11,29 +11,19 @@ export default function Projects() {
   // Determine initial mode synchronously to avoid flashing the loader
   const initialIsCarousel = typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).get('view') === 'carousel';
-  const initialFromMenu = typeof window !== 'undefined' &&
-    new URLSearchParams(window.location.search).get('from') === 'menu';
-  const [loading, setLoading] = useState(!initialIsCarousel && initialFromMenu);
-  const [showNav, setShowNav] = useState(false);
+  const [loading, setLoading] = useState(false); // Always start with no loading
+  const [showNav, setShowNav] = useState(true); // Always show navigation panel
   const router = useRouter();
 
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
     const view = search.get('view');
-    const from = search.get('from');
     if (view === 'carousel') {
       setLoading(false);
       setShowNav(false);
       return;
     }
-    if (from === 'menu') {
-      const timer = setTimeout(() => {
-        setLoading(false);
-        setShowNav(true);
-      }, 6000);
-      return () => clearTimeout(timer);
-    }
-    // default: no loader, show navigation panel
+    // Always show navigation panel, no loading screen
     setLoading(false);
     setShowNav(true);
   }, [router.query.view]);

@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 40px;
+  padding: 40px; /* match About: gap comes from header padding-bottom */
   align-items: center;
   width: 100%;
   box-sizing: border-box;
@@ -50,7 +50,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-left: 10px;
+  margin-left: 0; /* sit flush with logo per Figma */
 }
 
 .logoText, .animatedText {
@@ -124,8 +124,7 @@
   min-height: 500px;
   max-width: calc(1432px + 80px);
   box-sizing: border-box;
-  margin: 0 auto;
-  margin-bottom: 60px;
+  margin: 0 auto; /* no extra gap; gap is handled by header padding */
   aspect-ratio: 1432 / 945;
 }
 
@@ -189,7 +188,7 @@
 
 @media (max-width: 900px) {
   .header {
-    padding: 30px 20px;
+    padding: 30px 20px 0 20px; /* remove bottom padding to keep 50px gap consistent */
   }
   
   .navbar {
@@ -229,7 +228,7 @@
 
 @media (max-width: 600px) {
   .header {
-    padding: 20px 15px;
+    padding: 20px 15px 0 15px; /* remove bottom padding */
   }
   
   .navbar {
@@ -289,8 +288,9 @@
 
 .menuDropdown {
   position: absolute;
-  top: 40px; /* match About page spacing below dots */
-  right: 0;
+  top: 40px; /* keep current height */
+  left: 50%; /* anchor to middle of the three dots container */
+  transform: translateX(-100%); /* place right corner at the middle */
   background: #FEFEFB;
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.04);
   border-radius: 0;
@@ -313,18 +313,23 @@
   padding: 10px 10px 10px 10px;
   border: none;
   background-color: #FEFEFB;
-  font-family: 'Azeret Mono', monospace;
-  font-size: 22px;
-  font-weight: 400;
+  font-family: 'Space Mono', monospace; /* updated font */
+  font-size: 16px;
+  font-weight: 700; /* bolder per new spec */
   color: #000;
   cursor: pointer;
   border-radius: 0;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, filter 0.3s ease-in-out;
   text-align: left;
 }
 
 .menuItem:hover, .menuItem:active {
-  background-color: #04FF00;
+  background-color: #000; /* hover bg to black */
+  color: #fff; /* invert text */
+}
+
+.menuItem:hover .menuIcon, .menuItem:active .menuIcon {
+  filter: invert(1); /* invert icons on black */
 }
 
 .menuIcon {
@@ -338,9 +343,12 @@
 }
 
 .menuItemActive {
-  background-color: #04FF00;
-  transition: background-color 0.3s ease-in-out;
+  background-color: #000; /* active selection matches hover */
+  color: #fff;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+.menuItemActive .menuIcon { filter: invert(1); }
 
 /* Separator line between menu items */
 .menuItem:not(:last-child) {
@@ -351,15 +359,17 @@
   overflow: visible !important;
 }
 
+/* Base: match imageSection */
 .bodyText {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 0px 40px 10px;
   width: 100%;
-  max-width: calc(1432px + 80px); /* match imageSection exactly */
+  max-width: calc(1432px + 80px);
+  padding: 200px 40px 0; /* 200px from image to first paragraph, no bottom padding */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   box-sizing: border-box;
-  margin: 40px auto;
+  margin: 0 auto 360px; /* 360px + last paragraph's 40px margin = 400px text-to-text */
 }
 
 .bodyText p {
@@ -369,8 +379,12 @@
   font-style: normal;
   font-weight: 300;
   line-height: 65px; /* 130% */
-  margin: 0;
+  margin: 0 0 40px 0; /* match Figma itemSpacing inside frame */
   text-align: left;
+}
+
+.bodyText p:last-child {
+  margin-bottom: 0;
 }
 
 .emphasisText {
@@ -430,165 +444,76 @@ a.emphasisText:focus {
 
 /* Large screen optimizations */
 @media (min-width: 1440px) {
-  .container {
-    max-width: 100%;
-  }
-  
-  .header {
-    padding: 40px 60px;
-  }
-  
-  .navbar {
-    max-width: 1600px;
-  }
-  
-  .bodyText { max-width: calc(1600px + 120px); padding: 0 60px 10px; margin-top: 40px; margin-bottom: 40px; }
-  
-  .imageSection {
-    max-width: calc(1600px + 120px);
-    padding: 0 60px;
-  }
+  .container { max-width: 100%; }
+  .header { padding: 40px 60px; }
+  .navbar { max-width: 1600px; }
+  .bodyText { max-width: calc(1600px + 120px); padding: 200px 60px 0; margin-bottom: 360px; }
+  .imageSection { max-width: calc(1600px + 120px); padding: 0 60px; margin: 0 auto; }
 }
-
 @media (min-width: 1600px) {
-  .header {
-    padding: 40px 80px;
-  }
-  
-  .navbar {
-    max-width: 1800px;
-  }
-  
-  .bodyText { max-width: calc(1800px + 160px); padding: 0 80px 10px; gap: 60px; margin-top: 40px; margin-bottom: 40px; }
-  
-  .imageSection {
-    max-width: calc(1800px + 160px);
-    padding: 0 80px;
-    margin-bottom: 80px;
-  }
+  .header { padding: 40px 80px; }
+  .navbar { max-width: 1800px; }
+  .bodyText { max-width: calc(1800px + 160px); padding: 200px 80px 0; margin-bottom: 360px; }
+  .imageSection { max-width: calc(1800px + 160px); padding: 0 80px; margin: 0 auto; }
 }
-
 @media (min-width: 1920px) {
-  .header {
-    padding: 50px 120px;
-  }
-  
-  .navbar {
-    max-width: 2000px;
-  }
-  
-  .bodyText { max-width: calc(2000px + 240px); padding: 0 120px 10px; gap: 80px; margin-top: 40px; margin-bottom: 40px; }
-  
-  .bodyText p {
-    font-size: 54px;
-    line-height: 70px;
-  }
-  
-  .emphasisText {
-    font-size: 54px;
-    line-height: 70px;
-  }
-  
-  .imageSection {
-    max-width: calc(2000px + 240px);
-    padding: 0 120px;
-    margin-bottom: 100px;
-    min-height: 600px;
-  }
-  
-  .logoText, .animatedText {
-    font-size: 56px;
-  }
+  .header { padding: 50px 120px; }
+  .navbar { max-width: 2000px; }
+  .bodyText { max-width: calc(2000px + 240px); padding: 200px 120px 0; margin-bottom: 360px; }
+  .bodyText p { font-size: 54px; line-height: 70px; }
+  .emphasisText { font-size: 54px; line-height: 70px; }
+  .imageSection { max-width: calc(2000px + 240px); padding: 0 120px; margin: 0 auto; min-height: 600px; }
 }
-
-/* Ultra-wide screen support (2560px+ and 3440px+) */
 @media (min-width: 2560px) {
-  .header {
-    padding: 60px 200px;
-  }
-  
-  .navbar {
-    max-width: 2400px;
-  }
-  
-  .bodyText { max-width: 2400px; padding: 0 240px 10px; gap: 100px; margin-top: 40px; margin-bottom: 40px; }
-  
-  .bodyText p {
-    font-size: 58px;
-    line-height: 75px;
-    max-width: 1400px; /* Maintain readability */
-    margin: 0 auto;
-  }
-  
-  .emphasisText {
-    font-size: 58px;
-    line-height: 75px;
-  }
-  
-  .imageSection {
-    max-width: 2400px;
-    padding: 0 240px;
-    margin-bottom: 120px;
-    min-height: 700px;
-  }
-  
-  .logoText, .animatedText {
-    font-size: 60px;
-  }
+  .header { padding: 60px 200px; }
+  .navbar { max-width: 2400px; }
+  .bodyText { max-width: 2400px; padding: 200px 240px 0; margin-bottom: 360px; }
+  .bodyText p { font-size: 58px; line-height: 75px; max-width: 1400px; margin: 0 0 40px 0; }
+  .emphasisText { font-size: 58px; line-height: 75px; }
+  .imageSection { max-width: 2400px; padding: 0 240px; margin: 0 auto; min-height: 700px; }
 }
-
+/* Small screens - match imageSection */
 @media (max-width: 1200px) {
-  .bodyText {
-    padding: 0 20px 10px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-  
-  .bodyText p {
-    font-size: clamp(32px, 4vw, 50px);
-  }
-  
-  .imageSection {
-    padding: 0 20px;
-  }
-} 
+  .bodyText { padding: 200px 40px 0; margin-bottom: 360px; }
+  .imageSection { margin: 0 auto; }
+}
+@media (max-width: 600px) {
+  .bodyText { padding: 200px 0 0; margin-bottom: 360px; }
+  .imageSection { margin: 0 auto; }
+}
 
 /* ========== Info section under second carousel ========== */
 .infoSection {
   width: 100%;
   max-width: calc(1432px + 80px);
-  margin: 40px auto;
-  padding: 20px 40px;
+  margin: 0 auto 200px; /* 200px gap from last text to footer */
+  padding: 0 40px 0; /* no top/bottom padding for accurate text-to-text spacing */
   box-sizing: border-box;
 }
 
 .infoContent {
   display: flex;
   align-items: stretch;
-  gap: 40px;
-}
-
-.visualPane {
-  flex: 1; /* 1/3 */
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 }
 
 .textPane {
-  flex: 2; /* 2/3 */
+  width: 100%;
 }
 
 .textPane p {
   color: #000;
   font-family: Wittgenstein;
-  font-size: 28px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 300;
-  line-height: 1.4;
-  margin: 0;
+  line-height: 65px;
+  margin: 0 0 40px 0; /* same as bodyText paragraphs */
   text-align: left;
+}
+
+.textPane p:last-child {
+  margin-bottom: 0; /* remove margin from last paragraph */
 }
 
 /* alternate custom cursor for info section */
@@ -607,23 +532,17 @@ a.emphasisText:focus {
 }
 
 @media (min-width: 1440px) {
-  .infoSection { max-width: calc(1600px + 120px); padding: 24px 60px; }
+  .infoSection { max-width: calc(1600px + 120px); padding: 0 60px 0; margin-bottom: 200px; }
 }
-@media (min-width: 1600px) {
-  .infoSection { max-width: calc(1800px + 160px); padding: 24px 80px; }
-}
-@media (min-width: 1920px) {
-  .infoSection { max-width: calc(2000px + 240px); padding: 24px 120px; }
-}
-@media (min-width: 2560px) {
-  .infoSection { max-width: 2400px; padding: 24px 240px; }
-}
+@media (min-width: 1600px) { .infoSection { max-width: calc(1800px + 160px); padding: 0 80px 0; margin-bottom: 200px; } }
+@media (min-width: 1920px) { .infoSection { max-width: calc(2000px + 240px); padding: 0 120px 0; margin-bottom: 200px; } }
+@media (min-width: 2560px) { .infoSection { max-width: 2400px; padding: 0 240px 0; margin-bottom: 200px; } }
 @media (max-width: 1200px) {
-  .infoSection { padding: 16px 20px; }
+  .infoSection { padding: 0 20px 0; margin-bottom: 200px; }
   .infoContent { gap: 20px; }
   .textPane p { font-size: 24px; }
 }
 @media (max-width: 600px) {
-  .infoSection { padding: 12px 0; }
+  .infoSection { padding: 0 0 0; margin-bottom: 200px; }
   .infoContent { flex-direction: column; gap: 16px; }
 }
