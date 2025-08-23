@@ -1,7 +1,7 @@
 /* Figma About Page Design Implementation */
 .container {
   min-height: 100vh;
-  background-color: #FEFEFB;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -121,7 +121,7 @@
   position: absolute;
   top: 40px;
   right: 0;
-  background: #FEFEFB;
+  background: #FFFFFF;
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.04);
   border-radius: 0;
   padding: 0;

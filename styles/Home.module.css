@@ -1,5 +1,5 @@
 .container {
-  background: #FEFEFB;
+  background: #FFFFFF;
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
@@ -16,7 +16,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(254, 254, 251, 0);
+  background: rgba(255, 255, 255, 0);
 }
 
 .navbar {
@@ -291,7 +291,7 @@
   top: 40px; /* keep current height */
   left: 50%; /* anchor to middle of the three dots container */
   transform: translateX(-100%); /* place right corner at the middle */
-  background: #FEFEFB;
+  background: #FFFFFF;
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.04);
   border-radius: 0;
   padding: 0;
@@ -312,7 +312,7 @@
   gap: 40px;
   padding: 10px 10px 10px 10px;
   border: none;
-  background-color: #FEFEFB;
+  background-color: #FFFFFF;
   font-family: 'Space Mono', monospace; /* updated font */
   font-size: 16px;
   font-weight: 700; /* bolder per new spec */

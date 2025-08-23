@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 
-const words = ["architect", "parametric designer", "wibe coder"];
+const defaultWords = ["architect", "parametric designer", "wibe coder"];
 
-export default function TypingAnimation() {
+export default function TypingAnimation({ words = defaultWords, single = false, typeDelay = 100, deleteDelay = 50 }) {
   const [text, setText] = useState('');
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -12,8 +12,21 @@ export default function TypingAnimation() {
 
   useEffect(() => {
     if (stopped) return;
-    const currentWord = words[wordIndex];
+    const currentWord = words[wordIndex] || '';
+
     const timeout = setTimeout(() => {
+      if (single || words.length === 1) {
+        // Type the single word once and stop
+        if (charIndex < currentWord.length) {
+          setText(currentWord.substring(0, charIndex + 1));
+          setCharIndex(charIndex + 1);
+        } else {
+          setStopped(true);
+        }
+        return;
+      }
+
+      // Multi-word looping type/delete behavior
       if (isDeleting) {
         setText(currentWord.substring(0, charIndex - 1));
         setCharIndex(charIndex - 1);
@@ -23,25 +36,19 @@ export default function TypingAnimation() {
       }
 
       if (!isDeleting && charIndex >= currentWord.length) {
-        // If last word, start deleting, but don't stop yet
         setIsDeleting(true);
       } else if (isDeleting && charIndex <= 0) {
-        if (wordIndex === words.length - 1) {
-          setStopped(true); // Stop after deleting last word
-        } else {
-          setIsDeleting(false);
-          setWordIndex((wordIndex + 1));
-        }
+        setIsDeleting(false);
+        setWordIndex((wordIndex + 1) % words.length);
       }
-    }, isDeleting ? 50 : 100);
+    }, (single || words.length === 1) ? typeDelay : (isDeleting ? deleteDelay : typeDelay));
 
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, wordIndex, stopped]);
+  }, [charIndex, isDeleting, wordIndex, stopped, single, words, typeDelay, deleteDelay]);
 
-  // Instead of SVG, use a regular span with the same styling as the "bjarte:" text
   return (
     <span className={styles.animatedText}>
       {text}
     </span>
   );
-} 
+}

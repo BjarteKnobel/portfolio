@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background: #FEFEFB;
+  background: #FFFFFF;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -39,22 +39,14 @@
   text-decoration: none;
 }
 
-.navTitle {
-  font-family: 'Azeret Mono', monospace;
-  font-weight: 400; /* match About */
-  font-size: 52px; /* align with About */
-  line-height: 1.18em;
-  letter-spacing: 1.04px; /* match About */
-  color: #000000;
-  white-space: nowrap;
-}
+/* typing animation text shares Home styles: .animatedText */
 
 /* Two column content */
 .content {
   display: grid;
   grid-template-columns: 591px 1fr; /* allow right column to flex */
   gap: 40px; /* more space between image and list */
-  padding: 60px 40px 40px; /* top padding to create consistent gap from navbar */
+  padding: 0 40px 40px; /* no top padding to match main/about page spacing */
   width: 100%;
   margin: 0; /* do not center; align to left like navbar */
 }
@@ -77,11 +69,13 @@
 .projectList {
   display: flex;
   flex-direction: column;
-  align-self: end; /* align list bottom with left image bottom */
+  align-self: end; /* align to bottom right */
+  justify-self: end; /* align to right side of grid */
   max-width: 847px;
   background: #fff;
   border-radius: 12px; /* proper border radius */
   overflow: hidden; /* clips row dividers at corners */
+  margin-bottom: 80px; /* move upward by 80px from bottom */
 }
 
 .projectRow {
@@ -95,17 +89,17 @@
 .rowTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 45px;
-  padding: 0 40px 0 16px; /* left padding for text, 40px right to align end with X */
+  justify-content: flex-end; /* right-align project names */
+  height: 60px; /* increased to fit 20px text comfortably */
+  padding: 0 40px 0 16px; /* left padding for text */
   position: relative;
 }
 
 .projectName {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
-  font-size: 10px;
-  line-height: 14.8px;
+  font-size: 20px; /* increased from 10px */
+  line-height: 28px;
   letter-spacing: 0.2px;
   color: #000000;
   white-space: nowrap;
@@ -114,75 +108,12 @@
   flex: 0 0 auto;
 }
 
-.projectType {
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  font-size: 10px;
-  line-height: 14.8px;
-  letter-spacing: 0.2px;
-  color: #aaaaaa;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  flex: 0 0 auto;
-}
-
-.squareBtn {
-  position: absolute;
-  right: 40px; /* align end with navbar X */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  cursor: pointer;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  width: 7px;
-  height: 7px;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  transform: translate(-65%, -35%) rotate(-45deg); /* better centering */
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
-
-.pixelContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.pixel {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-/* Position pixels in arrow shape initially - grid aligned */
-.pixel:nth-child(1) { top: -4px; left: 4px; }
-.pixel:nth-child(2) { top: 0; left: 8px; }
-.pixel:nth-child(3) { top: 4px; left: 4px; }
-.pixel:nth-child(4) { top: 0; left: 0; }
-.pixel:nth-child(5) { top: -4px; left: 0; }
-.pixel:nth-child(6) { top: 4px; left: 8px; }
-.pixel:nth-child(7) { top: 0; left: 4px; }
-.pixel:nth-child(8) { top: 4px; left: 0; }
+/* remove projectType (grey text) and arrow button styles */
+.projectType { display: none; }
+.squareBtn { display: none; }
+.arrow { display: none; }
+.pixelContainer { display: none; }
+.pixel { display: none; }
 
 /* Hover animation */
 .projectRow:hover .arrow {
@@ -265,16 +196,12 @@
   100% { transform: translate(-18px, -18px); opacity: 1; }
 }
 
-.rowDivider {
-  height: 2px;
-  background: #000000;
-  margin: 0 16px 20px; /* inset horizontal to respect radius */
-}
+.rowDivider { display: none; }
 
 @media (max-width: 1200px) {
   .logo { font-size: clamp(32px, 4vw, 48px); }
   .navTitle { font-size: clamp(22px, 3.2vw, 40px); }
-  .content { grid-template-columns: minmax(240px, 40%) 1fr; gap: 24px; padding-top: 60px; }
+  .content { grid-template-columns: minmax(240px, 40%) 1fr; gap: 24px; padding-top: 0; }
   .leftImage { height: 480px; }
 }
 
@@ -326,20 +253,20 @@
 
 @media (max-width: 600px) {
   .navbar { padding: 24px 16px; }
-  .content { padding: 60px 16px 32px; gap: 16px; }
+  .content { padding: 0 16px 32px; gap: 16px; }
   .closeBtn { width: 44px; height: 44px; }
 }
 
 @media (min-width: 1600px) {
-  .content { padding-top: 80px; }
+  .content { padding-top: 0; }
 }
 
 @media (min-width: 1920px) {
-  .content { padding-top: 100px; }
+  .content { padding-top: 0; }
 }
 
 @media (min-width: 2560px) {
-  .content { padding-top: 120px; }
+  .content { padding-top: 0; }
 }
 
 .menuContainer { position: relative; }

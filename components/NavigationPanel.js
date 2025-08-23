@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useClickOutside from '../hooks/useClickOutside';
 import Menu from './Menu';
+import TypingAnimation from './TypingAnimation';
 import styles from '../styles/Navigation.module.css';
 import { getAllProjects } from '../data/projects';
 
@@ -11,7 +12,7 @@ export default function NavigationPanel() {
   const containerRef = useRef(null);
   const projects = getAllProjects();
   const heroProject = projects[0];
-  const [leftImgSrc, setLeftImgSrc] = useState('/assets/navigation_image.png');
+  const [leftImgSrc, setLeftImgSrc] = useState('/assets/rotate.gif');
 
   // Menu state (same behavior as global)
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function NavigationPanel() {
       <header className={styles.navbar}>
         <div className={styles.logoGroup}>
           <Link href='/' className={styles.logo}>bjarte:</Link>
-          <span className={styles.navTitle}>project navigation</span>
+          <TypingAnimation words={["project navigation"]} single={true} />
         </div>
         <div
           className={styles.menuContainer}
@@ -97,7 +98,7 @@ export default function NavigationPanel() {
                 width={591}
                 height={769}
                 style={{ objectFit: 'cover', width: '591px', height: '769px' }}
-                onError={() => setLeftImgSrc(heroProject?.image || '/assets/floorplan1.jpg')}
+                onError={() => setLeftImgSrc(heroProject?.image || '/assets/rotate.gif')}
                 priority
               />
             </div>
@@ -113,22 +114,8 @@ export default function NavigationPanel() {
             >
               <div className={styles.rowTop}>
                 <span className={styles.projectName}>{p.title}</span>
-                <span className={styles.projectType}>{p.type}</span>
-                <div className={styles.squareBtn}>
-                  <span className={styles.arrow}></span>
-                  <span className={styles.pixelContainer}>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                    <span className={styles.pixel}></span>
-                  </span>
-                </div>
               </div>
-              <div className={styles.rowDivider} />
+              {/* row divider removed per design */}
             </Link>
           ))}
         </div>

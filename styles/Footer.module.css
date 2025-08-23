@@ -8,6 +8,7 @@
   max-width: calc(1432px + 80px);
   margin: 0 auto;
   box-sizing: border-box;
+  align-items: flex-end; /* align both columns to the bottom */
 }
 
 .leftColumn {
@@ -24,18 +25,11 @@
 .rightColumn {
   display: flex;
   flex: 1;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: flex-end; /* anchor icons baseline to bottom */
+  justify-content: flex-end; /* move icons to where name was */
 }
 
-.nameBlock { display: flex; }
-.nameText {
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
-}
+/* no extra padding; footer bottom-aligns content */
 
 /* Header block (title + paragraph) with 10px spacing per Figma */
 .headerBlock {
@@ -87,7 +81,7 @@
 .socialIcons {
   display: flex;
   flex-direction: row;
-  gap: 10px; /* adjusted per latest design */
+  gap: 7px; /* reduced gap between icons */
   padding: 0;
   justify-content: left;
 }
