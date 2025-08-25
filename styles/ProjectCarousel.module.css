@@ -4,6 +4,7 @@
   background: #fff;
   box-sizing: border-box;
   margin-top: 120px; /* push photo section toward bottom */
+  margin-bottom: 120px; /* spacing to footer */
 }
 
 .photoWrap {
@@ -28,6 +29,38 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
+  text-align: left;
+}
+
+/* Two-chart section for additiv */
+.twoChartSection {
+  width: 100%;
+  padding: 40px 120px; /* match other sections */
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 120px; /* spacing to footer or next section */
+}
+
+.twoChartWrap {
+  max-width: calc(1432px + 80px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 123px; /* match project 2 column gap */
+  align-items: start;
+}
+
+.chartItem { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.chartImage { width: 375px; height: auto; object-fit: contain; }
+.chartCaption {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  width: 375px;
   text-align: left;
 }
 .carousel {
@@ -279,7 +312,201 @@
   margin: 20px auto 0; /* 20px below image, centered under frame */
 }
 
+/* Two column section for project 2 */
+.twoColSection {
+  width: 100%;
+  padding: 40px 120px; /* 120px left/right borders */
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.twoColWrap {
+  max-width: calc(1432px + 80px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 123px; /* per mock spacing */
+}
+
+.twoLeft { display: flex; flex-direction: column; gap: 40px; max-width: 533px; /* match Figma width (532.95) */ justify-self: start; align-items: flex-start; }
+.twoIntroRow { display: flex; align-items: flex-start; gap: 40px; /* gap increased to match Figma */ }
+.twoIntroIcon { width: 81.95px; height: 121.40px; flex-shrink: 0; }
+.twoIntroText {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  max-width: 391px; /* match Figma text frame width */
+  margin: 0;
+}
+
+.designBlock { display: flex; flex-direction: column; gap: 10px; /* match Figma itemSpacing */ }
+.designLabel { 
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  border: none;
+  padding: 10px;
+  display: inline-block;
+  align-self: flex-start;
+}
+/* .designLabel span removed - text directly in label */
+.designGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.designItem { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding: 10px; box-sizing: border-box; }
+.designItem img { width: 135px; height: 86px; object-fit: contain; flex-shrink: 0; display: block; }
+.designText { color: #000; font-family: 'Space Mono', monospace; font-size: 10px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.2px; margin: 0; padding: 10px; box-sizing: border-box; background: #fff; }
+
+.twoRight { display: flex; flex-direction: column; gap: 12px; }
+.rightImageBox { width: 100%; background: #fff; }
+.rightCaption { font-family: 'Azeret Mono', monospace; font-size: 16px; color: #000; letter-spacing: 0.32px; }
+
 .introImage { width: 100%; }
+
+/* West facade section (project 2) */
+.facadeSection {
+  width: 100%;
+  padding: 40px 120px; /* 120px left/right */
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.facadeWrap { max-width: calc(1432px + 80px); margin: 0 auto; }
+.facadeImage { width: 1176px; height: auto; display: block; margin: 0 auto; }
+.facadeCaption {
+  width: 1176px;
+  margin: 20px auto 120px; /* 20px below image, 120px to footer */
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  text-align: left;
+}
+
+/* Design strategies section (project 3 - moholt studenthousing) */
+.strategiesSection {
+  width: 100%;
+  padding: 40px 120px; /* 120px left/right */
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.strategiesWrap { max-width: calc(1432px + 80px); margin: 0 auto; }
+
+.strategiesHeader {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0 0 40px 0;
+  text-align: left;
+}
+
+.strategiesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.strategyItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  text-align: left;
+  padding: 20px 0 20px 0;
+  width: 336px;
+}
+
+.strategyImage {
+  width: 334px;
+  height: 234px;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.strategyTitle {
+  color: #000;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: none;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+.strategyText {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  margin: 0;
+  text-align: left;
+}
+
+/* Isometric building diagrams section (project 3 - moholt studenthousing) */
+.isometricSection {
+  width: 100%;
+  padding: 40px 120px; /* 120px left/right */
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 120px; /* spacing to footer */
+}
+
+.isometricWrap { max-width: calc(1432px + 80px); margin: 0 auto; }
+
+.isometricVertical {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+.isometricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* center image & caption block */
+  text-align: center;
+  width: 100%;
+}
+
+.isometricImage {
+  width: 712px;
+  height: auto;
+  object-fit: contain;
+}
+
+.imageText {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  margin: 0;
+  text-align: left;
+  width: 712px; /* align caption width with image width */
+}
 
 .introText {
   display: flex;
