@@ -16,8 +16,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 40px;
-  padding: 10px;
-  background: #FFF;
+  padding: 0; /* remove inner padding */
+  background: transparent; /* remove background */
   width: 100%;
   max-width: 635px;
 }
@@ -25,11 +25,20 @@
 .rightColumn {
   display: flex;
   flex: 1;
-  align-items: flex-end; /* anchor icons baseline to bottom */
-  justify-content: flex-end; /* move icons to where name was */
+  align-items: flex-end; /* bottom align */
+  justify-content: flex-end; /* right align */
 }
 
-/* no extra padding; footer bottom-aligns content */
+.nameText {
+  color: #000000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  margin: 0; /* sit on baseline */
+}
 
 /* Header block (title + paragraph) with 10px spacing per Figma */
 .headerBlock {

@@ -12,10 +12,6 @@ export default function Footer() {
             if you have any questions or inquiries, feel free to get in touch with me by email or phone.
           </p>
         </div>
-      </div>
-
-      {/* Right column */}
-      <div className={styles.rightColumn}>
         <div className={styles.socialIcons}>
           <Link href="tel:+4795400929" className={styles.iconFrame}>
             <Image src="/assets/phone.svg" alt="Phone" width={24} height={24} />
@@ -30,6 +26,11 @@ export default function Footer() {
             <Image src="/assets/github.svg" alt="GitHub" width={24} height={24} />
           </Link>
         </div>
+      </div>
+
+      {/* Right column */}
+      <div className={styles.rightColumn}>
+        <p className={styles.nameText}>bjarte nikolai knobel</p>
       </div>
     </footer>
   );
