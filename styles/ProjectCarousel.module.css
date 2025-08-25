@@ -708,6 +708,21 @@
   .detailsGrid { grid-template-columns: 1fr; }
   .projectDetails, .description, .floorplanSection { padding: 20px; }
   .description { font-size: 16px; }
+
+  /* Scale large fixed-width images to viewport while preserving desktop sizes above */
+  .photoImage,
+  .facadeImage { width: 100%; max-width: 1176px; }
+  .photoCaption,
+  .facadeCaption { width: 100%; max-width: 1176px; padding: 0 0; }
+
+  /* Two chart section stacks on mobile */
+  .twoChartWrap { grid-template-columns: 1fr; gap: 40px; }
+  .chartImage { width: min(375px, 100%); }
+  .chartCaption { width: min(375px, 100%); }
+
+  /* Isometric images scale down but remain centered */
+  .isometricImage { width: min(712px, 100%); }
+  .imageText { width: min(712px, 100%); }
 }
 
 @media (max-width: 480px) {

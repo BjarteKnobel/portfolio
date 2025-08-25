@@ -129,7 +129,14 @@ export default function Home() {
                 width={250}
                 className={styles.cursorImage}
               />
-              <span className={styles.cursorLabel}>click to read</span>
+              <span className={styles.cursorLabel}>
+                click to read
+                <span className={styles.cursorDots}>
+                  <span className={styles.cursorDot}>.</span>
+                  <span className={styles.cursorDot}>.</span>
+                  <span className={`${styles.cursorDot} ${styles.blinkDot}`}>.</span>
+                </span>
+              </span>
             </div>
           )}
         </div>
@@ -170,7 +177,14 @@ export default function Home() {
                 width={250}
                 className={`${styles.cursorImage} ${styles.altCursorImage}`}
               />
-              <span className={styles.cursorLabel}>click to view</span>
+              <span className={styles.cursorLabel}>
+                click to view
+                <span className={styles.cursorDots}>
+                  <span className={styles.cursorDot}>.</span>
+                  <span className={styles.cursorDot}>.</span>
+                  <span className={`${styles.cursorDot} ${styles.blinkDot}`}>.</span>
+                </span>
+              </span>
             </div>
           )}
         </section>

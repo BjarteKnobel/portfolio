@@ -28,10 +28,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Right column */}
-      <div className={styles.rightColumn}>
-        <p className={styles.nameText}>bjarte nikolai knobel</p>
-      </div>
+      {/* Right column removed per request */}
     </footer>
   );
 }

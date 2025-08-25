@@ -34,6 +34,7 @@
 /* Ensure dropdown positions relative to the dot button container */
 .menuContainer {
   position: relative;
+  margin-left: auto; /* push menu to the right edge within navbar padding */
 }
 
 .logoGroup {
@@ -97,7 +98,7 @@
   width: var(--dot-size, 10px);
   height: var(--dot-size, 10px);
   border-radius: 50%;
-  background: #000;
+  background: #000 !important; /* force black */
   transition: transform 220ms ease;
 }
 /* Glide dots and scale middle on hover */
@@ -434,13 +435,24 @@ a.emphasisText:focus {
   right: 6px; /* bottom-right alignment inside image */
   bottom: 6px;
   font-family: 'Space Mono', monospace; /* monospace overlay */
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 700;
   line-height: 1;
   color: #fff; /* white arrow and text */
   background: transparent;
   pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
 }
+
+.cursorDots { display: inline-flex; gap: 0; padding-left: 2px; background: transparent; }
+.cursorDot { display: inline-block; width: auto; background: transparent; color: #fff; line-height: 1; text-shadow: none; user-select: none; }
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0.2; }
+}
+.blinkDot { animation: blink 1s ease-in-out infinite; }
 
 /* Large screen optimizations */
 @media (min-width: 1440px) {

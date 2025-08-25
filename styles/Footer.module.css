@@ -1,31 +1,32 @@
 .footer {
   display: flex;
   flex-direction: row; /* two columns */
-  gap: 40px; /* 40px gap between columns */
+  gap: 40px; /* spacing between left group and name */
   padding: 40px; /* 40px padding on all sides */
   background: #FFFFFF;
   width: 100%;
   max-width: calc(1432px + 80px);
   margin: 0 auto;
   box-sizing: border-box;
-  align-items: flex-end; /* align both columns to the bottom */
+  align-items: center; /* align content in a single line */
 }
 
 .leftColumn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
+  flex-direction: row; /* inline text + icons */
+  align-items: center;
+  justify-content: space-between; /* text left, icons right */
+  gap: 20px; /* internal breathing room */
   padding: 0; /* remove inner padding */
   background: transparent; /* remove background */
   width: 100%;
-  max-width: 635px;
+  flex: 1; /* take remaining space so name stays right */
 }
 
 .rightColumn {
   display: flex;
-  flex: 1;
-  align-items: flex-end; /* bottom align */
+  flex: 0 0 auto;
+  align-items: center; /* center align baseline */
   justify-content: flex-end; /* right align */
 }
 
@@ -41,11 +42,7 @@
 }
 
 /* Header block (title + paragraph) with 10px spacing per Figma */
-.headerBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.headerBlock { display: block; }
 
 .contactTitle {
   color: #000;
@@ -87,13 +84,7 @@
 @media (min-width: 1920px) { .footer { max-width: calc(2000px + 240px); padding: 40px 120px; } }
 @media (min-width: 2560px) { .footer { max-width: 2400px; padding: 40px 240px; } }
 
-.socialIcons {
-  display: flex;
-  flex-direction: row;
-  gap: 7px; /* reduced gap between icons */
-  padding: 0;
-  justify-content: left;
-}
+.socialIcons { display: inline-flex; flex-direction: row; gap: 7px; padding: 0; align-items: center; justify-content: flex-end; }
 
 .iconFrame {
   display: flex;
