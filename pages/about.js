@@ -89,6 +89,10 @@ export default function About() {
                     } else if (key === 'projects') {
                       // Explicitly show loader when entering from dropdown
                       router.push('/projects?from=menu');
+                    } else if (key === 'contact') {
+                      if (typeof window !== 'undefined') {
+                        window.location.href = 'mailto:bjarte05@gmail.com';
+                      }
                     }
                     setShowMenu(false);
                   }}

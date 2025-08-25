@@ -80,6 +80,10 @@ export default function NavigationPanel() {
                     router.push('/projects');
                   } else if (key === 'about') {
                     router.push('/about');
+                  } else if (key === 'contact') {
+                    if (typeof window !== 'undefined') {
+                      window.location.href = 'mailto:bjarte05@gmail.com';
+                    }
                   }
                 }}
               />
