@@ -468,7 +468,7 @@
   padding: 40px 120px; /* 120px left/right */
   background: #fff;
   box-sizing: border-box;
-  margin-top: 100px; /* move section 100px down */
+  margin-top: 200px; /* move section 200px down */
 }
 
 .strategiesWrap { max-width: calc(1432px + 80px); margin: 0 auto; }
