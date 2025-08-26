@@ -58,9 +58,15 @@
 }
 
 /* Utility: left border for captions to align with image edge */
-.captionWithBorder {
-  border-left: 1px solid #000;
-  padding-left: 0;
+.captionWithBorder { position: relative; }
+.captionWithBorder::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.1em; /* small inset to look optically centered */
+  bottom: 0.1em;
+  width: 1px;
+  background: #000;
 }
 
 /* Two-chart section for additiv */
