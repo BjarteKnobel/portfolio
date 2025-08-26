@@ -48,7 +48,7 @@
   display: grid;
   grid-template-columns: 591px 1fr; /* allow right column to flex */
   gap: 40px; /* more space between image and list */
-  padding: 0 40px 40px; /* no top padding to match main/about page spacing */
+  padding: 40px 40px 40px; /* 40px below navbar */
   width: 100%;
   margin: 0; /* do not center; align to left like navbar */
 }
