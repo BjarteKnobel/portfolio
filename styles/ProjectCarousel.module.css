@@ -95,7 +95,7 @@
   padding: 40px 120px; /* match other sections */
   background: #fff;
   box-sizing: border-box;
-  margin-bottom: 120px; /* spacing to footer or next section */
+  margin: 400px 0; /* spacing above and below section */
 }
 
 .twoPhotoWrap {
