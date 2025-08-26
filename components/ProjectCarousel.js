@@ -302,7 +302,7 @@ export default function ProjectCarousel() {
                 height={360}
                 className={styles.photoLargeImage}
               />
-              <div className={styles.photoLargeCaption}>grasshopper was an essential part of developing the projects</div>
+              <div className={styles.photoLargeCaption}>grasshopper was an essential to develop and test the project.</div>
             </div>
             <div className={styles.photoItemLarge} style={{ position: 'relative' }}>
               <FadeInImage
