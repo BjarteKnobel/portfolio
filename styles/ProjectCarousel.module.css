@@ -118,6 +118,8 @@
   line-height: normal;
   letter-spacing: 0.2px; /* match intro paragraph */
   width: 566px;
+  align-self: flex-start; /* align caption with image's left edge */
+  margin-left: 0; /* ensure no offset */
   text-align: left;
 }
 .carousel {
