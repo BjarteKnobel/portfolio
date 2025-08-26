@@ -57,6 +57,12 @@
   text-align: left;
 }
 
+/* Utility: left border for captions to align with image edge */
+.captionWithBorder {
+  border-left: 1px solid #000;
+  padding-left: 0;
+}
+
 /* Two-chart section for additiv */
 .twoChartSection {
   width: 100%;
@@ -121,11 +127,6 @@
   align-self: flex-start; /* align caption with image's left edge */
   margin-left: 0; /* ensure no offset */
   text-align: left;
-}
-
-.captionWithBorder {
-  border-left: 1px solid #000;
-  padding-left: 0;
 }
 .carousel {
   width: 100%;
