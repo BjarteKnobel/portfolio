@@ -290,22 +290,6 @@ export default function ProjectCarousel() {
         </section>
       )}
 
-      {/* Concrete image section: only for project 4 (additiv) */}
-      {currentProject && currentProject.id === 4 && (
-        <section className={styles.photoSection}>
-          <div className={styles.photoWrap}>
-            <FadeInImage
-              src="/assets/concrete.png"
-              alt="building element"
-              width={1176}
-              height={784}
-              className={styles.photoImage}
-            />
-            <div className={styles.photoCaption}>building element</div>
-        </div>
-        </section>
-      )}
-
       {/* Grasshopper script section: only for project 4 (additiv) */}
       {currentProject && currentProject.id === 4 && (
         <section className={styles.photoSection}>
@@ -318,7 +302,23 @@ export default function ProjectCarousel() {
               className={styles.photoImage}
             />
             <div className={styles.photoCaption}>gh. script concrete structure</div>
-      </div>
+          </div>
+        </section>
+      )}
+
+      {/* Concrete image section: only for project 4 (additiv) */}
+      {currentProject && currentProject.id === 4 && (
+        <section className={styles.photoSection}>
+          <div className={styles.photoWrap}>
+            <FadeInImage
+              src="/assets/concrete.png"
+              alt="building element"
+              width={1176}
+              height={784}
+              className={styles.photoImage}
+            />
+            <div className={styles.photoCaption}>building element</div>
+          </div>
         </section>
       )}
 
