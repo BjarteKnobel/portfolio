@@ -375,7 +375,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  max-width: 1176px;
+  max-width: 1000px; /* reduce width to better match visible SVG content */
   margin: 20px auto 0; /* 20px below image, centered under frame */
 }
 
