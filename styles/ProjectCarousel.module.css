@@ -290,6 +290,7 @@
   margin: 0 auto 40px;
   background: #fff;
   box-sizing: border-box;
+  height: 788px; /* fixed height for first section beneath navbar */
 }
 
 /* Floorplan image section under intro */
