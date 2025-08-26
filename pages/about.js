@@ -252,7 +252,7 @@ export default function About() {
                 </div>
                 <p className={styles.role}>architect</p>
                 <p className={styles.description}>
-                  <a href="https://www.arealize.ai/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>arealize</a>, a proptech startup from ntnu's entrepreneurial school (2021), collaborates with clients like entra and malling. i lead workplace development, work with digitization, design, sales and product innovation.
+                  <a href="https://www.arealize.ai/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>arealize</a> is a proptech startup focused on the management and development of commercial real estate, working with clients such as Entra and OBOS. I lead workplace development and contribute across digitization, design, sales, and product innovation.
                 </p>
               </div>
 
