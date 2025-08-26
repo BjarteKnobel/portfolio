@@ -362,16 +362,47 @@
   .closeBtn { width: 44px; height: 44px; }
 }
 
+/* Large screen optimizations: keep original sizes, center content */
 @media (min-width: 1600px) {
-  .content { padding-top: 0; }
+  .navbar {
+    max-width: calc(1432px + 80px);
+    margin: 0 auto;
+    padding: 40px;
+  }
+  .content {
+    max-width: calc(1432px + 80px);
+    margin: 0 auto;
+    padding: 40px;
+    gap: 40px;
+  }
 }
 
 @media (min-width: 1920px) {
-  .content { padding-top: 0; }
+  .navbar {
+    max-width: calc(1600px + 120px);
+    margin: 0 auto;
+    padding: 40px 60px;
+  }
+  .content {
+    max-width: calc(1600px + 120px);
+    margin: 0 auto;
+    padding: 40px 60px;
+    gap: 40px;
+  }
 }
 
 @media (min-width: 2560px) {
-  .content { padding-top: 0; }
+  .navbar {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 60px 80px;
+  }
+  .content {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 40px 80px;
+    gap: 40px;
+  }
 }
 
 .menuContainer { position: relative; }

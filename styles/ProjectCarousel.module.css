@@ -985,4 +985,215 @@
   height: auto;
   border-radius: 10px;
   display: block;
+}
+
+/* Large screen optimizations */
+@media (min-width: 1600px) {
+  .navbar {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 40px 80px;
+  }
+  
+  .introGrid {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 80px;
+    gap: 100px;
+  }
+  
+  .photoSection, .facadeSection {
+    max-width: 1800px;
+    margin: 120px auto;
+    padding: 40px 80px;
+  }
+  
+  .twoColSection {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 120px 180px;
+  }
+  
+  .designStrategiesSection {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 40px 160px;
+  }
+  
+  .isometricSection {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 40px 160px;
+  }
+  
+  .twoChartSection {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 40px 160px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .navbar {
+    max-width: 2000px;
+    padding: 60px 120px;
+  }
+  
+  .introGrid {
+    max-width: 2000px;
+    padding: 100px 120px;
+    gap: 120px;
+  }
+  
+  .photoSection, .facadeSection {
+    max-width: 2000px;
+    padding: 60px 120px;
+  }
+  
+  .photoImage, .facadeImage {
+    width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .photoCaption, .facadeCaption {
+    width: 1400px;
+    margin: 20px auto 0;
+  }
+  
+  .twoColSection {
+    max-width: 2000px;
+    padding: 160px 220px;
+  }
+  
+  .designStrategiesSection {
+    max-width: 2000px;
+    padding: 60px 200px;
+  }
+  
+  .isometricSection {
+    max-width: 2000px;
+    padding: 60px 200px;
+  }
+  
+  .isometricImage {
+    width: 900px;
+  }
+  
+  .imageText {
+    width: 900px;
+  }
+  
+  .twoChartSection {
+    max-width: 2000px;
+    padding: 60px 200px;
+  }
+  
+  .chartImage {
+    width: 480px;
+  }
+  
+  .chartCaption {
+    width: 480px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .navbar {
+    max-width: 2400px;
+    padding: 80px 160px;
+  }
+  
+  .logo {
+    font-size: 60px;
+  }
+  
+  .projectTitle {
+    font-size: 60px;
+  }
+  
+  .introGrid {
+    max-width: 2400px;
+    padding: 120px 160px;
+    gap: 160px;
+  }
+  
+  .introParagraph {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+  
+  .photoSection, .facadeSection {
+    max-width: 2400px;
+    padding: 80px 160px;
+  }
+  
+  .photoImage, .facadeImage {
+    width: 1600px;
+  }
+  
+  .photoCaption, .facadeCaption {
+    width: 1600px;
+    font-size: 20px;
+  }
+  
+  .twoColSection {
+    max-width: 2400px;
+    padding: 200px 280px;
+  }
+  
+  .designStrategiesSection {
+    max-width: 2400px;
+    padding: 80px 240px;
+  }
+  
+  .passiveStrategiesHeader {
+    font-size: 20px;
+    margin-bottom: 60px;
+  }
+  
+  .strategyImage {
+    width: 400px;
+    height: 280px;
+  }
+  
+  .strategyTitle {
+    font-size: 16px;
+  }
+  
+  .strategyDescription {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  .isometricSection {
+    max-width: 2400px;
+    padding: 80px 240px;
+  }
+  
+  .isometricImage {
+    width: 1100px;
+  }
+  
+  .imageText {
+    width: 1100px;
+    font-size: 20px;
+  }
+  
+  .twoChartSection {
+    max-width: 2400px;
+    padding: 80px 240px;
+  }
+  
+  .twoChartWrap {
+    gap: 80px;
+  }
+  
+  .chartImage {
+    width: 600px;
+  }
+  
+  .chartCaption {
+    width: 600px;
+    font-size: 20px;
+  }
 } 
