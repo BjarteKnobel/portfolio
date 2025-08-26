@@ -312,7 +312,7 @@ export default function ProjectCarousel() {
                 height={360}
                 className={styles.photoLargeImage}
               />
-              <div className={styles.photoLargeCaption} style={{ position: 'absolute', left: '80px', bottom: '-30px' }}>building element</div>
+              <div className={styles.photoLargeCaption} style={{ position: 'absolute', left: '95px', bottom: '-30px' }}>building element</div>
             </div>
         </div>
         </section>
