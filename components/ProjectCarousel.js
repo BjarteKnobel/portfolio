@@ -312,9 +312,9 @@ export default function ProjectCarousel() {
                 height={360}
                 className={styles.photoLargeImage}
               />
-              <div className={styles.photoLargeCaption}>building element</div>
+              <div className={`${styles.photoLargeCaption} ${styles.captionWithBorder}`}>building element</div>
             </div>
-          </div>
+        </div>
         </section>
       )}
 
@@ -342,7 +342,7 @@ export default function ProjectCarousel() {
               />
               <div className={styles.chartCaption}>deformation before hardening</div>
             </div>
-          </div>
+      </div>
         </section>
       )}
 
