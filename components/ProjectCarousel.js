@@ -162,7 +162,7 @@ export default function ProjectCarousel() {
           <div className={styles.planImageWrap}>
             <div className={styles.planImageFrame}>
               <Image
-                src="/assets/floorplan-1.etg.png"
+                src="/assets/floorplan.svg"
                 alt="floor plan"
                 width={1176}
                 height={1073}
