@@ -93,13 +93,13 @@
 }
 
 /* Two large-photo side-by-side section (project 4) */
-.twoPhotoSection {
-  width: 100%;
-  padding: 40px 120px; /* match other sections */
-  background: #fff;
-  box-sizing: border-box;
-  margin: 300px 0; /* spacing above and below section */
-}
+ .twoPhotoSection {
+   width: 100%;
+   padding: 40px 120px; /* match other sections */
+   background: #fff;
+   box-sizing: border-box;
+   margin: 300px 0 400px 0; /* spacing above and below section, increased bottom to 400px */
+ }
 
 .twoPhotoWrap {
   max-width: calc(1432px + 80px);
