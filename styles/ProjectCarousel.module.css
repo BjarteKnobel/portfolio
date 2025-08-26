@@ -385,6 +385,7 @@
   padding: 40px 120px; /* 120px left/right borders */
   background: #fff;
   box-sizing: border-box;
+  margin-top: 100px; /* move section 100px downward */
 }
 
 .twoColWrap {
