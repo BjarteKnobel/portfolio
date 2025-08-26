@@ -409,6 +409,7 @@
   letter-spacing: 0.2px;
   max-width: 391px; /* match Figma text frame width */
   margin: 0;
+  text-align: center; /* center text under icon */
 }
 
 .designBlock { display: flex; flex-direction: column; gap: 10px; /* match Figma itemSpacing */ }
