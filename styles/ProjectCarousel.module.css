@@ -24,7 +24,8 @@
 
 .photoSection {
   width: 100%;
-  padding: 40px 40px 40px 0; /* remove left padding to align image with navbar */
+  padding: 40px 40px 40px 0; /* base padding */
+  padding-left: max(32px, env(safe-area-inset-left)); /* align with navbar left padding */
   background: #fff;
   box-sizing: border-box;
   margin-top: 120px; /* push photo section toward bottom */
@@ -276,7 +277,8 @@
   z-index: 2;
   width: 100%;
   background-color: white;
-  padding: 0 40px 0 0; /* remove left padding so main image aligns with navbar */
+  padding: 0 40px 0 0; /* base padding */
+  padding-left: max(32px, env(safe-area-inset-left)); /* align with navbar left padding */
   box-sizing: border-box;
 }
 
@@ -285,7 +287,8 @@
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(360px, 1fr);
   gap: 40px;
-  padding: 40px 40px 40px 0; /* remove left padding for flush-left image */
+  padding: 40px 40px 40px 0; /* base padding */
+  padding-left: max(32px, env(safe-area-inset-left)); /* align with navbar left padding */
   max-width: calc(1432px + 80px);
   margin: 40px auto 40px; /* push section 40px down from navbar */
   background: #fff;
