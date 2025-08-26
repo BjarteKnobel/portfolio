@@ -6,7 +6,20 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const handle = () => {
+    const shouldAnimate = (url) => {
+      try {
+        const href = url || (typeof window !== 'undefined' ? window.location.href : '');
+        if (!href) return true;
+        const parsed = new URL(href, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
+        // Disable global easeUp animation on the Projects route to avoid slide-up
+        return parsed.pathname !== '/projects';
+      } catch {
+        return true;
+      }
+    };
+
+    const handle = (url) => {
+      if (!shouldAnimate(url)) return; // Skip easeUp on /projects (nav + carousel)
       requestAnimationFrame(() => {
         const root = document.querySelector('#__next');
         if (!root) return;

@@ -7,6 +7,10 @@ import { getAllProjects } from '../data/projects';
 export default function Navigation() {
   const containerRef = useRef(null);
   const projects = getAllProjects();
+  const desiredOrder = [4, 2, 3, 1];
+  const orderedProjects = desiredOrder
+    .map((id) => projects.find((p) => p.id === id))
+    .filter(Boolean);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -29,8 +33,8 @@ export default function Navigation() {
             <Link href='/projects'>projects</Link>
           </nav>
           <div className={styles.grid}> 
-            {projects.map((p) => (
-              <Link key={p.id} href='/projects' className={styles.projectTile}>
+            {orderedProjects.map((p) => (
+              <Link key={p.id} href={`/projects?view=carousel&id=${p.id}`} className={styles.projectTile}>
                 <div className={styles.projectThumb} style={{ backgroundImage: `url(${p.image})` }} />
                 <div className={styles.projectMeta}>
                   <div className={styles.tileTitle}>{p.title}</div>

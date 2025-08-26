@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import Image from 'next/image';
+import FadeInImage from '../components/FadeInImage';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Home.module.css';
@@ -17,6 +17,11 @@ export default function Home() {
   const [altCursorY, setAltCursorY] = useState(0);
   const [altImgHeight, setAltImgHeight] = useState(0);
   const altCursorImgRef = useRef(null);
+  const firstParaRef = useRef(null);
+  const secondParaRef = useRef(null);
+  const thirdParaRef = useRef(null);
+  const fourthParaRef = useRef(null);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
     const img = cursorImgRef.current;
@@ -63,18 +68,41 @@ export default function Home() {
     setAltCursorY(e.clientY);
   };
 
+  useEffect(() => {
+    const elements = [firstParaRef.current, secondParaRef.current, thirdParaRef.current, fourthParaRef.current].filter(Boolean);
+    if (elements.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Add staggered animation delay
+            const element = entry.target;
+            const paragraphIndex = elements.indexOf(element);
+            element.style.animationDelay = `${paragraphIndex * 0.15}s`;
+            element.classList.add(styles.revealVisible);
+            observer.unobserve(element); // Stop observing once visible
+          }
+        });
+      },
+      { root: null, rootMargin: '0px', threshold: 0.1 }
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Layout title="Netside Home">
       {/* Image Section (static) */}
       <section className={styles.imageSection}>
         <div className={styles.imageGroup}>
-          <Image
+          <FadeInImage
             src="/assets/landing_page_image.png"
             alt="Main visual"
             fill
             priority
-            className={styles.mainImage}
+            className={`${styles.mainImage}`}
             style={{ objectFit: 'cover' }}
+            onLoadingComplete={() => setHeroLoaded(true)}
           />
         </div>
       </section>
@@ -95,7 +123,7 @@ export default function Home() {
           onMouseMove={handleMouseMove}
         >
           <Link href="/about" style={{ textDecoration: 'none', cursor: 'none' }}>
-            <p>
+            <p ref={firstParaRef} className={`${styles.revealBlur}`}>
               I am an{' '}
               <span className={styles.emphasisText}>
                 architect
@@ -105,7 +133,7 @@ export default function Home() {
             </p>
             
             
-            <p>
+            <p ref={secondParaRef} className={`${styles.revealBlur}`}>
               I'm <span className={styles.emphasisText}>passionate</span> about solving productivity challenges in the AEC sector
               through innovation, aiming to create a future where architectural
               quality and cost efficiency go hand in hand.
@@ -152,10 +180,10 @@ export default function Home() {
         >
           <div className={styles.infoContent}>
             <div className={styles.textPane}>
-              <p>
+              <p ref={thirdParaRef} className={`${styles.revealBlur}`}>
                 I aim to create pragmatic utopias, where <span className={styles.emphasisText}>sustainability</span>, <span className={styles.emphasisText}>livability</span>, and <span className={styles.emphasisText}>innovation</span> are seamlessly integrated within real-world constraints.
               </p>
-              <p>
+              <p ref={fourthParaRef} className={`${styles.revealBlur}`}>
                 My goal is to let programmatic logic shape form, always with a twist—combining functions in unexpected ways to produce <span className={styles.emphasisText}>beautiful</span>, <span className={styles.emphasisText}>buildable</span>, and <span className={styles.emphasisText}>engaging</span> architecture.
               </p>
             </div>

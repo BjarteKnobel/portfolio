@@ -10,8 +10,14 @@ import { getAllProjects } from '../data/projects';
 
 export default function NavigationPanel() {
   const containerRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
   const projects = getAllProjects();
-  const heroProject = projects[0];
+  // Order: additiv (4), skippergata 11 (2), moholt studenthousing (3), sverresborg apartments (1)
+  const desiredOrder = [4, 2, 3, 1];
+  const orderedProjects = desiredOrder
+    .map((id) => projects.find((p) => p.id === id))
+    .filter(Boolean);
+  const heroProject = orderedProjects[0] || projects[0];
   const [leftImgSrc, setLeftImgSrc] = useState('/assets/rotate.gif');
 
   // Menu state (same behavior as global)
@@ -41,7 +47,11 @@ export default function NavigationPanel() {
 
   useEffect(() => {
     const el = containerRef.current;
-    if (el) el.classList.add(styles.enter);
+    if (el && !hasAnimatedRef.current) {
+      // Only add enter class on first mount
+      el.classList.add(styles.enter);
+      hasAnimatedRef.current = true;
+    }
   }, []);
 
   return (
@@ -110,10 +120,11 @@ export default function NavigationPanel() {
         </div>
 
         <div className={styles.projectList}>
-          {projects.map((p) => (
+          {orderedProjects.map((p) => (
             <Link
               key={p.id}
               href={`/projects?view=carousel&id=${p.id}`}
+              shallow
               className={styles.projectRow}
             >
               <div className={styles.rowTop}>

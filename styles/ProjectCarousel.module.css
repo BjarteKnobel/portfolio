@@ -1,3 +1,27 @@
+/* Page transition animations */
+.carousel {
+  position: absolute;
+  inset: 0; /* shorthand for top/right/bottom/left */
+  background: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  will-change: transform;
+  transform: translate3d(100%, 0, 0);
+}
+
+@keyframes slideInRight {
+  from { transform: translate3d(100%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideOutRight {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(100%, 0, 0); }
+}
+
+.animateIn { animation: slideInRight 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animateOut { animation: slideOutRight 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
 .photoSection {
   width: 100%;
   padding: 40px;
@@ -106,6 +130,8 @@
   color: transparent; /* hide fallback text */
   outline: none;
   border: 0;
+  background: transparent;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 

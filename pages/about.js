@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import FadeInImage from '../components/FadeInImage';
 import { useState, useRef, useEffect } from 'react';
 import styles from '../styles/About.module.css';
 import Menu from '../components/Menu';
@@ -108,7 +109,7 @@ export default function About() {
           {/* Left Column */}
           <div className={styles.leftColumn}>
             <div className={styles.imageContainer}>
-              <Image
+              <FadeInImage
                 src="/assets/bjarte_image.png"
                 alt="bjarte knobel"
                 width={306}

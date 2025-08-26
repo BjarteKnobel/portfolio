@@ -18,14 +18,13 @@ export default function Projects() {
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
     const view = search.get('view');
+    // Use shallow routing: toggle between panels without reloading page
     if (view === 'carousel') {
-      setLoading(false);
       setShowNav(false);
-      return;
+    } else {
+      setShowNav(true);
     }
-    // Always show navigation panel, no loading screen
     setLoading(false);
-    setShowNav(true);
   }, [router.query.view]);
 
   if (loading) {
@@ -52,7 +51,14 @@ export default function Projects() {
         <title>Bjarte Knobel | Projects</title>
         <meta name="description" content="Architecture and design projects by Bjarte Knobel" />
       </Head>
-      {showNav ? <NavigationPanel /> : <ProjectCarousel />}
+      <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+        <div style={{ display: showNav ? 'block' : 'none' }}>
+          <NavigationPanel />
+        </div>
+        <div style={{ display: showNav ? 'none' : 'block' }}>
+          <ProjectCarousel />
+        </div>
+      </div>
     </>
   );
 } 

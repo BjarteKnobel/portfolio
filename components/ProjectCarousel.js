@@ -1,24 +1,39 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import FadeInImage from './FadeInImage';
 import { getAllProjects } from '../data/projects';
 import Footer from './Footer';
 import styles from '../styles/ProjectCarousel.module.css';
 
 export default function ProjectCarousel() {
+  const router = useRouter();
   const projects = getAllProjects();
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isAnimatingIn, setIsAnimatingIn] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  
   useEffect(() => {
     // Read id from query to set initial project
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const idParam = parseInt(params.get('id'), 10);
+      const view = params.get('view');
+      
       if (!Number.isNaN(idParam)) {
         const idx = projects.findIndex(p => p.id === idParam);
         if (idx >= 0) setCurrentProjectIndex(idx);
       }
+      
+      // Trigger slide-in animation when carousel view is shown
+      if (view === 'carousel') {
+        setIsClosing(false);
+        const raf = requestAnimationFrame(() => setIsAnimatingIn(true));
+        return () => cancelAnimationFrame(raf);
+      }
     }
-  }, []);
+  }, [router.query]);
   const currentProject = projects[currentProjectIndex];
   const isFirstProject = currentProject && currentProject.id === 1;
 
@@ -34,10 +49,18 @@ export default function ProjectCarousel() {
     );
   };
 
+  const handleClose = () => {
+    setIsClosing(true);
+    // Wait for animation to complete before navigating
+    setTimeout(() => {
+      router.push('/projects', undefined, { shallow: true });
+    }, 600); // Match animation duration
+  };
+
   if (!currentProject) return null;
 
   return (
-    <div className={styles.carousel}>
+    <div className={`${styles.carousel} ${isAnimatingIn ? styles.animateIn : ''} ${isClosing ? styles.animateOut : ''}`}>
       <header className={styles.navbar}>
         <div className={styles.logoGroup}>
           <Link href='/' legacyBehavior>
@@ -45,13 +68,13 @@ export default function ProjectCarousel() {
           </Link>
           <span className={styles.projectTitle}>{isFirstProject ? 'sverresborg apartments' : currentProject.title}</span>
         </div>
-        <Link href='/projects' className={styles.closeBtn} aria-label='Close project'>×</Link>
+        <button onClick={handleClose} className={styles.closeBtn} aria-label='Close project'>×</button>
       </header>
 
       {/* Intro section: image on the left, text on the right */}
       <section className={styles.introGrid}>
         <div className={styles.introImage}>
-        <Image
+        <FadeInImage
             src={isFirstProject ? '/assets/render_sverresborg_ferieleiligheter.png' : currentProject.image}
           alt={currentProject.title}
             width={800}
@@ -85,7 +108,7 @@ export default function ProjectCarousel() {
             <div className={styles.twoLeft}>
               <div className={styles.twoIntroRow}>
                 <div className={styles.twoIntroIcon}>
-                  <Image src="/assets/cities_of_making.svg" alt="Cities of Making" width={82} height={121} />
+                  <FadeInImage src="/assets/cities_of_making.svg" alt="Cities of Making" width={82} height={121} />
                 </div>
                 <p className={styles.twoIntroText}>
                   {/* Placeholder copy – will be replaced with provided text */}
@@ -97,19 +120,19 @@ export default function ProjectCarousel() {
                 <div className={styles.designLabel}>selected design strategies</div>
                 <div className={styles.designGrid}>
                   <div className={styles.designItem}>
-                    <Image src="/assets/shared_space_icon.png" alt="shared spaces" width={135} height={86} />
+                    <FadeInImage src="/assets/shared_space_icon.png" alt="shared spaces" width={135} height={86} />
                     <p className={styles.designText}>
                       By leveraging shared spaces and enabling technologies, the project expands access to costly equipment, improves operational efficiency, and catalyzes knowledge exchange across producers.
                     </p>
                   </div>
                   <div className={styles.designItem}>
-                    <Image src="/assets/multi_storey_icon.png" alt="multi-storey" width={135} height={86} />
+                    <FadeInImage src="/assets/multi_storey_icon.png" alt="multi-storey" width={135} height={86} />
                     <p className={styles.designText}>
                       Freight lifts and robust, heavy-duty floor structures in multi-storey buildings enable intensified, flexible industrial programs with the capacity to adapt to shifting spatial demands.
                     </p>
                   </div>
                   <div className={styles.designItem}>
-                    <Image src="/assets/complementary_industry_icon.png" alt="complementary industries" width={135} height={86} />
+                    <FadeInImage src="/assets/complementary_industry_icon.png" alt="complementary industries" width={135} height={86} />
                     <p className={styles.designText}>
                       Integrating complementary production processes with adjacent services establishes efficient workflows while unlocking resource and knowledge synergies through cross-disciplinary innovation.
                     </p>
@@ -120,7 +143,7 @@ export default function ProjectCarousel() {
 
             <div className={styles.twoRight}>
               <div className={styles.rightImageBox}>
-                <Image
+                <FadeInImage
                   src={'/assets/parkgata_11_cross_section.png'}
                   alt="cross section"
                   width={566}
@@ -159,7 +182,7 @@ export default function ProjectCarousel() {
       {currentProject && currentProject.id === 2 && (
         <section className={styles.facadeSection}>
           <div className={styles.facadeWrap}>
-            <Image
+            <FadeInImage
               src="/assets/west_facade.png"
               alt="west facade"
               width={1176}
@@ -227,7 +250,7 @@ export default function ProjectCarousel() {
           <div className={styles.isometricWrap}>
             <div className={styles.isometricVertical}>
               <div className={styles.isometricItem}>
-                <Image
+                <FadeInImage
                   src="/assets/internal_temperatures.png"
                   alt="Internal temperatures"
                   width={712}
@@ -237,7 +260,7 @@ export default function ProjectCarousel() {
                 <div className={styles.imageText}>internal temperatures</div>
               </div>
               <div className={styles.isometricItem}>
-                <Image
+                <FadeInImage
                   src="/assets/heat_gains.png"
                   alt="Heat gains and losses"
                   width={712}
@@ -255,7 +278,7 @@ export default function ProjectCarousel() {
       {isFirstProject && (
         <section className={styles.photoSection}>
           <div className={styles.photoWrap}>
-            <Image
+            <FadeInImage
               src="/assets/sverresborg_hotel.png"
               alt="main facade"
               width={1176}
@@ -271,7 +294,7 @@ export default function ProjectCarousel() {
       {currentProject && currentProject.id === 4 && (
         <section className={styles.photoSection}>
           <div className={styles.photoWrap}>
-            <Image
+            <FadeInImage
               src="/assets/concrete.png"
               alt="building element"
               width={1176}
@@ -287,7 +310,7 @@ export default function ProjectCarousel() {
       {currentProject && currentProject.id === 4 && (
         <section className={styles.photoSection}>
           <div className={styles.photoWrap}>
-            <Image
+            <FadeInImage
               src="/assets/grasshopper_script.png"
               alt="gh. script concrete structure"
               width={1176}
@@ -304,7 +327,7 @@ export default function ProjectCarousel() {
         <section className={styles.twoChartSection}>
           <div className={styles.twoChartWrap}>
             <div className={styles.chartItem}>
-              <Image
+              <FadeInImage
                 src="/assets/stress.png"
                 alt="stress before hardening"
                 width={375}
@@ -314,7 +337,7 @@ export default function ProjectCarousel() {
               <div className={styles.chartCaption}>stress before hardening</div>
             </div>
             <div className={styles.chartItem}>
-              <Image
+              <FadeInImage
                 src="/assets/deformation.png"
                 alt="deformation before hardening"
                 width={375}

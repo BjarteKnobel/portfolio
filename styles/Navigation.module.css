@@ -1,11 +1,14 @@
 .container {
-  min-height: 100vh;
+  height: 100vh; /* lock to viewport */
+  overflow: hidden; /* disable page scroll */
   background: #FFFFFF;
   display: flex;
   flex-direction: column;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 1;
 }
 
 .enter {
@@ -80,13 +83,7 @@
   margin-bottom: 80px; /* move upward by 80px from bottom */
 }
 
-.projectRow {
-  text-decoration: none;
-  border: 0;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  display: block;
-}
+/* Removed duplicate - see line 107 for projectRow styles */
 
 .rowTop {
   display: flex;
@@ -95,6 +92,112 @@
   height: 60px; /* increased to fit 20px text comfortably */
   padding: 0 40px 0 16px; /* left padding for text */
   position: relative;
+}
+
+/* Project rows visible by default */
+.projectRow {
+  text-decoration: none;
+  border: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0) scale(1);
+}
+
+/* Staggered dynamic entrance ONLY on first mount with .enter class */
+.enter .projectRow {
+  animation-fill-mode: both;
+}
+
+.enter .projectRow:nth-child(1) { 
+  animation: slideBlurIn1 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0s;
+}
+.enter .projectRow:nth-child(2) { 
+  animation: slideBlurIn2 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+}
+.enter .projectRow:nth-child(3) { 
+  animation: slideBlurIn3 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+}
+.enter .projectRow:nth-child(4) { 
+  animation: slideBlurIn4 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s;
+}
+.enter .projectRow:nth-child(5) { 
+  animation: slideBlurIn1 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s;
+}
+.enter .projectRow:nth-child(6) { 
+  animation: slideBlurIn2 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s;
+}
+.enter .projectRow:nth-child(7) { 
+  animation: slideBlurIn3 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s;
+}
+.enter .projectRow:nth-child(8) { 
+  animation: slideBlurIn4 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 1.05s;
+}
+
+@keyframes slideBlurIn1 {
+  0% { 
+    opacity: 0; 
+    filter: blur(20px); 
+    transform: translateX(60px) scale(0.9);
+  }
+  60% {
+    filter: blur(5px);
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideBlurIn2 {
+  0% { 
+    opacity: 0; 
+    filter: blur(15px); 
+    transform: translateX(80px) scale(0.95);
+  }
+  50% {
+    filter: blur(8px);
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideBlurIn3 {
+  0% { 
+    opacity: 0; 
+    filter: blur(25px); 
+    transform: translateX(50px) scale(0.92);
+  }
+  70% {
+    filter: blur(3px);
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideBlurIn4 {
+  0% { 
+    opacity: 0; 
+    filter: blur(18px); 
+    transform: translateX(70px) scale(0.88);
+  }
+  55% {
+    filter: blur(6px);
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: translateX(0) scale(1);
+  }
 }
 
 .projectName {

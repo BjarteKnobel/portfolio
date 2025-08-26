@@ -45,7 +45,19 @@ html, body {
   color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Global blur-in utility for images used by FadeInImage wrapper */
+.img-blur-loading { filter: blur(16px); opacity: 0.2; transition: filter 600ms ease, opacity 600ms ease; }
+.img-blur-loaded { filter: blur(0); opacity: 1; transition: filter 600ms ease, opacity 600ms ease; }
 
 * {
   box-sizing: border-box;

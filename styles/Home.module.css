@@ -145,6 +145,10 @@
   z-index: 1;
 }
 
+/* Blur-in loading effect for hero image */
+.imageLoading { filter: blur(16px); opacity: 0.2; transition: filter 600ms ease, opacity 600ms ease; }
+.imageLoaded { filter: blur(0); opacity: 1; transition: filter 600ms ease, opacity 600ms ease; }
+
 .overlayImage {
   object-fit: cover;
   z-index: 2;
@@ -386,6 +390,63 @@
 
 .bodyText p:last-child {
   margin-bottom: 0;
+}
+
+/* Scroll reveal: dynamic slide-blur animation for landing page text */
+.revealBlur {
+  opacity: 0;
+  filter: blur(20px);
+  transform: translateX(60px) scale(0.9);
+}
+
+/* Animation triggers when revealVisible is added */
+.revealBlur.revealVisible:nth-of-type(odd) {
+  animation: dynamicSlideBlur1 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.revealBlur.revealVisible:nth-of-type(even) {
+  animation: dynamicSlideBlur2 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes dynamicSlideBlur1 {
+  0% { 
+    opacity: 0; 
+    filter: blur(25px); 
+    transform: translateX(80px) scale(0.88);
+  }
+  60% {
+    filter: blur(8px);
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes dynamicSlideBlur2 {
+  0% { 
+    opacity: 0; 
+    filter: blur(20px); 
+    transform: translateX(70px) scale(0.92);
+  }
+  50% {
+    filter: blur(5px);
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revealBlur {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
 }
 
 .emphasisText {
