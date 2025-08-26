@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: 1,
-    title: 'sverresborg ferieleiligheter',
+    title: 'sverresborg apartments',
     image: '/assets/floorplan1.jpg',
     type: 'transformation',
     location: 'sverresborg alle 13',
