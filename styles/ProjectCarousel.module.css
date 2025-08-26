@@ -107,7 +107,7 @@
   align-items: start;
 }
 
-.photoItemLarge { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.photoItemLarge { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; width: 566px; }
 .photoLargeImage { width: 566px; height: 360px; object-fit: contain; }
 .photoLargeCaption {
   color: #000;
@@ -117,7 +117,7 @@
   font-weight: 400; /* regular */
   line-height: normal;
   letter-spacing: 0.2px; /* match intro paragraph */
-  width: 566px;
+  width: 100%;
   align-self: flex-start; /* align caption with image's left edge */
   margin-left: 0; /* ensure no offset */
   text-align: left;
