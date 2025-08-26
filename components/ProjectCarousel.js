@@ -304,7 +304,7 @@ export default function ProjectCarousel() {
               />
               <div className={styles.photoLargeCaption}>gh. script concrete structure</div>
             </div>
-            <div className={styles.photoItemLarge}>
+            <div className={styles.photoItemLarge} style={{ position: 'relative' }}>
               <FadeInImage
                 src="/assets/concrete.png"
                 alt="building element"
@@ -312,7 +312,7 @@ export default function ProjectCarousel() {
                 height={360}
                 className={styles.photoLargeImage}
               />
-              <div className={styles.photoLargeCaption} style={{ marginLeft: '-45px' }}>building element</div>
+              <div className={styles.photoLargeCaption} style={{ position: 'absolute', left: '0', bottom: '-30px' }}>building element</div>
             </div>
         </div>
         </section>
