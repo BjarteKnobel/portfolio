@@ -58,7 +58,7 @@
 }
 
 /* Utility: left border for captions to align with image edge */
-.captionWithBorder { position: relative; padding-left: 20px; }
+.captionWithBorder { position: relative; padding-left: 0; }
 
 /* Two-chart section for additiv */
 .twoChartSection {
