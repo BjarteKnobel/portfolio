@@ -58,7 +58,7 @@
 }
 
 /* Utility: left border for captions to align with image edge */
-.captionWithBorder { position: relative; }
+.captionWithBorder { position: relative; padding-left: 8px; }
 .captionWithBorder::before {
   content: '';
   position: absolute;
