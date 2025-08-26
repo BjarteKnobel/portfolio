@@ -276,7 +276,7 @@
   z-index: 2;
   width: 100%;
   background-color: white;
-  padding: 0 40px;
+  padding: 0 40px 0 0; /* remove left padding so main image aligns with navbar */
   box-sizing: border-box;
 }
 
@@ -285,7 +285,7 @@
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(360px, 1fr);
   gap: 40px;
-  padding: 40px;
+  padding: 40px 40px 40px 0; /* remove left padding for flush-left image */
   max-width: calc(1432px + 80px);
   margin: 40px auto 40px; /* push section 40px down from navbar */
   background: #fff;
