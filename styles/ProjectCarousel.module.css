@@ -112,11 +112,11 @@
 .photoLargeCaption {
   color: #000;
   font-family: 'Space Mono', monospace;
-  font-size: 16px;
+  font-size: 10px; /* match intro paragraph font size */
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; /* regular */
   line-height: normal;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.2px; /* match intro paragraph */
   width: 566px;
   text-align: left;
 }
