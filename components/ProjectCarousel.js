@@ -120,19 +120,19 @@ export default function ProjectCarousel() {
                 <div className={styles.designLabel}>selected design strategies</div>
                 <div className={styles.designGrid}>
                   <div className={styles.designItem}>
-                    <FadeInImage src="/assets/shared_space_icon.png" alt="shared spaces" width={135} height={86} />
+                    <FadeInImage src="/assets/shared_space.png" alt="shared spaces" width={135} height={86} />
                     <p className={styles.designText}>
                       By leveraging shared spaces and enabling technologies, the project expands access to costly equipment, improves operational efficiency, and catalyzes knowledge exchange across producers.
                     </p>
                   </div>
                   <div className={styles.designItem}>
-                    <FadeInImage src="/assets/multi_storey_icon.png" alt="multi-storey" width={135} height={86} />
+                    <FadeInImage src="/assets/lifts.png" alt="multi-storey" width={135} height={86} />
                     <p className={styles.designText}>
                       Freight lifts and robust, heavy-duty floor structures in multi-storey buildings enable intensified, flexible industrial programs with the capacity to adapt to shifting spatial demands.
                     </p>
                   </div>
                   <div className={styles.designItem}>
-                    <FadeInImage src="/assets/complementary_industry_icon.png" alt="complementary industries" width={135} height={86} />
+                    <FadeInImage src="/assets/adjacent_services.png" alt="complementary industries" width={135} height={86} />
                     <p className={styles.designText}>
                       Integrating complementary production processes with adjacent services establishes efficient workflows while unlocking resource and knowledge synergies through cross-disciplinary innovation.
                     </p>
