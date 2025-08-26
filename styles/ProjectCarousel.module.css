@@ -434,7 +434,7 @@
 .designText { color: #000; font-family: 'Space Mono', monospace; font-size: 10px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.2px; margin: 0; padding: 10px; box-sizing: border-box; background: #fff; }
 
 .twoRight { display: flex; flex-direction: column; gap: 12px; }
-.rightImageBox { width: 100%; background: #fff; }
+.rightImageBox { width: 100%; background: #fff; margin-top: 20px; }
 .rightCaption { font-family: 'Azeret Mono', monospace; font-size: 16px; color: #000; letter-spacing: 0.32px; }
 
 .introImage { width: 100%; }
