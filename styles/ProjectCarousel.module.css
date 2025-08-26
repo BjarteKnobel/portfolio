@@ -88,6 +88,38 @@
   width: 375px;
   text-align: left;
 }
+
+/* Two large-photo side-by-side section (project 4) */
+.twoPhotoSection {
+  width: 100%;
+  padding: 40px 120px; /* match other sections */
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 120px; /* spacing to footer or next section */
+}
+
+.twoPhotoWrap {
+  max-width: calc(1432px + 80px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 123px; /* consistent gap with other two-col sections */
+  align-items: start;
+}
+
+.photoItemLarge { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.photoLargeImage { width: 566px; height: auto; object-fit: contain; }
+.photoLargeCaption {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  width: 566px;
+  text-align: left;
+}
 .carousel {
   width: 100%;
   height: 100vh;

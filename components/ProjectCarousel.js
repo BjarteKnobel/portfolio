@@ -290,34 +290,30 @@ export default function ProjectCarousel() {
         </section>
       )}
 
-      {/* Grasshopper script section: only for project 4 (additiv) */}
+      {/* Two-photo side-by-side section: only for project 4 (additiv) */}
       {currentProject && currentProject.id === 4 && (
-        <section className={styles.photoSection}>
-          <div className={styles.photoWrap}>
-            <FadeInImage
-              src="/assets/grasshopper_script.png"
-              alt="gh. script concrete structure"
-              width={1176}
-              height={472}
-              className={styles.photoImage}
-            />
-            <div className={styles.photoCaption}>gh. script concrete structure</div>
-          </div>
-        </section>
-      )}
-
-      {/* Concrete image section: only for project 4 (additiv) */}
-      {currentProject && currentProject.id === 4 && (
-        <section className={styles.photoSection}>
-          <div className={styles.photoWrap}>
-            <FadeInImage
-              src="/assets/concrete.png"
-              alt="building element"
-              width={1176}
-              height={784}
-              className={styles.photoImage}
-            />
-            <div className={styles.photoCaption}>building element</div>
+        <section className={styles.twoPhotoSection}>
+          <div className={styles.twoPhotoWrap}>
+            <div className={styles.photoItemLarge}>
+              <FadeInImage
+                src="/assets/grasshopper_script.png"
+                alt="gh. script concrete structure"
+                width={566}
+                height={360}
+                className={styles.photoLargeImage}
+              />
+              <div className={styles.photoLargeCaption}>gh. script concrete structure</div>
+            </div>
+            <div className={styles.photoItemLarge}>
+              <FadeInImage
+                src="/assets/concrete.png"
+                alt="building element"
+                width={566}
+                height={360}
+                className={styles.photoLargeImage}
+              />
+              <div className={styles.photoLargeCaption}>building element</div>
+            </div>
           </div>
         </section>
       )}
