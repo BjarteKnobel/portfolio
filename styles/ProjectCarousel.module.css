@@ -24,7 +24,7 @@
 
 .photoSection {
   width: 100%;
-  padding: 40px;
+  padding: 40px 40px 40px 0; /* remove left padding to align image with navbar */
   background: #fff;
   box-sizing: border-box;
   margin-top: 120px; /* push photo section toward bottom */
