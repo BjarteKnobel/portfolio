@@ -330,7 +330,7 @@ export default function ProjectCarousel() {
                 height={214}
                 className={styles.chartImage}
               />
-              <div className={styles.chartCaption}>stress before hardening</div>
+              <div className={styles.photoLargeCaption}>stress before hardening</div>
             </div>
             <div className={styles.chartItem}>
               <FadeInImage
@@ -340,7 +340,7 @@ export default function ProjectCarousel() {
                 height={214}
                 className={styles.chartImage}
               />
-              <div className={styles.chartCaption}>deformation before hardening</div>
+              <div className={styles.photoLargeCaption}>deformation before hardening</div>
             </div>
       </div>
         </section>
