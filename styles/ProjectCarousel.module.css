@@ -396,8 +396,8 @@
   gap: 123px; /* per mock spacing */
 }
 
-.twoLeft { display: flex; flex-direction: column; gap: 40px; max-width: 533px; /* match Figma width (532.95) */ justify-self: start; align-items: flex-start; }
-.twoIntroRow { display: flex; align-items: flex-start; gap: 40px; /* gap increased to match Figma */ }
+.twoLeft { display: flex; flex-direction: column; gap: 40px; max-width: 533px; /* match Figma width (532.95) */ justify-self: center; align-items: center; margin: 0 auto; }
+.twoIntroRow { display: flex; align-items: flex-start; gap: 40px; /* gap increased to match Figma */ justify-content: center; align-self: center; margin: 0 auto; }
 .twoIntroIcon { width: 81.95px; height: 121.40px; flex-shrink: 0; }
 .twoIntroText {
   color: #000;
