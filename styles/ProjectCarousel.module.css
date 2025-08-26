@@ -324,13 +324,13 @@
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(360px, 1fr);
   gap: 40px;
-  padding: 40px 40px 40px 0; /* base padding */
+  padding: 80px 40px 40px 0; /* increased top padding by 40px to push content down */
   padding-left: max(32px, env(safe-area-inset-left)); /* align with navbar left padding */
   max-width: calc(1432px + 80px);
   margin: 40px auto 40px; /* push section 40px down from navbar */
   background: #fff;
   box-sizing: border-box;
-  height: 828px; /* fixed height for first section beneath navbar (increased by 40px) */
+  height: 868px; /* increased height by 80px total (40px for content + 40px for padding) */
 }
 
 /* Floorplan image section under intro */
@@ -749,7 +749,7 @@
   }
   .introGrid {
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 60px 20px 20px; /* increased top padding by 40px */
     gap: 20px;
   }
   
@@ -1039,7 +1039,7 @@
   .introGrid {
     max-width: 1800px;
     margin: 0 auto;
-    padding: 80px;
+    padding: 120px 80px 80px; /* increased top padding by 40px */
     gap: 100px;
   }
   
@@ -1083,7 +1083,7 @@
   
   .introGrid {
     max-width: 2000px;
-    padding: 100px 120px;
+    padding: 140px 120px 100px; /* increased top padding by 40px */
     gap: 120px;
   }
   
@@ -1156,7 +1156,7 @@
   
   .introGrid {
     max-width: 2400px;
-    padding: 120px 160px;
+    padding: 160px 160px 120px; /* increased top padding by 40px */
     gap: 160px;
   }
   
