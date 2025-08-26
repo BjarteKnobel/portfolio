@@ -296,7 +296,7 @@ export default function About() {
                 </div>
                 <p className={styles.role}>deputy chairman</p>
                 <p className={styles.description}>
-                  at <a href="https://www.broderskabet.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>broderskabet</a>, i carried out administrative tasks, on-site construction work and project development.
+                  at <a href="https://www.broderskabet.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>broderskabet</a>, i worked as the deputy chairman in the connect group and arranged social gatherings between students at NTNU and the næringsliv.
                 </p>
               </div>
 
