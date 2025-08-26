@@ -330,7 +330,7 @@
   margin: 40px auto 40px; /* push section 40px down from navbar */
   background: #fff;
   box-sizing: border-box;
-  height: 788px; /* fixed height for first section beneath navbar */
+  height: 828px; /* fixed height for first section beneath navbar (increased by 40px) */
 }
 
 /* Floorplan image section under intro */
