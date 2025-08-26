@@ -66,7 +66,7 @@
   padding: 40px 120px; /* match other sections */
   background: #fff;
   box-sizing: border-box;
-  margin-bottom: 120px; /* spacing to footer or next section */
+  margin-bottom: 220px; /* increased spacing to footer by 100px */
 }
 
 .twoChartWrap {
@@ -93,13 +93,13 @@
 }
 
 /* Two large-photo side-by-side section (project 4) */
- .twoPhotoSection {
-   width: 100%;
-   padding: 40px 120px; /* match other sections */
-   background: #fff;
-   box-sizing: border-box;
-   margin: 300px 0 400px 0; /* spacing above and below section, increased bottom to 400px */
- }
+.twoPhotoSection {
+  width: 100%;
+  padding: 40px 120px; /* match other sections */
+  background: #fff;
+  box-sizing: border-box;
+  margin: 300px 0; /* spacing above and below section */
+}
 
 .twoPhotoWrap {
   max-width: calc(1432px + 80px);
@@ -1071,6 +1071,7 @@
     max-width: 1800px;
     margin: 0 auto;
     padding: 40px 160px;
+    margin-bottom: 220px; /* keep extra spacing on large screens */
   }
 }
 
@@ -1127,6 +1128,7 @@
   .twoChartSection {
     max-width: 2000px;
     padding: 60px 200px;
+    margin: 0 auto 220px; /* add extra bottom spacing */
   }
   
   .chartImage {
