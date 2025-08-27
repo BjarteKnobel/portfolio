@@ -113,7 +113,8 @@ export default function NavigationPanel() {
                 height={769}
                 style={{ objectFit: 'cover', width: '591px', height: '769px' }}
                 onError={() => setLeftImgSrc(heroProject?.image || '/assets/rotate.gif')}
-                priority
+                priority={false}
+                loading="lazy"
               />
             </div>
           )}

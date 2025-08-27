@@ -127,6 +127,7 @@
   box-sizing: border-box;
   margin: 0 auto; /* no extra gap; gap is handled by header padding */
   aspect-ratio: 1432 / 945;
+  contain: layout paint;
 }
 
 .imageGroup {

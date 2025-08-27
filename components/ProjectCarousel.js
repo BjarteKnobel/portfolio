@@ -167,7 +167,8 @@ export default function ProjectCarousel() {
                 width={1176}
                 height={1073}
                 className={styles.planImage}
-                priority
+                priority={false}
+                loading="lazy"
               />
             </div>
             <div className={styles.planMetaRow}>

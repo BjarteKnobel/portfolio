@@ -69,6 +69,7 @@
   width: 591px;
   height: 769px;
   overflow: hidden;
+  contain: content; /* isolate layout/paint for smoother scrolling */
 }
 
 .projectList {
@@ -81,6 +82,7 @@
   border-radius: 12px; /* proper border radius */
   overflow: hidden; /* clips row dividers at corners */
   margin-bottom: 80px; /* move upward by 80px from bottom */
+  contain: content; /* isolate list scrolling/paints */
 }
 
 /* Removed duplicate - see line 107 for projectRow styles */

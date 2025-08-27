@@ -331,6 +331,7 @@
   background: #fff;
   box-sizing: border-box;
   height: 868px; /* increased height by 80px total (40px for content + 40px for padding) */
+  contain: layout paint; /* isolate for smoother scrolling */
 }
 
 /* Floorplan image section under intro */

@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
-export default function FadeInImage({ className = '', onLoadingComplete, ...props }) {
+function FadeInImageImpl({ className = '', onLoadingComplete, priority, ...props }) {
   const [loaded, setLoaded] = useState(false);
 
   const handleComplete = (...args) => {
@@ -11,11 +11,16 @@ export default function FadeInImage({ className = '', onLoadingComplete, ...prop
 
   return (
     <Image
+      decoding="async"
+      priority={priority}
       {...props}
       className={`${className} ${loaded ? 'img-blur-loaded' : 'img-blur-loading'}`}
       onLoadingComplete={handleComplete}
     />
   );
 }
+
+const FadeInImage = memo(FadeInImageImpl);
+export default FadeInImage;
 
 

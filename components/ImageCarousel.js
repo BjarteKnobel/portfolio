@@ -48,7 +48,8 @@ export default function ImageCarousel() {
               src={current.src}
               alt={current.alt}
               fill
-              priority={true}
+              loading="lazy"
+              priority={false}
               className={styles.carouselImage}
               style={{ objectFit: 'cover' }}
               onError={() => setImageError(true)}
