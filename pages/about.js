@@ -81,12 +81,12 @@ export default function About() {
             </button>
             {showMenu && (
               <div onMouseEnter={openMenu} onMouseLeave={scheduleCloseMenu}>
-                <Menu
-                  className={styles.menuDropdown}
-                  selected="about"
-                  onSelect={(key) => {
-                    if (key === 'home') {
-                      router.push('/');
+              <Menu
+                className={styles.menuDropdown}
+                selected="about"
+                onSelect={(key) => {
+                  if (key === 'home') {
+                    router.push('/');
                     } else if (key === 'projects') {
                       // Explicitly show loader when entering from dropdown
                       router.push('/projects?from=menu');
@@ -94,10 +94,10 @@ export default function About() {
                       if (typeof window !== 'undefined') {
                         window.location.href = 'mailto:bjarte05@gmail.com';
                       }
-                    }
-                    setShowMenu(false);
-                  }}
-                />
+                  }
+                  setShowMenu(false);
+                }}
+              />
               </div>
             )}
           </div>
@@ -108,17 +108,17 @@ export default function About() {
         <div className={styles.contentContainer}>
           {/* Left Column */}
           <div className={styles.leftColumn}>
-            <div className={styles.imageContainer}>
+          <div className={styles.imageContainer}>
               <FadeInImage
                 src="/assets/bjarte_image.png"
                 alt="bjarte knobel"
                 width={306}
                 height={461}
-                className={styles.profileImage}
-                priority
-              />
-            </div>
-            
+              className={styles.profileImage}
+              priority
+            />
+          </div>
+          
             <div className={styles.profileInfo}>
               <div className={styles.nameSection}>
                 <h1 className={styles.fullName}>bjarte nikolai knobel</h1>
@@ -170,7 +170,7 @@ export default function About() {
                       { name: 'adobe', level: 0.75 },
                       { name: 'rhino', level: 0.6 },
                       { name: 'twinmotion', level: 0.8 },
-                      { name: 'revit', level: 0.1 },
+                      { name: 'revit', level: 0.5 },
                       { name: 'grasshopper', level: 0.4 },
                     ].map(s => ({ ...s, classification: 'program' }));
                     const code = [
@@ -273,7 +273,7 @@ export default function About() {
                   <span className={styles.period}>2020 - 2021</span>
                 </div>
                 <p className={styles.role}>marketing</p>
-                <p className={styles.description}>
+              <p className={styles.description}>
                   my tasks at <a href="https://sparkntnu.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>spark</a> included promoting entrepreneurial initiatives and producing reports for startups and events.
                 </p>
               </div>
@@ -284,7 +284,7 @@ export default function About() {
                   <span className={styles.period}>2020</span>
                 </div>
                 <p className={styles.role}>intern</p>
-                <p className={styles.description}>
+              <p className={styles.description}>
                   at <a href="https://betongost.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>betong øst</a>, i carried out administrative tasks, and learned to mix concrete with different features.
                 </p>
               </div>
@@ -295,7 +295,7 @@ export default function About() {
                   <span className={styles.period}>2019 - 2022</span>
                 </div>
                 <p className={styles.role}>deputy chairman</p>
-                <p className={styles.description}>
+              <p className={styles.description}>
                   at <a href="https://www.broderskabet.no/" target="_blank" rel="noopener noreferrer" className={styles.companyLink}>broderskabet</a>, I served as Deputy Chairman of the Connect Group, where I organized networking and social events between NTNU students and the AEC-sector.
                 </p>
               </div>
@@ -308,7 +308,7 @@ export default function About() {
                 <p className={styles.role}>delivery rider</p>
               </div>
             </div>
-
+            
             {/* Education Section */}
             <div className={styles.section}>
               <div className={styles.sectionHeader}>
@@ -329,7 +329,7 @@ export default function About() {
                   <span className={styles.period}>2018 - 2023</span>
                 </div>
                 <p className={styles.role}>norwegian university of science and technology (ntnu)</p>
-                <p className={styles.description}>
+              <p className={styles.description}>
                   my primary areas of focus included sustainable architecture, building transformation, large-scale structures, and real estate development.
                 </p>
               </div>
@@ -340,11 +340,11 @@ export default function About() {
                   <span className={styles.period}>2023</span>
                 </div>
                 <p className={styles.role}>conseptual structural design</p>
-                <p className={styles.description}>
+              <p className={styles.description}>
                   an ntnu-based camp designed to teach students and professionals how to use grasshopper and develop c# skills, enabling them to create customized plugins in gh or dyn.
-                </p>
-              </div>
-
+              </p>
+            </div>
+            
               <div className={styles.experienceItem}>
                 <div className={styles.experienceHeader}>
                   <h3 className={styles.companyName}>high school</h3>

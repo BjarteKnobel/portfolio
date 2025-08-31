@@ -593,7 +593,7 @@
   padding: 0;
   background: transparent;
   gap: 0;
-  border-top: 2px solid #000;
+  border-top: 1px solid #000;
   border-bottom: none; /* remove last bar */
 }
 
@@ -607,8 +607,8 @@
   justify-content: stretch;
 }
 
-/* Make the inner dividers 2px as well inside the intro block */
-.introText .detailsTableHLine { height: 2px; }
+/* Inner dividers inside the intro block */
+.introText .detailsTableHLine { height: 1px; }
 
 .introText .detailsTableLabel,
 .introText .detailsTableValue {

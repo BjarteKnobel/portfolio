@@ -129,12 +129,12 @@ export default function Home() {
                 architect
               </span>{' '}
               in tech pursuing a career in real estate development
-              with a passion for innovation, and entrepreneurship.
+              with a passion for architecture, innovation, and entrepreneurship.
             </p>
             
             
             <p ref={secondParaRef} className={`${styles.revealBlur}`}>
-              I'm <span className={styles.emphasisText}>passionate</span> about solving productivity challenges in the AEC sector
+              I'm <span className={styles.emphasisText}>driven</span> to solve productivity challenges in the AEC sector
               through innovation, aiming to create a future where architectural
               quality and cost efficiency go hand in hand.
             </p>
@@ -181,10 +181,10 @@ export default function Home() {
           <div className={styles.infoContent}>
             <div className={styles.textPane}>
               <p ref={thirdParaRef} className={`${styles.revealBlur}`}>
-                I aim to create pragmatic utopias, where <span className={styles.emphasisText}>sustainability</span>, <span className={styles.emphasisText}>livability</span>, and <span className={styles.emphasisText}>innovation</span> are seamlessly integrated within real-world constraints.
+                I want to create pragmatic visions for the future, where <span className={styles.emphasisText}>sustainability</span>, <span className={styles.emphasisText}>quality of life</span>, and <span className={styles.emphasisText}>innovation</span> come together within real-world limits.
               </p>
               <p ref={fourthParaRef} className={`${styles.revealBlur}`}>
-                My goal is to let programmatic logic shape form, always with a twist—combining functions in unexpected ways to produce <span className={styles.emphasisText}>beautiful</span>, <span className={styles.emphasisText}>buildable</span>, and <span className={styles.emphasisText}>engaging</span> architecture.
+                My goal is to let clear ideas and functions guide the design, but always with a creative twist—bringing different needs together in surprising ways to create architecture that is <span className={styles.emphasisText}>beautiful</span>, <span className={styles.emphasisText}>buildable</span>, and <span className={styles.emphasisText}>engaging</span>.
               </p>
             </div>
           </div>
