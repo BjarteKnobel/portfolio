@@ -1,6 +1,7 @@
 .container {
-  height: 100vh; /* lock to viewport */
-  overflow: hidden; /* disable page scroll */
+  min-height: 100vh; /* allow content to extend beyond viewport */
+  overflow-x: hidden;
+  overflow-y: auto; /* enable scrolling when content exceeds viewport */
   background: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -21,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px;
+  padding: 40px var(--page-side-padding);
   width: 100%;
   box-sizing: border-box;
 }
@@ -51,7 +52,7 @@
   display: grid;
   grid-template-columns: 591px 1fr; /* allow right column to flex */
   gap: 40px; /* more space between image and list */
-  padding: 60px 40px 40px; /* 60px below navbar (increased by 20px) */
+  padding: 60px var(--page-side-padding) 40px; /* 60px below navbar (increased by 20px) */
   width: 100%;
   margin: 0; /* do not center; align to left like navbar */
 }
@@ -359,8 +360,8 @@
 }
 
 @media (max-width: 600px) {
-  .navbar { padding: 24px 16px; }
-  .content { padding: 20px 16px 32px; gap: 16px; }
+  .navbar { padding: 24px var(--page-side-padding); }
+  .content { padding: 20px var(--page-side-padding) 32px; gap: 16px; }
   .closeBtn { width: 44px; height: 44px; }
 }
 
@@ -369,12 +370,12 @@
   .navbar {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 40px 60px;
+    padding: 40px var(--page-side-padding);
   }
   .content {
-    max-width: calc(1600px + 120px);
+    max-width: calc(1600px + (var(--page-side-padding) * 2));
     margin: 0 auto;
-    padding: 60px 60px 40px;
+    padding: 60px var(--page-side-padding) 40px;
     gap: 40px;
   }
 }
@@ -383,12 +384,12 @@
   .navbar {
     max-width: 1800px;
     margin: 0 auto;
-    padding: 40px 80px;
+    padding: 40px var(--page-side-padding);
   }
   .content {
-    max-width: calc(1800px + 160px);
+    max-width: calc(1800px + (var(--page-side-padding) * 2));
     margin: 0 auto;
-    padding: 60px 80px 40px;
+    padding: 60px var(--page-side-padding) 40px;
     gap: 40px;
   }
 }
@@ -397,12 +398,12 @@
   .navbar {
     max-width: 2000px;
     margin: 0 auto;
-    padding: 50px 120px;
+    padding: 50px var(--page-side-padding);
   }
   .content {
-    max-width: calc(2000px + 240px);
+    max-width: calc(2000px + (var(--page-side-padding) * 2));
     margin: 0 auto;
-    padding: 60px 120px 40px;
+    padding: 60px var(--page-side-padding) 40px;
     gap: 40px;
   }
 }
@@ -411,12 +412,12 @@
   .navbar {
     max-width: 2400px;
     margin: 0 auto;
-    padding: 60px 160px;
+    padding: 60px var(--page-side-padding);
   }
   .content {
     max-width: 2400px;
     margin: 0 auto;
-    padding: 60px 160px 40px;
+    padding: 60px var(--page-side-padding) 40px;
     gap: 40px;
   }
 }

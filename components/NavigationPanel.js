@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import useClickOutside from '../hooks/useClickOutside';
 import Menu from './Menu';
 import TypingAnimation from './TypingAnimation';
+import Footer from './Footer';
 import styles from '../styles/Navigation.module.css';
 import { getAllProjects } from '../data/projects';
 
@@ -136,6 +137,7 @@ export default function NavigationPanel() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

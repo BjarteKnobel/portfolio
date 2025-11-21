@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 40px; /* match About: gap comes from header padding-bottom */
+  padding: 40px var(--page-side-padding); /* match About: gap comes from header padding-bottom */
   align-items: center;
   width: 100%;
   box-sizing: border-box;
@@ -119,31 +119,116 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 0 40px;
+  align-items: center;
+  padding: 0 var(--page-side-padding);
   width: 100%;
   height: auto;
-  min-height: 500px;
-  max-width: calc(1432px + 80px);
+  max-width: calc(1432px + (var(--page-side-padding) * 2));
   box-sizing: border-box;
   margin: 0 auto; /* no extra gap; gap is handled by header padding */
-  aspect-ratio: 1432 / 945;
   contain: layout paint;
 }
 
 .imageGroup {
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1432 / 945;
+  height: auto;
+  min-height: auto;
   background: transparent;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+}
+
+.imageFrame {
+  width: min(100%, 1600px);
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
 }
 
 .mainImage {
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
   z-index: 1;
+}
+
+@media (min-width: 1600px) {
+  .imageFrame {
+    width: min(100%, 1800px);
+  }
+}
+
+@media (min-width: 1920px) {
+  .imageFrame {
+    width: min(100%, 2000px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .imageFrame {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainImage {
+    object-fit: cover;
+  }
+
+  .imageGroup {
+    aspect-ratio: auto;
+    min-height: clamp(420px, 60vh, 720px);
+    height: clamp(420px, 60vh, 720px);
+  }
+
+  .imageFrame {
+    width: min(120%, 1600px);
+  }
+}
+
+@media (max-width: 900px) {
+  .imageFrame {
+    width: min(110%, 1600px);
+  }
+}
+
+@media (max-width: 600px) {
+  .mainImage {
+    object-fit: cover;
+  }
+
+  .imageFrame {
+    width: min(100%, 1600px);
+  }
+
+  .imageGroup {
+    aspect-ratio: auto;
+    min-height: clamp(360px, 55vh, 640px);
+    height: clamp(360px, 55vh, 640px);
+  }
+}
+
+@media (max-width: 480px) {
+  .mainImage {
+    object-fit: cover;
+  }
+
+  .imageFrame {
+    width: 95%;
+  }
+
+  .imageGroup {
+    aspect-ratio: auto;
+    min-height: clamp(320px, 50vh, 520px);
+    height: clamp(320px, 50vh, 520px);
+  }
 }
 
 /* Blur-in loading effect for hero image */
@@ -194,7 +279,7 @@
 
 @media (max-width: 900px) {
   .header {
-    padding: 30px 20px 0 20px; /* remove bottom padding to keep 50px gap consistent */
+    padding: 30px var(--page-side-padding) 0; /* remove bottom padding to keep 50px gap consistent */
   }
   
   .navbar {
@@ -234,7 +319,7 @@
 
 @media (max-width: 600px) {
   .header {
-    padding: 20px 15px 0 15px; /* remove bottom padding */
+    padding: 20px var(--page-side-padding) 0; /* remove bottom padding */
   }
   
   .navbar {
@@ -272,7 +357,7 @@
   }
   
   .imageSection {
-    padding: 10px 0;
+    padding: 10px var(--page-side-padding);
   }
 }
 
@@ -369,8 +454,8 @@
 .bodyText {
   display: flex;
   width: 100%;
-  max-width: calc(1432px + 80px);
-  padding: 200px 40px 0; /* 200px from image to first paragraph, no bottom padding */
+  max-width: calc(1432px + (var(--page-side-padding) * 2));
+  padding: 200px var(--page-side-padding) 0; /* 200px from image to first paragraph, no bottom padding */
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -378,7 +463,7 @@
   margin: 0 auto 360px; /* 360px + last paragraph's 40px margin = 400px text-to-text */
 }
 
-.bodyText p {
+.featureParagraph {
   color: #000;
   font-family: Wittgenstein;
   font-size: 50px;
@@ -519,49 +604,56 @@ a.emphasisText:focus {
 /* Large screen optimizations */
 @media (min-width: 1440px) {
   .container { max-width: 100%; }
-  .header { padding: 40px 60px; }
+  .header { padding: 40px var(--page-side-padding); }
   .navbar { max-width: 1600px; }
-  .bodyText { max-width: calc(1600px + 120px); padding: 200px 60px 0; margin-bottom: 360px; }
-  .imageSection { max-width: calc(1600px + 120px); padding: 0 60px; margin: 0 auto; }
+  .bodyText { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
+  .imageSection { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding); margin: 0 auto; }
 }
 @media (min-width: 1600px) {
-  .header { padding: 40px 80px; }
+  .header { padding: 40px var(--page-side-padding); }
   .navbar { max-width: 1800px; }
-  .bodyText { max-width: calc(1800px + 160px); padding: 200px 80px 0; margin-bottom: 360px; }
-  .imageSection { max-width: calc(1800px + 160px); padding: 0 80px; margin: 0 auto; }
+  .bodyText { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
+  .imageSection { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding); margin: 0 auto; }
 }
 @media (min-width: 1920px) {
-  .header { padding: 50px 120px; }
+  .header { padding: 50px var(--page-side-padding); }
   .navbar { max-width: 2000px; }
-  .bodyText { max-width: calc(2000px + 240px); padding: 200px 120px 0; margin-bottom: 360px; }
-  .bodyText p { font-size: 54px; line-height: 70px; }
+  .bodyText { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
+  .featureParagraph { font-size: 54px; line-height: 70px; }
   .emphasisText { font-size: 54px; line-height: 70px; }
-  .imageSection { max-width: calc(2000px + 240px); padding: 0 120px; margin: 0 auto; min-height: 600px; }
+  .imageSection { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding); margin: 0 auto; min-height: 600px; }
 }
 @media (min-width: 2560px) {
-  .header { padding: 60px 200px; }
+  .header { padding: 60px var(--page-side-padding); }
   .navbar { max-width: 2400px; }
-  .bodyText { max-width: 2400px; padding: 200px 240px 0; margin-bottom: 360px; }
-  .bodyText p { font-size: 58px; line-height: 75px; max-width: 1400px; margin: 0 0 40px 0; }
+  .bodyText { max-width: 2400px; padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
+  .featureParagraph { font-size: 58px; line-height: 75px; max-width: 1400px; margin: 0 0 40px 0; }
   .emphasisText { font-size: 58px; line-height: 75px; }
-  .imageSection { max-width: 2400px; padding: 0 240px; margin: 0 auto; min-height: 700px; }
+  .imageSection { max-width: 2400px; padding: 0 var(--page-side-padding); margin: 0 auto; min-height: 700px; }
 }
 /* Small screens - match imageSection */
 @media (max-width: 1200px) {
-  .bodyText { padding: 200px 40px 0; margin-bottom: 360px; }
+  .bodyText { padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
   .imageSection { margin: 0 auto; }
 }
 @media (max-width: 600px) {
-  .bodyText { padding: 200px 0 0; margin-bottom: 360px; }
+  .bodyText { padding: 120px var(--page-side-padding) 0; margin-bottom: 200px; }
   .imageSection { margin: 0 auto; }
+  /* Improve readability on phones */
+  .featureParagraph { font-size: 28px; line-height: 38px; }
+  /* Disable custom cursor behavior on touch devices */
+  .bodyTextCursorScope { cursor: auto; }
+  .customCursor { display: none; }
+  .altCursorScope { cursor: auto; }
+  .altCustomCursor { display: none; }
 }
 
 /* ========== Info section under second carousel ========== */
 .infoSection {
   width: 100%;
-  max-width: calc(1432px + 80px);
+  max-width: calc(1432px + (var(--page-side-padding) * 2));
   margin: 0 auto 200px; /* 200px gap from last text to footer */
-  padding: 0 40px 0; /* no top/bottom padding for accurate text-to-text spacing */
+  padding: 0 var(--page-side-padding) 0; /* no top/bottom padding for accurate text-to-text spacing */
   box-sizing: border-box;
 }
 
@@ -573,17 +665,6 @@ a.emphasisText:focus {
 
 .textPane {
   width: 100%;
-}
-
-.textPane p {
-  color: #000;
-  font-family: Wittgenstein;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 65px;
-  margin: 0 0 40px 0; /* same as bodyText paragraphs */
-  text-align: left;
 }
 
 .textPane p:last-child {
@@ -606,17 +687,16 @@ a.emphasisText:focus {
 }
 
 @media (min-width: 1440px) {
-  .infoSection { max-width: calc(1600px + 120px); padding: 0 60px 0; margin-bottom: 200px; }
+  .infoSection { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding) 0; margin-bottom: 200px; }
 }
-@media (min-width: 1600px) { .infoSection { max-width: calc(1800px + 160px); padding: 0 80px 0; margin-bottom: 200px; } }
-@media (min-width: 1920px) { .infoSection { max-width: calc(2000px + 240px); padding: 0 120px 0; margin-bottom: 200px; } }
-@media (min-width: 2560px) { .infoSection { max-width: 2400px; padding: 0 240px 0; margin-bottom: 200px; } }
+@media (min-width: 1600px) { .infoSection { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding) 0; margin-bottom: 200px; } }
+@media (min-width: 1920px) { .infoSection { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding) 0; margin-bottom: 200px; } }
+@media (min-width: 2560px) { .infoSection { max-width: 2400px; padding: 0 var(--page-side-padding) 0; margin-bottom: 200px; } }
 @media (max-width: 1200px) {
-  .infoSection { padding: 0 20px 0; margin-bottom: 200px; }
+  .infoSection { padding: 0 var(--page-side-padding) 0; margin-bottom: 200px; }
   .infoContent { gap: 20px; }
-  .textPane p { font-size: 24px; }
 }
 @media (max-width: 600px) {
-  .infoSection { padding: 0 0 0; margin-bottom: 200px; }
+  .infoSection { padding: 0 var(--page-side-padding) 0; margin-bottom: 200px; }
   .infoContent { flex-direction: column; gap: 16px; }
 }

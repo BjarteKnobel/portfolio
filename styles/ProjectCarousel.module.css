@@ -753,8 +753,8 @@
   }
   .introGrid {
     grid-template-columns: 1fr;
-    padding: 60px 20px 20px; /* increased top padding by 40px */
-    gap: 20px;
+    padding: 40px 20px 20px;
+    gap: 16px;
   }
   
   /* Keep in one line; scale down instead of wrapping */
@@ -794,6 +794,16 @@
   /* Isometric images scale down but remain centered */
   .isometricImage { width: min(712px, 100%); }
   .imageText { width: min(712px, 100%); }
+}
+
+@media (max-width: 600px) {
+  /* tighten text sizes and spacing for phones */
+  .introParagraph { font-size: 9px; }
+  .designText { font-size: 9px; }
+  .strategyText { font-size: 9px; }
+  .twoColSection { padding: 20px; }
+  .facadeSection { padding: 20px; }
+  .planImageSection { padding: 20px; }
 }
 
 @media (max-width: 480px) {

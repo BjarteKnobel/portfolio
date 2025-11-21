@@ -95,15 +95,17 @@ export default function Home() {
       {/* Image Section (static) */}
       <section className={styles.imageSection}>
         <div className={styles.imageGroup}>
-          <FadeInImage
-            src="/assets/landing_page_image.png"
-            alt="Main visual"
-            fill
-            priority
-            className={`${styles.mainImage}`}
-            style={{ objectFit: 'cover' }}
-            onLoadingComplete={() => setHeroLoaded(true)}
-          />
+          <div className={styles.imageFrame}>
+            <FadeInImage
+              src="/assets/landing_page_image.png"
+              alt="Main visual"
+              priority
+              className={`${styles.mainImage}`}
+              width={1432}
+              height={945}
+              onLoadingComplete={() => setHeroLoaded(true)}
+            />
+          </div>
         </div>
       </section>
 
@@ -123,7 +125,7 @@ export default function Home() {
           onMouseMove={handleMouseMove}
         >
           <Link href="/about" style={{ textDecoration: 'none', cursor: 'none' }}>
-            <p ref={firstParaRef} className={`${styles.revealBlur}`}>
+            <p ref={firstParaRef} className={`${styles.revealBlur} ${styles.featureParagraph}`}>
               I am an{' '}
               <span className={styles.emphasisText}>
                 architect
@@ -133,7 +135,7 @@ export default function Home() {
             </p>
             
             
-            <p ref={secondParaRef} className={`${styles.revealBlur}`}>
+            <p ref={secondParaRef} className={`${styles.revealBlur} ${styles.featureParagraph}`}>
               I'm <span className={styles.emphasisText}>driven</span> to solve productivity challenges in the AEC sector
               through innovation, aiming to create a future where architectural
               quality and cost efficiency go hand in hand.
@@ -180,10 +182,10 @@ export default function Home() {
         >
           <div className={styles.infoContent}>
             <div className={styles.textPane}>
-              <p ref={thirdParaRef} className={`${styles.revealBlur}`}>
+              <p ref={thirdParaRef} className={`${styles.revealBlur} ${styles.featureParagraph}`}>
                 I want to create pragmatic visions for the future, where <span className={styles.emphasisText}>sustainability</span>, <span className={styles.emphasisText}>quality of life</span>, and <span className={styles.emphasisText}>innovation</span> come together within real-world limits.
               </p>
-              <p ref={fourthParaRef} className={`${styles.revealBlur}`}>
+              <p ref={fourthParaRef} className={`${styles.revealBlur} ${styles.featureParagraph}`}>
                 My goal is to let clear ideas and functions guide the design, but always with a creative twist—bringing different needs together in surprising ways to create architecture that is <span className={styles.emphasisText}>beautiful</span>, <span className={styles.emphasisText}>buildable</span>, and <span className={styles.emphasisText}>engaging</span>.
               </p>
             </div>
