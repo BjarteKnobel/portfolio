@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 40px var(--page-side-padding); /* match About: gap comes from header padding-bottom */
+  padding: clamp(32px, 4vh, 64px) var(--page-side-padding); /* keep vertical gap proportional */
   align-items: center;
   width: 100%;
   box-sizing: border-box;
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1432px;
+  max-width: var(--content-max-width);
   padding: 0;
   margin: 0 auto;
   position: relative;
@@ -115,119 +115,71 @@
   transform: scale(1.6);
 }
 
-.imageSection {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.heroSection {
+  width: 100%;
   padding: 0 var(--page-side-padding);
-  width: 100%;
-  height: auto;
-  max-width: calc(1432px + (var(--page-side-padding) * 2));
   box-sizing: border-box;
-  margin: 0 auto; /* no extra gap; gap is handled by header padding */
-  contain: layout paint;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
-.imageGroup {
-  position: relative;
+.heroMedia {
   width: 100%;
-  aspect-ratio: 1432 / 945;
-  height: auto;
-  min-height: auto;
-  background: transparent;
-  overflow: hidden;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
 }
 
-.imageFrame {
-  width: min(100%, 1600px);
-  height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-}
-
-.mainImage {
-  width: 100%;
-  height: 100%;
+.heroImage {
   display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
-  z-index: 1;
-}
-
-@media (min-width: 1600px) {
-  .imageFrame {
-    width: min(100%, 1800px);
-  }
-}
-
-@media (min-width: 1920px) {
-  .imageFrame {
-    width: min(100%, 2000px);
-  }
 }
 
 @media (min-width: 1440px) {
-  .imageFrame {
+  .heroMedia {
     overflow: visible;
   }
 }
 
-@media (max-width: 1200px) {
-  .mainImage {
+@media (max-width: 767px) {
+  .heroSection {
+    padding: 10px var(--page-side-padding);
+  }
+
+  .heroMedia {
+    width: 100%;
+    max-width: none;
+    min-height: clamp(460px, 70vh, 820px);
+    height: clamp(460px, 70vh, 820px);
+    overflow: hidden;
+  }
+
+  .heroImage {
+    width: 110%;
+    max-width: none;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 
-  .imageGroup {
-    aspect-ratio: auto;
-    min-height: clamp(420px, 60vh, 720px);
-    height: clamp(420px, 60vh, 720px);
-  }
+  @media (max-width: 480px) {
+    .heroMedia {
+      min-height: clamp(500px, 80vh, 900px);
+      height: clamp(500px, 80vh, 900px);
+    }
 
-  .imageFrame {
-    width: min(120%, 1600px);
-  }
-}
-
-@media (max-width: 900px) {
-  .imageFrame {
-    width: min(110%, 1600px);
-  }
-}
-
-@media (max-width: 600px) {
-  .mainImage {
-    object-fit: cover;
-  }
-
-  .imageFrame {
-    width: min(100%, 1600px);
-  }
-
-  .imageGroup {
-    aspect-ratio: auto;
-    min-height: clamp(360px, 55vh, 640px);
-    height: clamp(360px, 55vh, 640px);
-  }
-}
-
-@media (max-width: 480px) {
-  .mainImage {
-    object-fit: cover;
-  }
-
-  .imageFrame {
-    width: 95%;
-  }
-
-  .imageGroup {
-    aspect-ratio: auto;
-    min-height: clamp(320px, 50vh, 520px);
-    height: clamp(320px, 50vh, 520px);
+    .heroImage {
+      width: 120%;
+    }
   }
 }
 
@@ -272,8 +224,8 @@
     font-size: clamp(32px, 4vw, 52px);
   }
   
-  .imageSection {
-    min-height: 400px;
+  .heroMedia {
+    min-height: clamp(420px, 60vh, 720px);
   }
 }
 
@@ -356,7 +308,7 @@
     margin: 0 1px;
   }
   
-  .imageSection {
+  .heroSection {
     padding: 10px var(--page-side-padding);
   }
 }
@@ -605,40 +557,32 @@ a.emphasisText:focus {
 @media (min-width: 1440px) {
   .container { max-width: 100%; }
   .header { padding: 40px var(--page-side-padding); }
-  .navbar { max-width: 1600px; }
   .bodyText { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
-  .imageSection { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding); margin: 0 auto; }
 }
 @media (min-width: 1600px) {
   .header { padding: 40px var(--page-side-padding); }
-  .navbar { max-width: 1800px; }
   .bodyText { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
-  .imageSection { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding); margin: 0 auto; }
 }
 @media (min-width: 1920px) {
   .header { padding: 50px var(--page-side-padding); }
-  .navbar { max-width: 2000px; }
   .bodyText { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
   .featureParagraph { font-size: 54px; line-height: 70px; }
   .emphasisText { font-size: 54px; line-height: 70px; }
-  .imageSection { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 0 var(--page-side-padding); margin: 0 auto; min-height: 600px; }
+  .heroMedia { min-height: 600px; }
 }
 @media (min-width: 2560px) {
   .header { padding: 60px var(--page-side-padding); }
-  .navbar { max-width: 2400px; }
-  .bodyText { max-width: 2400px; padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
+  .bodyText { max-width: calc(2400px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
   .featureParagraph { font-size: 58px; line-height: 75px; max-width: 1400px; margin: 0 0 40px 0; }
   .emphasisText { font-size: 58px; line-height: 75px; }
-  .imageSection { max-width: 2400px; padding: 0 var(--page-side-padding); margin: 0 auto; min-height: 700px; }
+  .heroMedia { min-height: 700px; }
 }
-/* Small screens - match imageSection */
+/* Small screens */
 @media (max-width: 1200px) {
   .bodyText { padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
-  .imageSection { margin: 0 auto; }
 }
 @media (max-width: 600px) {
   .bodyText { padding: 120px var(--page-side-padding) 0; margin-bottom: 200px; }
-  .imageSection { margin: 0 auto; }
   /* Improve readability on phones */
   .featureParagraph { font-size: 28px; line-height: 38px; }
   /* Disable custom cursor behavior on touch devices */

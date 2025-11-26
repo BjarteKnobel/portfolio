@@ -93,19 +93,17 @@ export default function Home() {
   return (
     <Layout title="Netside Home">
       {/* Image Section (static) */}
-      <section className={styles.imageSection}>
-        <div className={styles.imageGroup}>
-          <div className={styles.imageFrame}>
-            <FadeInImage
-              src="/assets/landing_page_image.png"
-              alt="Main visual"
-              priority
-              className={`${styles.mainImage}`}
-              width={1432}
-              height={945}
-              onLoadingComplete={() => setHeroLoaded(true)}
-            />
-          </div>
+      <section className={styles.heroSection}>
+        <div className={styles.heroMedia}>
+          <FadeInImage
+            src="/assets/landing_page_image.png"
+            alt="Main visual"
+            priority
+            className={styles.heroImage}
+            width={1432}
+            height={945}
+            onLoadingComplete={() => setHeroLoaded(true)}
+          />
         </div>
       </section>
 
