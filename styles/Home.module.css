@@ -19,6 +19,13 @@
   background: rgba(255, 255, 255, 0);
 }
 
+@media (max-width: 767px) {
+  .header {
+    padding-top: clamp(36px, 5vh, 72px);
+    padding-bottom: clamp(64px, 10vh, 128px);
+  }
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -152,7 +159,7 @@
 
 @media (max-width: 767px) {
   .heroSection {
-    padding: 10px var(--page-side-padding);
+    padding: clamp(24px, 6vh, 48px) var(--page-side-padding);
   }
 
   .heroMedia {
@@ -172,9 +179,13 @@
   }
 
   @media (max-width: 480px) {
+    .heroSection {
+      padding-top: clamp(64px, 14vh, 128px);
+    }
+
     .heroMedia {
-      min-height: clamp(500px, 80vh, 900px);
-      height: clamp(500px, 80vh, 900px);
+      min-height: clamp(540px, 90vh, 960px);
+      height: clamp(540px, 90vh, 960px);
     }
 
     .heroImage {
@@ -231,7 +242,10 @@
 
 @media (max-width: 900px) {
   .header {
-    padding: 30px var(--page-side-padding) 0; /* remove bottom padding to keep 50px gap consistent */
+    padding-top: clamp(30px, 4vh, 60px);
+    padding-bottom: clamp(30px, 4vh, 60px);
+    padding-left: var(--page-side-padding);
+    padding-right: var(--page-side-padding);
   }
   
   .navbar {
@@ -271,7 +285,10 @@
 
 @media (max-width: 600px) {
   .header {
-    padding: 20px var(--page-side-padding) 0; /* remove bottom padding */
+    padding-top: clamp(20px, 3vh, 40px);
+    padding-bottom: clamp(20px, 3vh, 40px);
+    padding-left: var(--page-side-padding);
+    padding-right: var(--page-side-padding);
   }
   
   .navbar {
