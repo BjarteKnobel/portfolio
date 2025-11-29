@@ -107,26 +107,27 @@
   height: var(--dot-size, 10px);
   border-radius: 50%;
   background: #000 !important; /* force black */
-  transition: transform 220ms ease;
-}
-/* Glide dots and scale middle on hover - only when NOT pinned */
-.menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot {
-  transition: transform 180ms ease;
-}
-.menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(1) {
-  transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
-}
-.menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(3) {
-  transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
-}
-.menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(2) {
-  transform: scale(1.6);
 }
 
-/* Force dots to stay together when pinned or pressed */
+@media (hover: hover) and (pointer: fine) {
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot {
+    transition: transform 180ms ease;
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(1) {
+    transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(3) {
+    transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(2) {
+    transform: scale(1.6);
+  }
+}
+
 .menuContainer[data-menu-pinned="true"] .menuButton .dot,
 .menuButton:active .dot {
   transform: none !important;
+  transition: none !important;
 }
 
 .heroSection {

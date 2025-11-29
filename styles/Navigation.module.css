@@ -435,9 +435,20 @@
   justify-content: center;
   border-radius: 8px;
 }
-.dot { width: 10px; height: 10px; border-radius: 50%; background: #000 !important; transition: transform 180ms ease; }
-.menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(1) { transform: translateX(20px); }
-.menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(3) { transform: translateX(-20px); }
-.menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(2) { transform: scale(1.6); }
-.menuContainer[data-menu-pinned="true"] .dot, .menuButton:active .dot { transform: none !important; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #000 !important; }
+
+@media (hover: hover) and (pointer: fine) {
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot {
+    transition: transform 180ms ease;
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(1) { transform: translateX(20px); }
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(3) { transform: translateX(-20px); }
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(2) { transform: scale(1.6); }
+}
+
+.menuContainer[data-menu-pinned="true"] .dot,
+.menuButton:active .dot {
+  transform: none !important;
+  transition: none !important;
+}
 
