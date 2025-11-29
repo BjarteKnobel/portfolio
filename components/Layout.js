@@ -10,6 +10,7 @@ import styles from '../styles/Home.module.css';
 
 export default function Layout({ children, title = 'Netside' }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPinned, setMenuPinned] = useState(false);
   const closeMenuTimerRef = useRef(null);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const menuBtnRef = useRef();
@@ -17,10 +18,12 @@ export default function Layout({ children, title = 'Netside' }) {
   const router = useRouter();
 
   useClickOutside([menuRef, menuBtnRef], () => {
+    if (menuPinned) setMenuPinned(false);
     if (menuOpen) setMenuOpen(false);
   });
 
   const openMenu = () => {
+    if (menuPinned) return;
     if (closeMenuTimerRef.current) {
       clearTimeout(closeMenuTimerRef.current);
       closeMenuTimerRef.current = null;
@@ -29,8 +32,25 @@ export default function Layout({ children, title = 'Netside' }) {
   };
 
   const scheduleCloseMenu = () => {
+    if (menuPinned) return;
     if (closeMenuTimerRef.current) clearTimeout(closeMenuTimerRef.current);
     closeMenuTimerRef.current = setTimeout(() => setMenuOpen(false), 200);
+  };
+
+  const togglePinnedMenu = () => {
+    setMenuPinned((prev) => {
+      const next = !prev;
+      if (next) {
+        if (closeMenuTimerRef.current) {
+          clearTimeout(closeMenuTimerRef.current);
+          closeMenuTimerRef.current = null;
+        }
+        setMenuOpen(true);
+      } else {
+        setMenuOpen(false);
+      }
+      return next;
+    });
   };
 
   return (
@@ -50,7 +70,8 @@ export default function Layout({ children, title = 'Netside' }) {
               <TypingAnimation />
             </div>
             <div
-              className={styles.menuContainer}
+              className={`${styles.menuContainer} ${menuPinned ? styles.menuPinned : ''}`}
+              data-menu-pinned={menuPinned ? 'true' : 'false'}
               onMouseEnter={openMenu}
               onMouseLeave={scheduleCloseMenu}
             >
@@ -58,10 +79,10 @@ export default function Layout({ children, title = 'Netside' }) {
                 aria-label="Open menu"
                 className={styles.menuButton}
                 ref={menuBtnRef}
-                onClick={() => setMenuOpen((open) => !open)}
+                onClick={togglePinnedMenu}
                 aria-haspopup="true"
                 aria-expanded={menuOpen}
-                style={{ "--dot-size": "8px", "--dot-gap": "10px" }}
+                style={{ "--dot-size": "8px" }}
               >
                 <span className={styles.dot} />
                 <span className={styles.dot} />

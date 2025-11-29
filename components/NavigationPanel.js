@@ -23,6 +23,7 @@ export default function NavigationPanel() {
 
   // Menu state (same behavior as global)
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPinned, setMenuPinned] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(null);
   const menuBtnRef = useRef();
   const menuRef = useRef();
@@ -30,10 +31,12 @@ export default function NavigationPanel() {
   const router = useRouter();
 
   useClickOutside([menuRef, menuBtnRef], () => {
+    if (menuPinned) setMenuPinned(false);
     if (menuOpen) setMenuOpen(false);
   });
 
   const openMenu = () => {
+    if (menuPinned) return;
     if (closeMenuTimerRef.current) {
       clearTimeout(closeMenuTimerRef.current);
       closeMenuTimerRef.current = null;
@@ -42,8 +45,25 @@ export default function NavigationPanel() {
   };
 
   const scheduleCloseMenu = () => {
+    if (menuPinned) return;
     if (closeMenuTimerRef.current) clearTimeout(closeMenuTimerRef.current);
     closeMenuTimerRef.current = setTimeout(() => setMenuOpen(false), 200);
+  };
+
+  const togglePinnedMenu = () => {
+    setMenuPinned((prev) => {
+      const next = !prev;
+      if (next) {
+        if (closeMenuTimerRef.current) {
+          clearTimeout(closeMenuTimerRef.current);
+          closeMenuTimerRef.current = null;
+        }
+        setMenuOpen(true);
+      } else {
+        setMenuOpen(false);
+      }
+      return next;
+    });
   };
 
   useEffect(() => {
@@ -63,7 +83,8 @@ export default function NavigationPanel() {
           <TypingAnimation words={["project navigation"]} single={true} />
         </div>
         <div
-          className={styles.menuContainer}
+          className={`${styles.menuContainer} ${menuPinned ? styles.menuPinned : ''}`}
+          data-menu-pinned={menuPinned ? 'true' : 'false'}
           onMouseEnter={openMenu}
           onMouseLeave={scheduleCloseMenu}
         >
@@ -71,10 +92,10 @@ export default function NavigationPanel() {
             aria-label="Open menu"
             className={styles.menuButton}
             ref={menuBtnRef}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={togglePinnedMenu}
             aria-haspopup="true"
             aria-expanded={menuOpen}
-            style={{ "--dot-size": "10px", "--dot-gap": "10px" }}
+            style={{ "--dot-size": "10px" }}
           >
             <span className={styles.dot} />
             <span className={styles.dot} />

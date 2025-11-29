@@ -436,7 +436,8 @@
   border-radius: 8px;
 }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: #000 !important; transition: transform 180ms ease; }
-.menuContainer:hover .dot:nth-child(1) { transform: translateX(20px); }
-.menuContainer:hover .dot:nth-child(3) { transform: translateX(-20px); }
-.menuContainer:hover .dot:nth-child(2) { transform: scale(1.6); }
+.menuContainer:hover:not(.menuPinned) .dot:nth-child(1) { transform: translateX(20px); }
+.menuContainer:hover:not(.menuPinned) .dot:nth-child(3) { transform: translateX(-20px); }
+.menuContainer:hover:not(.menuPinned) .dot:nth-child(2) { transform: scale(1.6); }
+.menuPinned .dot { transform: translateX(0) scale(1) !important; }
 

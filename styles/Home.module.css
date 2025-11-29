@@ -83,9 +83,10 @@
 }
 
 .menuButton {
+  --dot-gap: 10px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: var(--dot-gap, 10px);
   padding: 10px;
   background: transparent;
   border: none;
@@ -109,17 +110,21 @@
   transition: transform 220ms ease;
 }
 /* Glide dots and scale middle on hover */
-.menuContainer:hover .menuButton .dot {
+.menuContainer:hover:not(.menuPinned) .menuButton .dot {
   transition: transform 180ms ease;
 }
-.menuContainer:hover .menuButton .dot:nth-child(1) {
+.menuContainer:hover:not(.menuPinned) .menuButton .dot:nth-child(1) {
   transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
 }
-.menuContainer:hover .menuButton .dot:nth-child(3) {
+.menuContainer:hover:not(.menuPinned) .menuButton .dot:nth-child(3) {
   transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
 }
-.menuContainer:hover .menuButton .dot:nth-child(2) {
+.menuContainer:hover:not(.menuPinned) .menuButton .dot:nth-child(2) {
   transform: scale(1.6);
+}
+
+.menuPinned .menuButton .dot {
+  transform: translateX(0) scale(1) !important;
 }
 
 .heroSection {
@@ -317,6 +322,7 @@
   
   .menuButton {
     padding: 6px;
+    --dot-gap: 7px;
   }
   
   .dot {
@@ -339,6 +345,10 @@
     margin-left: 3px;
   }
   
+  .menuButton {
+    --dot-gap: 5px;
+  }
+
   .dot {
     width: 5px;
     height: 5px;
