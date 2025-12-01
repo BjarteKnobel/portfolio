@@ -1,7 +1,7 @@
 .footer {
   display: flex;
   flex-direction: row;
-  padding: 40px var(--page-side-padding); /* responsive padding */
+  padding: 20px var(--page-side-padding) 40px; /* reduced top padding to move footer up */
   background: #FFFFFF;
   width: 100%;
   max-width: calc(1432px + (var(--page-side-padding) * 2));
@@ -66,10 +66,10 @@
 
 
 /* Match responsive max-width/padding with main sections */
-@media (min-width: 1440px) { .footer { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 40px var(--page-side-padding); } }
-@media (min-width: 1600px) { .footer { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 40px var(--page-side-padding); } }
-@media (min-width: 1920px) { .footer { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 40px var(--page-side-padding); } }
-@media (min-width: 2560px) { .footer { max-width: 2400px; padding: 40px var(--page-side-padding); } }
+@media (min-width: 1440px) { .footer { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 40px; } }
+@media (min-width: 1600px) { .footer { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 40px; } }
+@media (min-width: 1920px) { .footer { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 40px; } }
+@media (min-width: 2560px) { .footer { max-width: 2400px; padding: 20px var(--page-side-padding) 40px; } }
 
 .socialIcons { display: inline-flex; flex-direction: row; gap: 14px; padding: 0; align-items: center; justify-content: flex-start; }
 
