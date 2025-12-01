@@ -435,20 +435,54 @@
   justify-content: center;
   border-radius: 8px;
 }
-.dot { width: 10px; height: 10px; border-radius: 50%; background: #000 !important; }
-
-@media (hover: hover) and (pointer: fine) {
-  .menuContainer:not([data-menu-pinned="true"]):hover .dot {
-    transition: transform 180ms ease;
-  }
-  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(1) { transform: translateX(20px); }
-  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(3) { transform: translateX(-20px); }
-  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(2) { transform: scale(1.6); }
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #000 !important;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
-.menuContainer[data-menu-pinned="true"] .dot,
-.menuButton:active .dot {
-  transform: none !important;
-  transition: none !important;
+/* Animation: merge dots on hover/click */
+@media (hover: hover) and (pointer: fine) {
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot {
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+  /* Move outer dots inward to center */
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(1) {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(3) {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  /* Scale up center dot to represent merged state */
+  .menuContainer:not([data-menu-pinned="true"]):hover .dot:nth-child(2) {
+    transform: scale(1.8);
+  }
+}
+
+/* Maintain merged state when pinned (clicked) */
+.menuContainer[data-menu-pinned="true"] .dot:nth-child(1),
+.menuContainer[data-menu-pinned="true"] .dot:nth-child(3) {
+  transform: translateX(0);
+  opacity: 0;
+}
+
+.menuContainer[data-menu-pinned="true"] .dot:nth-child(2) {
+  transform: scale(1.8);
+}
+
+/* Instant merge on click */
+.menuButton:active .dot:nth-child(1),
+.menuButton:active .dot:nth-child(3) {
+  transform: translateX(0);
+  opacity: 0;
+  transition: transform 100ms ease, opacity 100ms ease;
+}
+
+.menuButton:active .dot:nth-child(2) {
+  transform: scale(1.8);
+  transition: transform 100ms ease;
 }
 

@@ -27,6 +27,15 @@
   font-display: swap;
 }
 
+/* PP Neue Bit Bold */
+@font-face {
+  font-family: 'PP Neue Bit';
+  src: url('/assets/fonts/PPNeueBit-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Global page load-up animation */
 :root {
   --enter-duration: 1400ms;

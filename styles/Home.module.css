@@ -50,6 +50,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+  gap: 6px;
 }
 
 .svgAnimationRole {
@@ -64,9 +65,9 @@
 .logoText, .animatedText {
   font-family: 'PP Mondwest', 'Azeret Mono', monospace;
   font-weight: 400;
-  font-size: 52px;
-  line-height: 1.25em;
-  letter-spacing: 1.04px; /* match About page */
+  font-size: 60px;
+  line-height: 65px;
+  letter-spacing: 2%;
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
@@ -105,29 +106,52 @@
   display: inline-block;
   width: var(--dot-size, 10px);
   height: var(--dot-size, 10px);
-  border-radius: 50%;
   background: #000 !important; /* force black */
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
+/* Animation: merge dots on hover/click */
 @media (hover: hover) and (pointer: fine) {
   .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot {
-    transition: transform 180ms ease;
+    transition: transform 200ms ease, opacity 200ms ease;
   }
+  /* Move outer dots inward to center */
   .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(1) {
     transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
+    opacity: 0;
   }
   .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(3) {
     transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
+    opacity: 0;
   }
+  /* Scale up center dot to represent merged state */
   .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(2) {
-    transform: scale(1.6);
+    transform: scale(1.8);
   }
 }
 
-.menuContainer[data-menu-pinned="true"] .menuButton .dot,
-.menuButton:active .dot {
-  transform: none !important;
-  transition: none !important;
+/* Maintain merged state when pinned (clicked) */
+.menuContainer[data-menu-pinned="true"] .menuButton .dot:nth-child(1),
+.menuContainer[data-menu-pinned="true"] .menuButton .dot:nth-child(3) {
+  transform: translateX(0);
+  opacity: 0;
+}
+
+.menuContainer[data-menu-pinned="true"] .menuButton .dot:nth-child(2) {
+  transform: scale(1.8);
+}
+
+/* Instant merge on click */
+.menuButton:active .dot:nth-child(1),
+.menuButton:active .dot:nth-child(3) {
+  transform: translateX(0);
+  opacity: 0;
+  transition: transform 100ms ease, opacity 100ms ease;
+}
+
+.menuButton:active .dot:nth-child(2) {
+  transform: scale(1.8);
+  transition: transform 100ms ease;
 }
 
 .heroSection {
@@ -240,7 +264,7 @@
 
 @media (max-width: 1200px) {
   .logoText, .animatedText {
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(36px, 4vw, 60px);
   }
   
   .heroMedia {
@@ -282,7 +306,7 @@
   }
   
   .logoText, .animatedText {
-    font-size: clamp(28px, 3.5vw, 40px);
+    font-size: clamp(32px, 3.5vw, 48px);
   }
   
   .dot {
@@ -319,7 +343,7 @@
   }
   
   .logoText, .animatedText {
-    font-size: clamp(22px, 3vw, 28px);
+    font-size: clamp(32px, 3.5vw, 36px);
     white-space: nowrap;
   }
   
@@ -339,9 +363,19 @@
   }
 }
 
+@media (max-width: 480px) {
+  .animatedText {
+    display: none;
+  }
+  
+  .logoText {
+    font-size: 32px;
+  }
+}
+
 @media (max-width: 400px) {
-  .logoText, .animatedText {
-    font-size: 18px;
+  .logoText {
+    font-size: 36px;
   }
   
   .svgAnimationRole {
@@ -386,9 +420,9 @@
   padding: 10px 10px 10px 10px;
   border: none;
   background-color: #FFFFFF;
-  font-family: 'Space Mono', monospace; /* updated font */
-  font-size: 16px;
-  font-weight: 700; /* bolder per new spec */
+  font-family: 'PP Neue Bit', monospace;
+  font-size: 20px;
+  font-weight: 700; /* bold */
   color: #000;
   cursor: pointer;
   border-radius: 0;

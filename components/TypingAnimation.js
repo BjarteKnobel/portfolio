@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 
-const defaultWords = ["architect", "parametric designer", "wibe coder"];
+const defaultWords = ["architecture", "code", "parametric design"];
 
 export default function TypingAnimation({ words = defaultWords, single = false, typeDelay = 100, deleteDelay = 50 }) {
   const [text, setText] = useState('');
