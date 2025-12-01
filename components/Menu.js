@@ -4,17 +4,17 @@ import Image from 'next/image';
 const menuItems = [
   {
     label: 'projects',
-    icon: '/assets/icon-projects.svg',
+    icon: '/assets/home.svg',
     key: 'projects',
   },
   {
     label: 'about',
-    icon: '/assets/icon-about.svg',
+    icon: '/assets/person.svg',
     key: 'about',
   },
   {
     label: 'contact',
-    icon: '/assets/icon-contact.svg',
+    icon: '/assets/contact.svg',
     key: 'contact',
   },
 ];
