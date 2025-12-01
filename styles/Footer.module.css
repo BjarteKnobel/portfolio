@@ -1,13 +1,14 @@
 .footer {
   display: flex;
-  flex-direction: row;
-  padding: 20px var(--page-side-padding) 40px; /* reduced top padding to move footer up */
+  flex-direction: column;
+  align-items: center;
+  padding: 20px var(--page-side-padding) 30px;
   background: #FFFFFF;
   width: 100%;
   max-width: calc(1432px + (var(--page-side-padding) * 2));
   margin: 0 auto;
   box-sizing: border-box;
-  align-items: center;
+  gap: 12px;
 }
 
 .rightColumn {
@@ -66,20 +67,38 @@
 
 
 /* Match responsive max-width/padding with main sections */
-@media (min-width: 1440px) { .footer { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 40px; } }
-@media (min-width: 1600px) { .footer { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 40px; } }
-@media (min-width: 1920px) { .footer { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 40px; } }
-@media (min-width: 2560px) { .footer { max-width: 2400px; padding: 20px var(--page-side-padding) 40px; } }
+@media (min-width: 1440px) { .footer { max-width: calc(1600px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 30px; } }
+@media (min-width: 1600px) { .footer { max-width: calc(1800px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 30px; } }
+@media (min-width: 1920px) { .footer { max-width: calc(2000px + (var(--page-side-padding) * 2)); padding: 20px var(--page-side-padding) 30px; } }
+@media (min-width: 2560px) { .footer { max-width: 2400px; padding: 20px var(--page-side-padding) 30px; } }
 
-.socialIcons { display: inline-flex; flex-direction: row; gap: 14px; padding: 0; align-items: center; justify-content: flex-start; }
+.socialIcons { 
+  display: inline-flex; 
+  flex-direction: row; 
+  gap: 10px; 
+  padding: 0; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.copyright {
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-align: center;
+}
 
 .iconFrame {
   display: flex;
-  align-items: left;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 60px; /* doubled from 30px */
-  height: 60px; /* doubled from 30px */
+  width: 40px;
+  height: 40px;
   transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }

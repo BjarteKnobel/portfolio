@@ -462,6 +462,19 @@
   border-bottom: 1px solid #696969;
 }
 
+/* Responsive font scaling for menu items on larger screens */
+@media (min-width: 1440px) {
+  .menuItem {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .menuItem {
+    font-size: 24px;
+  }
+}
+
 .header, .navbar, .container {
   overflow: visible !important;
 }

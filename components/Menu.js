@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 
@@ -19,7 +20,7 @@ const menuItems = [
   },
 ];
 
-export default function Menu({ selected, onSelect }) {
+function Menu({ selected, onSelect }) {
   return (
     <div className={styles.menuDropdown}>
       {menuItems.map((item) => (
@@ -34,4 +35,6 @@ export default function Menu({ selected, onSelect }) {
       ))}
     </div>
   );
-} 
+}
+
+export default memo(Menu); 

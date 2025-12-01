@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import FadeInImage from '../components/FadeInImage';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Home.module.css';
@@ -42,8 +43,10 @@ export default function Home() {
   }, []);
 
   const handleMouseMove = (e) => {
-    setCursorX(e.clientX);
-    setCursorY(e.clientY);
+    requestAnimationFrame(() => {
+      setCursorX(e.clientX);
+      setCursorY(e.clientY);
+    });
   };
 
   useEffect(() => {
@@ -64,8 +67,10 @@ export default function Home() {
   }, []);
 
   const handleAltMouseMove = (e) => {
-    setAltCursorX(e.clientX);
-    setAltCursorY(e.clientY);
+    requestAnimationFrame(() => {
+      setAltCursorX(e.clientX);
+      setAltCursorY(e.clientY);
+    });
   };
 
   useEffect(() => {
@@ -84,7 +89,7 @@ export default function Home() {
           }
         });
       },
-      { root: null, rootMargin: '0px', threshold: 0.1 }
+      { root: null, rootMargin: '50px', threshold: 0.1 }
     );
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -149,13 +154,14 @@ export default function Home() {
                 left: `${cursorX - 250}px`,
               }}
             >
-              {/* Use native img to avoid any stylistic modifications beyond width */}
-              <img
+              <Image
                 ref={cursorImgRef}
                 src="/assets/cursor.svg"
                 alt="Custom cursor"
                 width={250}
+                height={250}
                 className={styles.cursorImage}
+                priority
               />
               <span className={styles.cursorLabel}>
                 click to read
@@ -198,12 +204,14 @@ export default function Home() {
                 left: `${altCursorX - 250}px`,
               }}
             >
-              <img
+              <Image
                 ref={altCursorImgRef}
                 src="/assets/cursor_project.svg"
                 alt="Custom project cursor"
                 width={250}
+                height={250}
                 className={`${styles.cursorImage} ${styles.altCursorImage}`}
+                priority
               />
               <span className={styles.cursorLabel}>
                 click to view

@@ -1,11 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import styles from '../styles/Projects.module.css';
 import PendulumLoader from '../components/PendulumLoader';
 import LoadingText from '../components/LoadingText';
-import ProjectCarousel from '../components/ProjectCarousel';
 import NavigationPanel from '../components/NavigationPanel';
+
+// Lazy load ProjectCarousel for code splitting
+const ProjectCarousel = dynamic(() => import('../components/ProjectCarousel'), {
+  loading: () => (
+    <div className={styles.loadingScreen}>
+      <div className={styles.loadingContent}>
+        <PendulumLoader />
+        <LoadingText />
+      </div>
+    </div>
+  ),
+});
 
 export default function Projects() {
   // Determine initial mode synchronously to avoid flashing the loader

@@ -7,6 +7,21 @@ export default function Document() {
         <link rel="icon" type="image/svg+xml" href="/assets/webpage_icon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload critical local fonts */}
+        <link
+          rel="preload"
+          href="/assets/fonts/PPMondwest-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/PPNeueBit-Bold.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"

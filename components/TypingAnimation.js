@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from '../styles/Home.module.css';
 
 const defaultWords = ["architecture", "code", "parametric design"];
@@ -9,12 +9,13 @@ export default function TypingAnimation({ words = defaultWords, single = false, 
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [stopped, setStopped] = useState(false);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     if (stopped) return;
     const currentWord = words[wordIndex] || '';
 
-    const timeout = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       if (single || words.length === 1) {
         // Type the single word once and stop
         if (charIndex < currentWord.length) {
@@ -43,7 +44,12 @@ export default function TypingAnimation({ words = defaultWords, single = false, 
       }
     }, (single || words.length === 1) ? typeDelay : (isDeleting ? deleteDelay : typeDelay));
 
-    return () => clearTimeout(timeout);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
   }, [charIndex, isDeleting, wordIndex, stopped, single, words, typeDelay, deleteDelay]);
 
   return (
