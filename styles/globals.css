@@ -14,6 +14,19 @@
   font-display: swap;
 }
 
+/* PP Mondwest Regular */
+@font-face {
+  font-family: 'PP Mondwest';
+  src: url('/assets/fonts/PPMondwest-Regular.woff2') format('woff2'),
+       url('/assets/fonts/PPMondwest-Regular.woff') format('woff'),
+       url('/assets/fonts/PPMondwest-Regular.ttf') format('truetype'),
+       url('/assets/fonts/PPMondwest-Regular.otf') format('opentype'),
+       url('/assets/fonts/PPMondwest-Regular.eot') format('embedded-opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Global page load-up animation */
 :root {
   --enter-duration: 1400ms;
