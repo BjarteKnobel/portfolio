@@ -403,13 +403,15 @@
   border-radius: 0;
   padding: 0;
   z-index: 1000;
-  min-width: fit-content;
+  width: 143px; /* Fixed width to prevent layout shifts (reduced by 35%) */
+  min-width: 143px;
   max-width: 90vw;
   display: flex;
   flex-direction: column;
   gap: 0;
   margin-top: 0px;
   overflow: visible;
+  contain: layout style; /* Prevent layout shifts */
 }
 
 .menuItem {
@@ -428,6 +430,9 @@
   border-radius: 0;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, filter 0.3s ease-in-out;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .menuItem:hover, .menuItem:active {
@@ -441,12 +446,17 @@
 
 .menuIcon {
   flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .menuLabel {
   flex: 1;
   text-align: left;
   letter-spacing: -2%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menuItemActive {
@@ -457,19 +467,39 @@
 
 .menuItemActive .menuIcon { filter: invert(1); }
 
-/* Separator line between menu items */
+/* Separator line between menu items - square dotted pattern */
 .menuItem:not(:last-child) {
-  border-bottom: 1px solid #696969;
+  border-bottom: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    #696969 0px,
+    #696969 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: 3px 1px;
+  background-position: bottom;
+  background-repeat: repeat-x;
+  padding-bottom: 10px;
+  margin-bottom: 0;
 }
 
 /* Responsive font scaling for menu items on larger screens */
 @media (min-width: 1440px) {
+  .menuDropdown {
+    width: 156px; /* Slightly wider for larger font (reduced by 35%) */
+    min-width: 156px;
+  }
   .menuItem {
     font-size: 22px;
   }
 }
 
 @media (min-width: 1920px) {
+  .menuDropdown {
+    width: 169px; /* Wider for largest font (reduced by 35%) */
+    min-width: 169px;
+  }
   .menuItem {
     font-size: 24px;
   }

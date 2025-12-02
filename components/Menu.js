@@ -29,7 +29,15 @@ function Menu({ selected, onSelect }) {
           className={`${styles.menuItem} ${selected === item.key ? styles.menuItemActive : ''}`}
           onClick={() => onSelect(item.key)}
         >
-          <Image src={item.icon} alt="" width={16} height={16} className={styles.menuIcon} />
+          <Image 
+            src={item.icon} 
+            alt="" 
+            width={16} 
+            height={16} 
+            className={styles.menuIcon}
+            priority
+            unoptimized
+          />
           <span className={styles.menuLabel}>{item.label}</span>
         </button>
       ))}
