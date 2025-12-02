@@ -618,6 +618,30 @@ a.emphasisText:focus {
   color: inherit;
 }
 
+.logoEmphasis {
+  color: inherit;
+  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: inherit; /* scale with parent */
+  line-height: inherit; /* scale with parent */
+  display: inline;
+  text-decoration: none; /* remove underline if link */
+}
+
+/* Ensure link variant has no underline and inherits color */
+a.logoEmphasis {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.logoEmphasis:hover,
+a.logoEmphasis:active,
+a.logoEmphasis:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Custom cursor scope: hide native cursor and position overlay */
 .bodyTextCursorScope {
   cursor: none; /* hide default cursor only here */
