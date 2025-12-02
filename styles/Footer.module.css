@@ -84,17 +84,19 @@
 .copyright {
   color: #000;
   font-family: 'Space Mono', monospace;
-  font-size: 7px;
-  font-weight: 700;
+  font-size: 8.75px;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: -0.2px;
-  word-spacing: -2px;
   margin: 0 auto;
   padding: 20px var(--page-side-padding) 30px;
   width: 100%;
   max-width: calc(1432px + (var(--page-side-padding) * 2));
   box-sizing: border-box;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .iconFrame {

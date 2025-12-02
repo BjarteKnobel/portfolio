@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
       </footer>
       <div className={styles.copyright}>
-        ©{currentYear} bjarteknobel
+        {currentYear} bjarteknobel
       </div>
     </>
   );
