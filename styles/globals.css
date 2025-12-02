@@ -92,6 +92,8 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  /* Prevent rubber-band scrolling above top or below bottom */
+  overscroll-behavior-y: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

@@ -20,6 +20,10 @@ export default function App({ Component, pageProps }) {
 
     const handle = (url) => {
       if (!shouldAnimate(url)) return; // Skip easeUp on /projects (nav + carousel)
+      // Always ensure we start at the very top when (re)applying the animation
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
       requestAnimationFrame(() => {
         const root = document.querySelector('#__next');
         if (!root) return;
