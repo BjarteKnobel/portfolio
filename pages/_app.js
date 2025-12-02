@@ -6,22 +6,8 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const shouldAnimate = (url) => {
-      try {
-        const href = url || (typeof window !== 'undefined' ? window.location.href : '');
-        if (!href) return true;
-        const parsed = new URL(href, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
-        // Disable global easeUp animation on specific routes to avoid layout issues
-        // - '/projects': navigation + carousel have their own layout/animation
-        // - '/': Home page hero already has its own, and should not slide the whole page
-        return parsed.pathname !== '/projects' && parsed.pathname !== '/';
-      } catch {
-        return true;
-      }
-    };
-
     const handle = (url) => {
-      if (!shouldAnimate(url)) return; // Skip easeUp on excluded routes
+      // Run easeUp animation on all routes
       requestAnimationFrame(() => {
         const root = document.querySelector('#__next');
         if (!root) return;

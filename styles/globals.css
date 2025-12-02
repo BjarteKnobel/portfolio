@@ -37,7 +37,8 @@
 :root {
   --enter-duration: 1400ms;
   --enter-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --enter-translate: 48px;
+  /* Subtle slide distance for easeUp animation */
+  --enter-translate: 16px;
   --page-side-padding: clamp(36px, 2.8vw, 140px);
   --content-max-width: 1432px;
 }
