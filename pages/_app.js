@@ -11,19 +11,17 @@ export default function App({ Component, pageProps }) {
         const href = url || (typeof window !== 'undefined' ? window.location.href : '');
         if (!href) return true;
         const parsed = new URL(href, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
-        // Disable global easeUp animation on the Projects route to avoid slide-up
-        return parsed.pathname !== '/projects';
+        // Disable global easeUp animation on specific routes to avoid layout issues
+        // - '/projects': navigation + carousel have their own layout/animation
+        // - '/': Home page hero already has its own, and should not slide the whole page
+        return parsed.pathname !== '/projects' && parsed.pathname !== '/';
       } catch {
         return true;
       }
     };
 
     const handle = (url) => {
-      if (!shouldAnimate(url)) return; // Skip easeUp on /projects (nav + carousel)
-      // Always ensure we start at the very top when (re)applying the animation
-      if (typeof window !== 'undefined') {
-        window.scrollTo(0, 0);
-      }
+      if (!shouldAnimate(url)) return; // Skip easeUp on excluded routes
       requestAnimationFrame(() => {
         const root = document.querySelector('#__next');
         if (!root) return;
