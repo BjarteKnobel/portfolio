@@ -184,7 +184,11 @@ export default function Home() {
       </section>
 
       {/* Info section beneath second carousel */}
-      <Link href="/projects" style={{ textDecoration: 'none', cursor: 'none' }}>
+      <Link
+        href="/projects"
+        className={altCursorVisible ? styles.bodyTextHovered : undefined}
+        style={{ textDecoration: 'none', cursor: 'none' }}
+      >
         <section
           className={`${styles.infoSection} ${styles.altCursorScope}`}
           onMouseEnter={() => setAltCursorVisible(true)}
