@@ -656,33 +656,21 @@ a.logoEmphasis:focus {
   align-items: flex-end;
 }
 
-.cursorImage {
-  display: block;
-}
-
-.cursorLabel {
-  position: absolute;
-  right: 6px; /* bottom-right alignment inside image */
-  bottom: 6px;
-  font-family: 'Space Mono', monospace; /* monospace overlay */
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff; /* white arrow and text */
-  background: transparent;
-  pointer-events: none;
+.cursorOverlay {
+  position: relative;
+  width: 250px;
+  height: 250px;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  pointer-events: none;
 }
 
-.cursorDots { display: inline-flex; gap: 0; padding-left: 2px; background: transparent; }
-.cursorDot { display: inline-block; width: auto; background: transparent; color: #fff; line-height: 1; text-shadow: none; user-select: none; }
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0.2; }
+.cursorImage {
+  width: 100%;
+  height: auto;
+  display: block;
 }
-.blinkDot { animation: blink 1s ease-in-out infinite; }
 
 /* Large screen optimizations */
 @media (min-width: 1440px) {

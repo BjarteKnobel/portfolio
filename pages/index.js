@@ -2,8 +2,23 @@ import Layout from '../components/Layout';
 import FadeInImage from '../components/FadeInImage';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback, memo } from 'react';
 import styles from '../styles/Home.module.css';
+
+// Memoized cursor overlay component for performance
+const CursorOverlay = memo(({ imgRef, src, alt }) => (
+  <div className={styles.cursorOverlay}>
+    <Image
+      ref={imgRef}
+      src={src}
+      alt={alt}
+      width={250}
+      height={250}
+      className={styles.cursorImage}
+      priority
+    />
+  </div>
+));
 
 export default function Home() {
   const [cursorVisible, setCursorVisible] = useState(false);
@@ -42,12 +57,12 @@ export default function Home() {
     }
   }, []);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     requestAnimationFrame(() => {
       setCursorX(e.clientX);
       setCursorY(e.clientY);
     });
-  };
+  }, []);
 
   useEffect(() => {
     const img = altCursorImgRef.current;
@@ -66,12 +81,12 @@ export default function Home() {
     }
   }, []);
 
-  const handleAltMouseMove = (e) => {
+  const handleAltMouseMove = useCallback((e) => {
     requestAnimationFrame(() => {
       setAltCursorX(e.clientX);
       setAltCursorY(e.clientY);
     });
-  };
+  }, []);
 
   useEffect(() => {
     const elements = [firstParaRef.current, secondParaRef.current, thirdParaRef.current, fourthParaRef.current].filter(Boolean);
@@ -154,23 +169,11 @@ export default function Home() {
                 left: `${cursorX - 250}px`,
               }}
             >
-              <Image
-                ref={cursorImgRef}
+              <CursorOverlay
+                imgRef={cursorImgRef}
                 src="/assets/cursor.svg"
                 alt="Custom cursor"
-                width={250}
-                height={250}
-                className={styles.cursorImage}
-                priority
               />
-              <span className={styles.cursorLabel}>
-                click to read
-                <span className={styles.cursorDots}>
-                  <span className={styles.cursorDot}>.</span>
-                  <span className={styles.cursorDot}>.</span>
-                  <span className={`${styles.cursorDot} ${styles.blinkDot}`}>.</span>
-                </span>
-              </span>
             </div>
           )}
         </div>
@@ -204,23 +207,11 @@ export default function Home() {
                 left: `${altCursorX - 250}px`,
               }}
             >
-              <Image
-                ref={altCursorImgRef}
+              <CursorOverlay
+                imgRef={altCursorImgRef}
                 src="/assets/cursor_project.svg"
                 alt="Custom project cursor"
-                width={250}
-                height={250}
-                className={`${styles.cursorImage} ${styles.altCursorImage}`}
-                priority
               />
-              <span className={styles.cursorLabel}>
-                click to view
-                <span className={styles.cursorDots}>
-                  <span className={styles.cursorDot}>.</span>
-                  <span className={styles.cursorDot}>.</span>
-                  <span className={`${styles.cursorDot} ${styles.blinkDot}`}>.</span>
-                </span>
-              </span>
             </div>
           )}
         </section>
