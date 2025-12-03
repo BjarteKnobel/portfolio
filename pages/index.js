@@ -142,7 +142,11 @@ export default function Home() {
           onMouseLeave={() => setCursorVisible(false)}
           onMouseMove={handleMouseMove}
         >
-          <Link href="/about" style={{ textDecoration: 'none', cursor: 'none' }}>
+          <Link
+            href="/about"
+            className={cursorVisible ? styles.bodyTextHovered : undefined}
+            style={{ textDecoration: 'none', cursor: 'none' }}
+          >
             <p ref={firstParaRef} className={`${styles.revealBlur} ${styles.featureParagraph}`}>
               I am an{' '}
               <span className={styles.logoEmphasis}>
