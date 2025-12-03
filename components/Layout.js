@@ -6,7 +6,6 @@ import useClickOutside from '../hooks/useClickOutside';
 import TypingAnimation from './TypingAnimation';
 import Menu from './Menu';
 import Footer from './Footer';
-import CookieConsent from './CookieConsent';
 import styles from '../styles/Home.module.css';
 
 export default function Layout({ children, title = 'Netside' }) {
@@ -115,7 +114,6 @@ export default function Layout({ children, title = 'Netside' }) {
         <main>{children}</main>
         <Footer />
       </div>
-      <CookieConsent />
     </>
   );
 } 
