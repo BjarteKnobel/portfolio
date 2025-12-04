@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import FadeInImage from '../components/FadeInImage';
+import TypingAnimation from '../components/TypingAnimation';
 import { useState, useRef, useEffect } from 'react';
 import styles from '../styles/About.module.css';
 import Menu from '../components/Menu';
@@ -10,8 +11,11 @@ import { useRouter } from 'next/router';
 import useClickOutside from '../hooks/useClickOutside';
 
 export default function About() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPinned, setMenuPinned] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState('about');
   const menuRef = useRef(null);
+  const menuBtnRef = useRef(null);
   const router = useRouter();
   const [animateBars, setAnimateBars] = useState(false);
   const closeMenuTimerRef = useRef(null);
@@ -21,25 +25,40 @@ export default function About() {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
-
   const openMenu = () => {
+    if (menuPinned) return;
     if (closeMenuTimerRef.current) {
       clearTimeout(closeMenuTimerRef.current);
       closeMenuTimerRef.current = null;
     }
-    setShowMenu(true);
+    setMenuOpen(true);
   };
 
   const scheduleCloseMenu = () => {
+    if (menuPinned) return;
     if (closeMenuTimerRef.current) clearTimeout(closeMenuTimerRef.current);
-    closeMenuTimerRef.current = setTimeout(() => setShowMenu(false), 200);
+    closeMenuTimerRef.current = setTimeout(() => setMenuOpen(false), 200);
   };
 
-  useClickOutside([menuRef], () => {
-    if (showMenu) setShowMenu(false);
+  const togglePinnedMenu = () => {
+    setMenuPinned((prev) => {
+      const next = !prev;
+      if (next) {
+        if (closeMenuTimerRef.current) {
+          clearTimeout(closeMenuTimerRef.current);
+          closeMenuTimerRef.current = null;
+        }
+        setMenuOpen(true);
+      } else {
+        setMenuOpen(false);
+      }
+      return next;
+    });
+  };
+
+  useClickOutside([menuRef, menuBtnRef], () => {
+    if (menuPinned) setMenuPinned(false);
+    if (menuOpen) setMenuOpen(false);
   });
 
 
@@ -57,47 +76,51 @@ export default function About() {
       <header className={styles.header}>
         <nav className={styles.navbar}>
           <div className={styles.logoGroup}>
-            <Link href="/" className={styles.nameText}>
+            <Link href="/" className={styles.logoText}>
               bjarte:
             </Link>
-            <span className={styles.roleText}>about</span>
+            <span className={styles.logoRole}>
+              <TypingAnimation words={['about']} single typeDelay={110} />
+            </span>
           </div>
           <div
-            className={styles.menuContainer}
-            ref={menuRef}
+            className={`${styles.menuContainer} ${menuPinned ? styles.menuPinned : ''}`}
+            data-menu-pinned={menuPinned ? 'true' : 'false'}
             onMouseEnter={openMenu}
             onMouseLeave={scheduleCloseMenu}
           >
             <button
+              aria-label="Open menu"
               className={styles.menuButton}
-              onClick={toggleMenu}
+              ref={menuBtnRef}
+              onClick={togglePinnedMenu}
               aria-haspopup="true"
-              aria-expanded={showMenu}
-              style={{ "--dot-size": "10px", "--dot-gap": "10px" }}
+              aria-expanded={menuOpen}
+              style={{ "--dot-size": "8px" }}
             >
-              <div className={styles.dot}></div>
-              <div className={styles.dot}></div>
-              <div className={styles.dot}></div>
+              <span className={styles.dot}></span>
+              <span className={styles.dot}></span>
+              <span className={styles.dot}></span>
             </button>
-            {showMenu && (
-              <div onMouseEnter={openMenu} onMouseLeave={scheduleCloseMenu}>
-              <Menu
-                className={styles.menuDropdown}
-                selected="about"
-                onSelect={(key) => {
-                  if (key === 'home') {
-                    router.push('/');
-                    } else if (key === 'projects') {
-                      // Explicitly show loader when entering from dropdown
-                      router.push('/projects?from=menu');
+            {menuOpen && (
+              <div ref={menuRef} onMouseEnter={openMenu} onMouseLeave={scheduleCloseMenu}>
+                <Menu
+                  className={styles.menuDropdown}
+                  selected={selectedMenu}
+                  onSelect={(key) => {
+                    setSelectedMenu(key);
+                    setMenuOpen(false);
+                    if (key === 'projects') {
+                      router.push('/projects');
+                    } else if (key === 'about') {
+                      router.push('/about');
                     } else if (key === 'contact') {
                       if (typeof window !== 'undefined') {
                         window.location.href = 'mailto:bjarte05@gmail.com';
                       }
-                  }
-                  setShowMenu(false);
-                }}
-              />
+                    }
+                  }}
+                />
               </div>
             )}
           </div>
@@ -236,10 +259,10 @@ export default function About() {
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionIcon}>
                   <Image
-                    src="/assets/work_experience.svg"
+                    src="/assets/work_icon.svg"
                     alt="work experience"
-                    width={20}
-                    height={20}
+                    width={24}
+                    height={24}
                   />
                 </div>
                 <h2 className={styles.sectionTitle}>work experience</h2>
@@ -314,7 +337,7 @@ export default function About() {
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionIcon}>
                   <Image
-                    src="/assets/education.svg"
+                    src="/assets/Education.svg"
                     alt="education"
                     width={24}
                     height={24}

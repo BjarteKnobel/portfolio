@@ -12,13 +12,21 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 40px var(--page-side-padding);
+  padding: clamp(32px, 4vh, 64px) var(--page-side-padding);
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0);
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding-top: clamp(36px, 5vh, 72px);
+    padding-bottom: clamp(64px, 10vh, 128px);
+  }
 }
 
 .navbar {
@@ -27,7 +35,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1432px;
+  max-width: var(--content-max-width);
   padding: 0;
   margin: 0 auto;
   position: relative;
@@ -39,34 +47,35 @@
   justify-content: center;
   align-items: center;
   padding: 0;
+  gap: 6px;
 }
 
-.nameText {
-  font-family: 'Azeret Mono', monospace;
+.logoText,
+.logoRole {
+  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
   font-weight: 400;
-  font-size: 52px;
-  line-height: 1.25em;
-  letter-spacing: 1.04px;
-  color: #000000;
+  font-size: 79px;
+  line-height: 86px;
+  letter-spacing: 2%;
+  text-align: center;
+  white-space: nowrap;
+  color: #000;
 }
 
-.roleText {
-  font-family: 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 52px;
-  line-height: 1.25em;
-  letter-spacing: 1.04px;
-  color: #000000;
-}
-
-.nameText {
+.logoText {
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
 
-.nameText:hover {
+.logoText:hover {
   opacity: 0.7;
+}
+
+.logoRole {
+  display: inline-block;
+  min-width: 1ch;
+  overflow: visible;
 }
 
 .menuContainer {
@@ -75,6 +84,7 @@
 }
 
 .menuButton {
+  --dot-gap: 10px;
   display: flex;
   flex-direction: row;
   gap: var(--dot-gap, 10px);
@@ -92,29 +102,52 @@
   background: transparent;
 }
 
-/* Glide dots together on hover */
-.menuContainer:hover .menuButton .dot {
-  transition: transform 180ms ease;
-}
-
-/* Move side dots to middle and enlarge center dot */
-.menuContainer:hover .menuButton .dot:nth-child(1) {
-  transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
-}
-.menuContainer:hover .menuButton .dot:nth-child(3) {
-  transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
-}
-.menuContainer:hover .menuButton .dot:nth-child(2) {
-  transform: scale(1.6);
-}
-
 .dot {
   display: inline-block;
   width: var(--dot-size, 10px);
   height: var(--dot-size, 10px);
-  border-radius: 50%;
   background: #000 !important;
-  transition: transform 220ms ease;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+/* Animation: merge dots on hover/click */
+@media (hover: hover) and (pointer: fine) {
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot {
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(1) {
+    transform: translateX(calc(var(--dot-size, 10px) + var(--dot-gap, 10px)));
+    opacity: 0;
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(3) {
+    transform: translateX(calc(-1 * (var(--dot-size, 10px) + var(--dot-gap, 10px))));
+    opacity: 0;
+  }
+  .menuContainer:not([data-menu-pinned="true"]):hover .menuButton .dot:nth-child(2) {
+    transform: scale(1.8);
+  }
+}
+
+.menuContainer[data-menu-pinned="true"] .menuButton .dot:nth-child(1),
+.menuContainer[data-menu-pinned="true"] .menuButton .dot:nth-child(3) {
+  transform: translateX(0);
+  opacity: 0;
+}
+
+.menuContainer[data-menu-pinned="true"] .menuButton .dot:nth-child(2) {
+  transform: scale(1.8);
+}
+
+.menuButton:active .dot:nth-child(1),
+.menuButton:active .dot:nth-child(3) {
+  transform: translateX(0);
+  opacity: 0;
+  transition: transform 100ms ease, opacity 100ms ease;
+}
+
+.menuButton:active .dot:nth-child(2) {
+  transform: scale(1.8);
+  transition: transform 100ms ease;
 }
 
 .menuDropdown {
@@ -155,7 +188,7 @@
   gap: 40px;
   padding: 0 var(--page-side-padding);
   max-width: calc(1432px + (var(--page-side-padding) * 2));
-  margin: 0 auto 40px; /* Center horizontally, 40px above footer */
+  margin: 0 auto 90px; /* Half the previous gap above footer */
   width: 100%;
 }
 
@@ -525,7 +558,10 @@
 }
 
 .sectionIcon img {
-  filter: brightness(0) invert(1);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* World/location icon container */
@@ -662,7 +698,7 @@
     max-width: 2000px;
   }
   
-  .nameText, .roleText {
+  .logoText, .logoRole {
     font-size: 56px;
   }
   
@@ -681,7 +717,7 @@
     max-width: 2400px;
   }
   
-  .nameText, .roleText {
+  .logoText, .logoRole {
     font-size: 60px;
   }
   
@@ -697,20 +733,32 @@
     padding: 0 var(--page-side-padding);
   }
   
-  .nameText, .roleText {
-    font-size: 44px;
+  .logoText, .logoRole {
+    font-size: clamp(47px, 5.3vw, 79px);
   }
 }
 
 @media (max-width: 900px) {
   .header {
-    padding: 30px var(--page-side-padding);
+    padding-top: clamp(30px, 4vh, 60px);
+    padding-bottom: clamp(30px, 4vh, 60px);
+    padding-left: var(--page-side-padding);
+    padding-right: var(--page-side-padding);
+  }
+  
+  .navbar {
+    gap: 20px;
+  }
+  
+  .logoRole {
+    margin-left: 10px;
   }
   
   .contentContainer {
     flex-direction: column;
     padding: 0 var(--page-side-padding);
     gap: 30px;
+    margin: 0 auto 90px;
   }
   
   .leftColumn {
@@ -736,11 +784,18 @@
     align-items: center;
   }
   
-  .nameText, .roleText {
-    font-size: clamp(28px, 3.5vw, 40px);
+  .logoGroup {
+    flex-direction: row;
+    align-items: center;
   }
   
-
+  .logoRole {
+    margin-left: 8px;
+  }
+  
+  .logoText, .logoRole {
+    font-size: clamp(42px, 4.6vw, 64px);
+  }
   
   .experienceHeader {
     flex-direction: column;
@@ -756,11 +811,18 @@
   .skillsSection {
     justify-content: flex-end;
   }
+
+  .contentContainer {
+    margin: 0 auto 50px;
+  }
 }
 
 @media (max-width: 600px) {
   .header {
-    padding: 20px var(--page-side-padding);
+    padding-top: clamp(20px, 3vh, 40px);
+    padding-bottom: clamp(20px, 3vh, 40px);
+    padding-left: var(--page-side-padding);
+    padding-right: var(--page-side-padding);
   }
   
   .navbar {
@@ -770,13 +832,26 @@
     gap: 8px;
   }
   
-  .nameText, .roleText {
-    font-size: clamp(22px, 3vw, 28px);
+  .logoGroup {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+  
+  .logoRole {
+    margin-left: 4px;
+    padding: 0;
+  }
+  
+  .logoText, .logoRole {
+    font-size: clamp(42px, 4.6vw, 47px);
     white-space: nowrap;
   }
   
   .menuButton {
     padding: 6px;
+    --dot-gap: 7px;
   }
   
   .dot {
@@ -812,11 +887,29 @@
   .skillText, .skillTextFill span { font-size: 9px; line-height: 18px; }
 }
 
-@media (max-width: 400px) {
-  .nameText, .roleText {
-    font-size: 18px;
+@media (max-width: 480px) {
+  .logoRole {
+    display: none;
   }
   
+  .logoText {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 400px) {
+  .logoText {
+    font-size: 47px;
+  }
+  
+  .logoRole {
+    display: none;
+  }
+  
+  .menuButton {
+    --dot-gap: 5px;
+  }
+
   .dot {
     width: 5px;
     height: 5px;
@@ -835,6 +928,4 @@
   .fullName {
     font-size: 16px;
   }
-  
-
 }
