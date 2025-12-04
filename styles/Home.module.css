@@ -421,11 +421,11 @@
   gap: 40px;
   padding: 10px 10px 10px 10px;
   border: none;
-  background-color: #FFFFFF;
+  background-color: #000000;
   font-family: 'PP Neue Bit', monospace;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 700; /* bold */
-  color: #000;
+  color: #fff;
   cursor: pointer;
   border-radius: 0;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, filter 0.3s ease-in-out;
@@ -436,12 +436,12 @@
 }
 
 .menuItem:hover, .menuItem:active {
-  background-color: #000; /* hover bg to black */
-  color: #fff; /* invert text */
+  background-color: #FFFFFF; /* hover bg to white */
+  color: #000; /* invert text */
 }
 
 .menuItem:hover .menuIcon, .menuItem:active .menuIcon {
-  filter: invert(1); /* invert icons on black */
+  filter: invert(0); /* revert icons on white */
 }
 
 .menuIcon {
@@ -449,6 +449,7 @@
   width: 16px;
   height: 16px;
   display: block;
+  filter: invert(1); /* make icons white on black */
 }
 
 .menuLabel {
@@ -460,7 +461,7 @@
 }
 
 .menuItemActive {
-  background-color: #000; /* active selection matches hover */
+  background-color: #111;
   color: #fff;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -491,7 +492,7 @@
     min-width: 156px;
   }
   .menuItem {
-    font-size: 22px;
+    font-size: 26px;
   }
 }
 
@@ -501,7 +502,7 @@
     min-width: 169px;
   }
   .menuItem {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
