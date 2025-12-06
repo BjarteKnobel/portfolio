@@ -137,9 +137,12 @@ export default function About() {
                 alt="bjarte knobel"
                 width={306}
                 height={461}
-              className={styles.profileImage}
-              priority
-            />
+                className={styles.profileImage}
+                priority
+                quality={85}
+                sizes="(max-width: 900px) 100vw, 326px"
+                fetchPriority="high"
+              />
           </div>
           
             <div className={styles.profileInfo}>

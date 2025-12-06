@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { memo, useState } from 'react';
 
 function FadeInImageImpl({ className = '', onLoadingComplete, priority, ...props }) {
-  const [loaded, setLoaded] = useState(false);
+  // Skip blur loading state for priority images to reduce re-renders
+  const [loaded, setLoaded] = useState(priority || false);
 
   const handleComplete = (...args) => {
     setLoaded(true);
