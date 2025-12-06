@@ -26,12 +26,13 @@ const FloatingProjects = React.memo(({ projects }) => {
 
   // Calculate aspect ratios and random positions
   useEffect(() => {
-    if (!containerRef.current) return;
-
+    // Prefer container size; fallback to window size; finally a safe default
     const container = containerRef.current;
-    const containerRect = container.getBoundingClientRect();
-    
-    const isMobile = window.innerWidth <= 768;
+    const containerRect = container?.getBoundingClientRect();
+    const width = containerRect?.width || windowSize.width || 1024;
+    const height = containerRect?.height || windowSize.height || 768;
+
+    const isMobile = width <= 768;
     
     const states = projects.map((project, index) => {
       // Calculate aspect ratio from image dimensions
@@ -39,14 +40,13 @@ const FloatingProjects = React.memo(({ projects }) => {
       const baseHeight = 60;
       const baseWidth = baseHeight * aspectRatio;
       
-      // Random position within container bounds
-      // Add more padding on mobile to prevent edge spawning
+      // Random position within bounds with padding
       const padding = isMobile ? 60 : 40;
-      const maxX = containerRect.width - baseWidth - padding;
-      const maxY = containerRect.height - baseHeight - padding;
+      const maxX = width - baseWidth - padding;
+      const maxY = height - baseHeight - padding;
       
-      const x = (isMobile ? padding/2 : 0) + Math.random() * Math.max(0, maxX - (isMobile ? padding/2 : 0));
-      const y = (isMobile ? padding/2 : 0) + Math.random() * Math.max(0, maxY - (isMobile ? padding/2 : 0));
+      const x = (isMobile ? padding / 2 : 0) + Math.random() * Math.max(0, maxX - (isMobile ? padding / 2 : 0));
+      const y = (isMobile ? padding / 2 : 0) + Math.random() * Math.max(0, maxY - (isMobile ? padding / 2 : 0));
       
       return {
         id: project.id,
@@ -70,7 +70,7 @@ const FloatingProjects = React.memo(({ projects }) => {
       initialZIndices[project.id] = index + 10;
     });
     setZIndices(initialZIndices);
-  }, [projects]);
+  }, [projects, windowSize]);
 
   const bringToFront = (id) => {
     highestZIndex.current += 1;
