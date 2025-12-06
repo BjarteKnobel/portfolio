@@ -7,6 +7,7 @@ import Menu from './Menu';
 import TypingAnimation from './TypingAnimation';
 import Footer from './Footer';
 import styles from '../styles/Navigation.module.css';
+import homeStyles from '../styles/Home.module.css';
 import { getAllProjects } from '../data/projects';
 
 export default function NavigationPanel() {
@@ -77,51 +78,53 @@ export default function NavigationPanel() {
 
   return (
     <div ref={containerRef} className={styles.container}>
-      <header className={styles.navbar}>
-        <div className={styles.logoGroup}>
-          <Link href='/' className={styles.logo}>bjarte:</Link>
-          <TypingAnimation words={["project navigation"]} single={true} />
-        </div>
-        <div
-          className={`${styles.menuContainer} ${menuPinned ? styles.menuPinned : ''}`}
-          data-menu-pinned={menuPinned ? 'true' : 'false'}
-          onMouseEnter={openMenu}
-          onMouseLeave={scheduleCloseMenu}
-        >
-          <button
-            aria-label="Open menu"
-            className={styles.menuButton}
-            ref={menuBtnRef}
-            onClick={togglePinnedMenu}
-            aria-haspopup="true"
-            aria-expanded={menuOpen}
-            style={{ "--dot-size": "10px" }}
+      <header className={homeStyles.header}>
+        <nav className={homeStyles.navbar} aria-label="Main navigation">
+          <div className={homeStyles.logoGroup}>
+            <Link href='/' className={homeStyles.logoText}>bjarte:</Link>
+            <TypingAnimation words={["project navigation"]} single={true} />
+          </div>
+          <div
+            className={`${homeStyles.menuContainer} ${menuPinned ? homeStyles.menuPinned : ''}`}
+            data-menu-pinned={menuPinned ? 'true' : 'false'}
+            onMouseEnter={openMenu}
+            onMouseLeave={scheduleCloseMenu}
           >
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-          </button>
-          {menuOpen && (
-            <div ref={menuRef} onMouseEnter={openMenu} onMouseLeave={scheduleCloseMenu}>
-              <Menu
-                selected={selectedMenu}
-                onSelect={(key) => {
-                  setSelectedMenu(key);
-                  setMenuOpen(false);
-                  if (key === 'projects') {
-                    router.push('/projects');
-                  } else if (key === 'about') {
-                    router.push('/about');
-                  } else if (key === 'contact') {
-                    if (typeof window !== 'undefined') {
-                      window.location.href = 'mailto:bjarte05@gmail.com';
+            <button
+              aria-label="Open menu"
+              className={homeStyles.menuButton}
+              ref={menuBtnRef}
+              onClick={togglePinnedMenu}
+              aria-haspopup="true"
+              aria-expanded={menuOpen}
+              style={{ "--dot-size": "8px" }}
+            >
+              <span className={homeStyles.dot} />
+              <span className={homeStyles.dot} />
+              <span className={homeStyles.dot} />
+            </button>
+            {menuOpen && (
+              <div ref={menuRef} onMouseEnter={openMenu} onMouseLeave={scheduleCloseMenu}>
+                <Menu
+                  selected={selectedMenu}
+                  onSelect={(key) => {
+                    setSelectedMenu(key);
+                    setMenuOpen(false);
+                    if (key === 'projects') {
+                      router.push('/projects');
+                    } else if (key === 'about') {
+                      router.push('/about');
+                    } else if (key === 'contact') {
+                      if (typeof window !== 'undefined') {
+                        window.location.href = 'mailto:bjarte05@gmail.com';
+                      }
                     }
-                  }
-                }}
-              />
-            </div>
-          )}
-        </div>
+                  }}
+                />
+              </div>
+            )}
+          </div>
+        </nav>
       </header>
 
       <div className={styles.content}> 

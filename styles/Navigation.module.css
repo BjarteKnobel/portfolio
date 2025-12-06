@@ -36,11 +36,11 @@
 .menuContainer { margin-left: auto; }
 
 .logo {
-  font-family: 'Azeret Mono', monospace;
+  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
   font-weight: 400;
-  font-size: 52px;
-  line-height: 1.25em;
-  letter-spacing: 1.04px; /* match About */
+  font-size: 79px;
+  line-height: 86px;
+  letter-spacing: 2%;
   color: #000000;
   text-decoration: none;
 }
