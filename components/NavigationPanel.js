@@ -4,21 +4,12 @@ import { useRouter } from 'next/router';
 import useClickOutside from '../hooks/useClickOutside';
 import Menu from './Menu';
 import TypingAnimation from './TypingAnimation';
-import FloatingProjects from './FloatingProjects';
-import { getAllProjects } from '../data/projects';
 import styles from '../styles/Navigation.module.css';
 import homeStyles from '../styles/Home.module.css';
 
 export default function NavigationPanel() {
   const containerRef = useRef(null);
   const hasAnimatedRef = useRef(false);
-  
-  // Get projects in desired order
-  const projects = getAllProjects();
-  const desiredOrder = [4, 2, 3, 1]; // additiv, skippergata, moholt, sverresborg
-  const orderedProjects = desiredOrder
-    .map((id) => projects.find((p) => p.id === id))
-    .filter(Boolean);
 
   // Menu state (same behavior as global)
   const [menuOpen, setMenuOpen] = useState(false);
@@ -124,8 +115,6 @@ export default function NavigationPanel() {
           </div>
         </nav>
       </header>
-      
-      <FloatingProjects projects={orderedProjects} />
     </div>
   );
 }
