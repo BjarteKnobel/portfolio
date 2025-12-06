@@ -7,17 +7,12 @@ import TypingAnimation from '../components/TypingAnimation';
 import Menu from '../components/Menu';
 import styles from '../styles/Navigation.module.css';
 import homeStyles from '../styles/Home.module.css';
-import { getAllProjects } from '../data/projects';
+// No body content currently; navbar only
 
 export default function Navigation() {
   const containerRef = useRef(null);
   const menuRef = useRef(null);
   const menuBtnRef = useRef(null);
-  const projects = getAllProjects();
-  const desiredOrder = [4, 2, 3, 1];
-  const orderedProjects = desiredOrder
-    .map((id) => projects.find((p) => p.id === id))
-    .filter(Boolean);
   const router = useRouter();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -125,25 +120,6 @@ export default function Navigation() {
           </nav>
         </header>
 
-        <div className={styles.card}>
-          <h1 className={styles.title}>navigation</h1>
-          <nav className={styles.links}>
-            <Link href='/'>home</Link>
-            <Link href='/about'>about</Link>
-            <Link href='/projects'>projects</Link>
-          </nav>
-          <div className={styles.grid}> 
-            {orderedProjects.map((p) => (
-              <Link key={p.id} href={`/projects?view=carousel&id=${p.id}`} className={styles.projectTile}>
-                <div className={styles.projectThumb} style={{ backgroundImage: `url(${p.image})` }} />
-                <div className={styles.projectMeta}>
-                  <div className={styles.tileTitle}>{p.title}</div>
-                  <div className={styles.tileSub}>{p.type} • {p.location}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
     </>
   );
