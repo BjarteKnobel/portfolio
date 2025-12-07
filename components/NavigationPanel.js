@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import useClickOutside from '../hooks/useClickOutside';
 import Menu from './Menu';
 import TypingAnimation from './TypingAnimation';
+import FloatingProjects from './FloatingProjects';
 import styles from '../styles/Navigation.module.css';
 import homeStyles from '../styles/Home.module.css';
 
@@ -71,7 +72,7 @@ export default function NavigationPanel() {
         <nav className={homeStyles.navbar} aria-label="Main navigation">
           <div className={homeStyles.logoGroup}>
             <Link href='/' className={homeStyles.logoText}>bjarte:</Link>
-            <TypingAnimation words={["project navigation"]} single={true} />
+            <TypingAnimation words={["project navigation"]} single={true} typeDelay={110} />
           </div>
           <div
             className={`${homeStyles.menuContainer} ${menuPinned ? homeStyles.menuPinned : ''}`}
@@ -115,6 +116,7 @@ export default function NavigationPanel() {
           </div>
         </nav>
       </header>
+      <FloatingProjects />
     </div>
   );
 }

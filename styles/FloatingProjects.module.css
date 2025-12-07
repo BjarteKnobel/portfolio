@@ -1,0 +1,119 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floatingWrapper {
+  position: absolute;
+  will-change: transform;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: z-index 0s;
+}
+
+.floatAnimator {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.floatingImage {
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center center;
+}
+
+.floatingImage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Hover effect */
+.floatingWrapper:hover {
+  z-index: 100;
+}
+
+.floatingWrapper:hover .floatingImage {
+  transform: scale(2);
+}
+
+/* Active State (Click persistence) */
+.floatingWrapper.active {
+  z-index: 1000;
+}
+
+.floatingWrapper.active .floatingImage {
+  transform: scale(2);
+}
+
+/* Subtle continuous floating animation */
+@keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(5px, 5px, 0);
+  }
+  50% {
+    transform: translate3d(0, 8px, 0);
+  }
+  75% {
+    transform: translate3d(-5px, 5px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.projectLink {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
+  font-size: 32px;
+  color: #000;
+  text-decoration: none;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.projectLink.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projectLink:hover {
+  text-decoration: underline;
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.projectLink:hover .arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .projectLink {
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+  }
+}
