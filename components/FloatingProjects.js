@@ -12,6 +12,8 @@ export default function FloatingProjects() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeProjectId, setActiveProjectId] = useState(null);
   const containerRef = useRef(null);
+  const pendingFrameRef = useRef(null);
+  const latestMouseRef = useRef({ x: 0, y: 0 });
 
   const displayedProjects = useMemo(() => {
     return SELECTED_PROJECT_IDS.map((id) => projects.find((p) => p.id === id)).filter(Boolean);
@@ -20,20 +22,28 @@ export default function FloatingProjects() {
   const getPosition = (index) => {
     // Widths reduced by ~60% for smaller footprints
     // Added floatDuration for varied movement
+    // Reduced base widths by ~30% for lighter presence while keeping visibility
     const positions = [
-      { top: '30%', left: '15%', width: 70, floatDuration: '6s', parallaxFactor: 0.05 },
-      { top: '25%', left: '60%', width: 62, floatDuration: '7s', parallaxFactor: 0.08 },
-      { top: '65%', left: '25%', width: 78, floatDuration: '5.5s', parallaxFactor: 0.04 },
-      { top: '70%', left: '70%', width: 67, floatDuration: '6.5s', parallaxFactor: 0.06 },
+      { top: '30%', left: '15%', width: 98, floatDuration: '6s', parallaxFactor: 0.05 },
+      { top: '25%', left: '60%', width: 84, floatDuration: '7s', parallaxFactor: 0.08 },
+      { top: '65%', left: '25%', width: 105, floatDuration: '5.5s', parallaxFactor: 0.04 },
+      { top: '70%', left: '70%', width: 91, floatDuration: '6.5s', parallaxFactor: 0.06 },
     ];
-    return positions[index] || { top: '50%', left: '50%', width: 56, floatDuration: '6s', parallaxFactor: 0.05 };
+    return positions[index] || { top: '50%', left: '50%', width: 84, floatDuration: '6s', parallaxFactor: 0.05 };
   };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = (e.clientY / window.innerHeight) * 2 - 1;
-      setMousePos({ x, y });
+      latestMouseRef.current = {
+        x: (e.clientX / window.innerWidth) * 2 - 1,
+        y: (e.clientY / window.innerHeight) * 2 - 1,
+      };
+      if (pendingFrameRef.current === null) {
+        pendingFrameRef.current = requestAnimationFrame(() => {
+          pendingFrameRef.current = null;
+          setMousePos(latestMouseRef.current);
+        });
+      }
     };
 
     const handleGlobalClick = () => {
@@ -46,6 +56,9 @@ export default function FloatingProjects() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleGlobalClick);
+      if (pendingFrameRef.current) {
+        cancelAnimationFrame(pendingFrameRef.current);
+      }
     };
   }, []);
 
@@ -58,8 +71,8 @@ export default function FloatingProjects() {
     <div className={styles.container} ref={containerRef}>
       {displayedProjects.map((project, index) => {
         const pos = getPosition(index);
-        const parallaxX = mousePos.x * pos.parallaxFactor * 100;
-        const parallaxY = mousePos.y * pos.parallaxFactor * 100;
+        const parallaxX = mousePos.x * pos.parallaxFactor * 40; // limit parallax distance for perf
+        const parallaxY = mousePos.y * pos.parallaxFactor * 40;
         const isActive = activeProjectId === project.id;
 
         return (
@@ -89,8 +102,9 @@ export default function FloatingProjects() {
                   alt={project.title}
                   width={400}
                   height={300}
+                  sizes="(max-width: 900px) 140px, 180px"
                   style={{ width: '100%', height: 'auto' }}
-                  priority
+                  priority={index === 0}
                 />
               </div>
             </div>
