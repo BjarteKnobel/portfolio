@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '../data/projects';
@@ -8,12 +8,8 @@ import styles from '../styles/FloatingProjects.module.css';
 const SELECTED_PROJECT_IDS = [4, 2, 3, 1];
 
 export default function FloatingProjects() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeProjectId, setActiveProjectId] = useState(null);
-  const containerRef = useRef(null);
-  const pendingFrameRef = useRef(null);
-  const latestMouseRef = useRef({ x: 0, y: 0 });
 
   const displayedProjects = useMemo(() => {
     return SELECTED_PROJECT_IDS.map((id) => projects.find((p) => p.id === id)).filter(Boolean);
@@ -33,32 +29,14 @@ export default function FloatingProjects() {
   };
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      latestMouseRef.current = {
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      };
-      if (pendingFrameRef.current === null) {
-        pendingFrameRef.current = requestAnimationFrame(() => {
-          pendingFrameRef.current = null;
-          setMousePos(latestMouseRef.current);
-        });
-      }
-    };
-
     const handleGlobalClick = () => {
       setActiveProjectId(null);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('click', handleGlobalClick);
     
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleGlobalClick);
-      if (pendingFrameRef.current) {
-        cancelAnimationFrame(pendingFrameRef.current);
-      }
     };
   }, []);
 
@@ -68,11 +46,9 @@ export default function FloatingProjects() {
     : hoveredProject;
 
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div className={styles.container}>
       {displayedProjects.map((project, index) => {
         const pos = getPosition(index);
-        const parallaxX = mousePos.x * pos.parallaxFactor * 40; // limit parallax distance for perf
-        const parallaxY = mousePos.y * pos.parallaxFactor * 40;
         const isActive = activeProjectId === project.id;
 
         return (
@@ -83,7 +59,6 @@ export default function FloatingProjects() {
               top: pos.top,
               left: pos.left,
               width: pos.width,
-              transform: `translate3d(${parallaxX}px, ${parallaxY}px, 0)`,
             }}
             onMouseEnter={() => setHoveredProject(project)}
             onMouseLeave={() => setHoveredProject(null)}
