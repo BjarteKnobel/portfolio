@@ -6,6 +6,7 @@ import FadeInImage from './FadeInImage';
 import { getAllProjects } from '../data/projects';
 import Footer from './Footer';
 import styles from '../styles/ProjectCarousel.module.css';
+import homeStyles from '../styles/Home.module.css';
 
 export default function ProjectCarousel() {
   const router = useRouter();
@@ -61,14 +62,16 @@ export default function ProjectCarousel() {
 
   return (
     <div className={`${styles.carousel} ${isAnimatingIn ? styles.animateIn : ''} ${isClosing ? styles.animateOut : ''}`}>
-      <header className={styles.navbar}>
-        <div className={styles.logoGroup}>
-          <Link href='/' legacyBehavior>
-            <a className={styles.logo}>bjarte:</a>
-          </Link>
-          <span className={styles.projectTitle}>{isFirstProject ? 'sverresborg apartments' : currentProject.title}</span>
-        </div>
-        <button onClick={handleClose} className={styles.closeBtn} aria-label='Close project'>×</button>
+      <header className={homeStyles.header}>
+        <nav className={homeStyles.navbar} aria-label="Project navigation">
+          <div className={homeStyles.logoGroup}>
+            <Link href='/' className={homeStyles.logoText}>bjarte:</Link>
+            <span className={homeStyles.animatedText}>
+              {isFirstProject ? 'sverresborg apartments' : currentProject.title}
+            </span>
+          </div>
+          <button onClick={handleClose} className={styles.closeBtn} aria-label='Close project'>×</button>
+        </nav>
       </header>
 
       {/* Intro section: image on the left, text on the right */}

@@ -95,10 +95,10 @@
 /* Two large-photo side-by-side section (project 4) */
 .twoPhotoSection {
   width: 100%;
-  padding: 40px 120px; /* match other sections */
+  padding: clamp(24px, 5vw, 40px) clamp(20px, 6vw, 120px);
   background: #fff;
   box-sizing: border-box;
-  margin: 300px 0; /* spacing above and below section */
+  margin: clamp(120px, 12vh, 300px) 0;
 }
 
 .twoPhotoWrap {
@@ -106,12 +106,27 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 123px; /* consistent gap with other two-col sections */
+  gap: clamp(24px, 6vw, 123px);
   align-items: start;
 }
 
-.photoItemLarge { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; width: 566px; }
-.photoLargeImage { width: 566px; height: 360px; object-fit: contain; }
+.photoItemLarge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.photoLargeImage {
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
 .photoLargeCaption {
   color: #000;
   font-family: 'Space Mono', monospace;
@@ -179,10 +194,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30px; /* cross arm length */
-  height: 4px;  /* thickness */
+  width: 26px; /* slightly shorter arm */
+  height: 2px;  /* thinner cross */
   background: #000000; /* Black cross for contrast against white */
-  border-radius: 4px; /* rounded tips */
+  border-radius: 2px; /* rounded tips */
   transform-origin: center;
 }
 
@@ -323,15 +338,16 @@
 .introGrid {
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(360px, 1fr);
-  gap: 40px;
-  padding: 80px 40px 40px 0; /* increased top padding by 40px to push content down */
-  padding-left: max(32px, env(safe-area-inset-left)); /* align with navbar left padding */
+  gap: 32px;
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 40px);
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
   max-width: calc(1432px + 80px);
-  margin: 40px auto 40px; /* push section 40px down from navbar */
+  margin: 40px auto;
   background: #fff;
   box-sizing: border-box;
-  height: 868px; /* increased height by 80px total (40px for content + 40px for padding) */
-  contain: layout paint; /* isolate for smoother scrolling */
+  min-height: 0; /* allow auto height */
+  contain: layout paint;
 }
 
 /* Floorplan image section under intro */
@@ -748,13 +764,33 @@
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    padding: max(32px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 32px max(16px, env(safe-area-inset-left));
-  }
   .introGrid {
     grid-template-columns: 1fr;
-    padding: 40px 20px 20px;
+    padding: 32px 16px 16px;
     gap: 16px;
+  }
+
+  .photoItemLarge {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .photoLargeImage {
+    max-width: 100%;
+  }
+  
+  .twoPhotoWrap {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .twoPhotoSection {
+    padding: 24px 16px;
+    margin: 120px 0;
+  }
+
+  .photoItemLarge {
+    max-width: 100%;
   }
   
   /* Keep in one line; scale down instead of wrapping */
