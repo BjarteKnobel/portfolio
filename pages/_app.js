@@ -1,13 +1,26 @@
 import '../styles/globals.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const lastPathnameRef = useRef(null);
 
   useEffect(() => {
     const handle = (url) => {
-      // Run easeUp animation on all routes
+      const nextUrl = typeof url === 'string' ? url : router.asPath;
+      const [pathname, queryString = ''] = nextUrl.split('?');
+      const params = new URLSearchParams(queryString);
+      const view = params.get('view');
+
+      // Only run easeUp when the pathname changes (skip query-only changes)
+      const prevPathname = lastPathnameRef.current;
+      lastPathnameRef.current = pathname;
+
+      // Also skip easeUp entirely when opening the project carousel view
+      if (pathname === '/projects' && view === 'carousel') return;
+      if (prevPathname !== null && prevPathname === pathname) return;
+
       requestAnimationFrame(() => {
         const root = document.querySelector('#__next');
         if (!root) return;
@@ -21,10 +34,10 @@ export default function App({ Component, pageProps }) {
         });
       });
     };
-    handle();
+    handle(router.asPath);
     router.events.on('routeChangeComplete', handle);
     return () => router.events.off('routeChangeComplete', handle);
-  }, [router.events]);
+  }, [router.events, router.asPath]);
 
   return (
     <>

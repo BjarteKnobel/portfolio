@@ -20,9 +20,6 @@ const ProjectCarousel = dynamic(() => import('../components/ProjectCarousel'), {
 });
 
 export default function Projects() {
-  // Determine initial mode synchronously to avoid flashing the loader
-  const initialIsCarousel = typeof window !== 'undefined' &&
-    new URLSearchParams(window.location.search).get('view') === 'carousel';
   const [loading, setLoading] = useState(false); // Always start with no loading
   const [showNav, setShowNav] = useState(true); // Always show navigation panel
   const router = useRouter();
@@ -64,12 +61,7 @@ export default function Projects() {
         <meta name="description" content="Architecture and design projects by Bjarte Knobel" />
       </Head>
       <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
-        <div style={{ display: showNav ? 'block' : 'none' }}>
-          <NavigationPanel />
-        </div>
-        <div style={{ display: showNav ? 'none' : 'block' }}>
-          <ProjectCarousel />
-        </div>
+        {showNav ? <NavigationPanel /> : <ProjectCarousel />}
       </div>
     </>
   );

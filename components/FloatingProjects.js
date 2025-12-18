@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { projects } from '../data/projects';
 import styles from '../styles/FloatingProjects.module.css';
 
@@ -10,6 +11,8 @@ const SELECTED_PROJECT_IDS = [4, 2, 3, 1];
 export default function FloatingProjects() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeProjectId, setActiveProjectId] = useState(null);
+  const router = useRouter();
+  const prefetchedRef = useRef(new Set());
 
   const displayedProjects = useMemo(() => {
     return SELECTED_PROJECT_IDS.map((id) => projects.find((p) => p.id === id)).filter(Boolean);
@@ -60,11 +63,27 @@ export default function FloatingProjects() {
               left: pos.left,
               width: pos.width,
             }}
-            onMouseEnter={() => setHoveredProject(project)}
+            onMouseEnter={() => {
+              setHoveredProject(project);
+              // Prefetch the projects page in carousel mode + preload carousel chunk once per project
+              if (!prefetchedRef.current.has(project.id)) {
+                prefetchedRef.current.add(project.id);
+                router.prefetch({
+                  pathname: '/projects',
+                  query: { id: project.id, view: 'carousel' },
+                });
+                // Preload the carousel chunk so click feels instant
+                import('./ProjectCarousel');
+              }
+            }}
             onMouseLeave={() => setHoveredProject(null)}
             onClick={(e) => {
               e.stopPropagation();
-              setActiveProjectId(prev => prev === project.id ? null : project.id);
+              setActiveProjectId((prev) => (prev === project.id ? null : project.id));
+              router.push({
+                pathname: '/projects',
+                query: { id: project.id, view: 'carousel' },
+              });
             }}
           >
             <div 
