@@ -91,6 +91,26 @@ The construction sector faces significant challenges—stagnant productivity, ri
       '/assets/additiv.png'
     ]
   },
+
+  {
+    id: 5,
+    title: 'WC J.K.gt.4',
+    image: '/assets/project toilet.svg',
+    type: 'interior',
+    location: 'J.K.gt. 4',
+    status: 'project',
+    fullDescription: `WC project at J.K.gt.4.`,
+    description: `WC project at J.K.gt.4.`,
+    floorPlan: '/assets/project toilet.svg',
+    details: [
+      { label: 'type', value: 'interior' },
+      { label: 'location', value: 'J.K.gt. 4' },
+      { label: 'status', value: 'project' },
+    ],
+    gallery: [
+      '/assets/project toilet.svg',
+    ],
+  },
   
 ];
 
