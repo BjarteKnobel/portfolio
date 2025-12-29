@@ -51,6 +51,14 @@
   align-items: center;
   padding: 0;
   gap: 6px;
+  /* Typography source of truth (children inherit) */
+  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
+  font-weight: 400;
+  font-size: 79px;
+  line-height: 86px;
+  letter-spacing: 2%;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .svgAnimationRole {
@@ -62,14 +70,14 @@
   margin-left: 0; /* sit flush with logo per Figma */
 }
 
-.logoText, .animatedText {
-  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
-  font-weight: 400;
-  font-size: 79px;
-  line-height: 86px;
-  letter-spacing: 2%;
-  text-align: center;
-  white-space: nowrap;
+.logoText {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  white-space: inherit;
   text-decoration: none;
   color: #000;
   cursor: pointer;
@@ -77,6 +85,14 @@
 
 /* Animation effect for the animated text */
 .animatedText {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  white-space: inherit;
+  color: inherit;
   display: inline-block;
   min-width: 1ch;
   position: relative;
@@ -263,7 +279,7 @@
 }
 
 @media (max-width: 1200px) {
-  .logoText, .animatedText {
+  .logoGroup {
     font-size: clamp(47px, 5.3vw, 79px);
   }
   
@@ -305,7 +321,7 @@
     margin-left: 8px;
   }
   
-  .logoText, .animatedText {
+  .logoGroup {
     font-size: clamp(42px, 4.6vw, 64px);
   }
   
@@ -342,7 +358,7 @@
     padding: 0;
   }
   
-  .logoText, .animatedText {
+  .logoGroup {
     font-size: clamp(42px, 4.6vw, 47px);
     white-space: nowrap;
   }
