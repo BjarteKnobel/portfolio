@@ -698,10 +698,6 @@
     max-width: 2000px;
   }
   
-  .logoText, .logoRole {
-    font-size: 56px;
-  }
-  
   .contentContainer {
     max-width: 2000px;
     padding: 0 var(--page-side-padding);
@@ -715,10 +711,6 @@
   
   .navbar {
     max-width: 2400px;
-  }
-  
-  .logoText, .logoRole {
-    font-size: 60px;
   }
   
   .contentContainer {
