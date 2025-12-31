@@ -60,6 +60,73 @@ export default function ProjectCarousel() {
 
   if (!currentProject) return null;
 
+  // Use split layout for toilet torshov (project 5)
+  const useSplitLayout = currentProject.id === 5;
+
+  if (useSplitLayout) {
+    return (
+      <div className={`${styles.carousel} ${isAnimatingIn ? styles.animateIn : ''} ${isClosing ? styles.animateOut : ''}`}>
+        <header className={homeStyles.header}>
+          <nav className={homeStyles.navbar} aria-label="Project navigation">
+            <div className={homeStyles.logoGroup}>
+              <Link href='/' className={homeStyles.logoText}>bjarte:</Link>
+              <span className={homeStyles.animatedText}>{currentProject.title}</span>
+            </div>
+            <button onClick={handleClose} className={styles.closeBtn} aria-label='Close project'>×</button>
+          </nav>
+        </header>
+
+        <div className={styles.splitLayout}>
+          {/* Left: Sticky info panel */}
+          <div className={styles.infoPanel}>
+            <div className={styles.splitDetailsList}>
+              {currentProject.details.map((detail) => (
+                <div key={detail.label} className={styles.splitDetailItem}>
+                  <span className={styles.splitDetailLabel}>{detail.label}</span>
+                  <span className={styles.splitDetailValue}>{detail.value}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className={styles.splitDescription}>
+              {currentProject.fullDescription || currentProject.description}
+            </p>
+
+            {currentProject.imageCaptions && currentProject.imageCaptions.length > 0 && (
+              <div className={styles.splitCaptionsSection}>
+                <p className={styles.splitCaptionsTitle}>Bilder fra topp til bunn:</p>
+                <ul className={styles.splitCaptionsList}>
+                  {currentProject.imageCaptions.map((caption, idx) => (
+                    <li key={idx} className={styles.splitCaptionItem}>
+                      <sup>{idx + 1}</sup>{caption}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {/* Right: Scrollable gallery */}
+          <div className={styles.galleryPanel}>
+            {currentProject.gallery.map((imageSrc, idx) => (
+              <FadeInImage
+                key={idx}
+                src={imageSrc}
+                alt={currentProject.imageCaptions?.[idx] || `${currentProject.title} image ${idx + 1}`}
+                width={800}
+                height={600}
+                className={styles.galleryImage}
+                style={{ objectFit: 'contain' }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className={`${styles.carousel} ${isAnimatingIn ? styles.animateIn : ''} ${isClosing ? styles.animateOut : ''}`}>
       <header className={homeStyles.header}>
