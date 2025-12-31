@@ -94,9 +94,13 @@
   white-space: inherit;
   color: inherit;
   display: inline-block;
-  min-width: 1ch;
   position: relative;
   overflow: visible;
+}
+
+/* Prevent layout shift when text is empty by adding zero-width space */
+.animatedText:empty::before {
+  content: '\200B';
 }
 
 .menuButton {
