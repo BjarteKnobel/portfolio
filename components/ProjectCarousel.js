@@ -72,7 +72,7 @@ export default function ProjectCarousel() {
               <Link href='/' className={homeStyles.logoText}>bjarte:</Link>
               <span className={homeStyles.animatedText}>{currentProject.title}</span>
             </div>
-            <button onClick={handleClose} className={styles.closeBtn} aria-label='Close project'>×</button>
+            <button onClick={handleClose} className={styles.closeBtn} aria-label='Close project'>X</button>
           </nav>
         </header>
 

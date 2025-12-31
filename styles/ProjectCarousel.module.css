@@ -173,45 +173,26 @@
 }
 
 .closeBtn {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px; /* a bit larger */
-  height: 48px;
+  padding: 0;
   text-decoration: none;
-  color: transparent; /* hide fallback text */
+  font-family: 'PP Mondwest', 'Azeret Mono', monospace;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+  color: #000;
   outline: none;
   border: 0;
   background: transparent;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s ease;
 }
 
-.closeBtn::before,
-.closeBtn::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 26px; /* slightly shorter arm */
-  height: 2px;  /* thinner cross */
-  background: #000000; /* Black cross for contrast against white */
-  border-radius: 2px; /* rounded tips */
-  transform-origin: center;
-}
-
-.closeBtn::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.closeBtn::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.closeBtn:hover::before,
-.closeBtn:hover::after {
-  opacity: 0.85;
+.closeBtn:hover {
+  opacity: 0.7;
 }
 
 /* Project Navigation Styles */
@@ -810,7 +791,7 @@
     line-height: 1;
   }
 
-  .closeBtn { width: 44px; height: 44px; }
+  .closeBtn { font-size: 44px; }
   
   .detailsGrid { grid-template-columns: 1fr; }
   .projectDetails, .description, .floorplanSection { padding: 20px; }
@@ -1305,8 +1286,7 @@
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: 40px 40px 60px 40px;
-  padding-left: max(40px, env(safe-area-inset-left));
+  padding: 40px var(--page-side-padding) 60px var(--page-side-padding);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1319,8 +1299,7 @@
 }
 
 .galleryPanel {
-  padding: 40px 40px 60px 40px;
-  padding-right: max(40px, env(safe-area-inset-right));
+  padding: 40px var(--page-side-padding) 60px var(--page-side-padding);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1349,10 +1328,11 @@
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  font-family: 'PPMondwest', 'Azeret Mono', monospace;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14.8px;
+  letter-spacing: 0.2px;
   color: #000;
 }
 
@@ -1366,13 +1346,16 @@
 
 .splitDetailValue {
   margin-left: 4px;
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 400;
 }
 
 .splitDescription {
-  font-family: 'PPMondwest', 'Azeret Mono', monospace;
-  font-size: 14px;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 10px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 12.4px;
+  letter-spacing: 0.2px;
   color: #000;
   margin: 0;
   max-width: 420px;
@@ -1383,10 +1366,11 @@
 }
 
 .splitCaptionsTitle {
-  font-family: 'PPMondwest', 'Azeret Mono', monospace;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14.8px;
+  letter-spacing: 0.2px;
   color: #000;
   margin: 0 0 8px 0;
 }
@@ -1401,10 +1385,11 @@
 }
 
 .splitCaptionItem {
-  font-family: 'PPMondwest', 'Azeret Mono', monospace;
-  font-size: 14px;
+  font-family: 'Azeret Mono', monospace;
+  font-size: 10px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 12.4px;
+  letter-spacing: 0.2px;
   color: #000;
 }
 
@@ -1415,7 +1400,7 @@
 }
 
 .galleryImage {
-  width: 40%;
+  width: 28%;
   height: auto;
   display: block;
   object-fit: contain;
@@ -1430,16 +1415,16 @@
   .infoPanel {
     position: relative;
     height: auto;
-    padding: 32px 24px 40px 24px;
+    padding: 32px var(--page-side-padding) 40px var(--page-side-padding);
   }
   
   .galleryPanel {
-    padding: 32px 24px 40px 24px;
+    padding: 32px var(--page-side-padding) 40px var(--page-side-padding);
     gap: 250px;
   }
   
   .galleryImage {
-    width: 60%;
+    width: 42%;
   }
   
   .splitProjectTitle {
@@ -1449,17 +1434,17 @@
 
 @media (max-width: 600px) {
   .infoPanel {
-    padding: 24px 16px 32px 16px;
+    padding: 24px var(--page-side-padding) 32px var(--page-side-padding);
     gap: 24px;
   }
   
   .galleryPanel {
-    padding: 24px 16px 32px 16px;
+    padding: 24px var(--page-side-padding) 32px var(--page-side-padding);
     gap: 210px;
   }
   
   .galleryImage {
-    width: 80%;
+    width: 56%;
   }
   
   .splitProjectTitle {
@@ -1470,6 +1455,6 @@
   .splitDescription,
   .splitCaptionsTitle,
   .splitCaptionItem {
-    font-size: 12px;
+    font-size: 9px;
   }
 } 
