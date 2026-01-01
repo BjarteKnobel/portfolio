@@ -18,8 +18,14 @@ export const projects = [
       { label: 'collaborators', value: 'none' },
     ],
     gallery: [
-      '/assets/floorplan1.jpg',
-      '/assets/render_sverresborg_ferieleiligheter.png'
+      '/assets/render_sverresborg_ferieleiligheter.png',
+      '/assets/floorplan.svg',
+      '/assets/sverresborg_hotel.png'
+    ],
+    imageCaptions: [
+      'render, ferieleiligheter',
+      'plantegning, 1. etasje',
+      'hovedfasade'
     ]
   },
   {
@@ -29,7 +35,7 @@ export const projects = [
     type: 'commercial real estate',
     location: 'skippergata 11',
     status: 'student project',
-    fullDescription: `The project is located at Nyhavna–Trondheim’s historic industrial waterfront—and integrates vertical textile production with retail and office programs. By deploying innovative manufacturing methods, it reduces environmental impact while opening new avenues for sustainable urban and workplace development. The project investigates architecture’s capacity to cultivate compact, flexible work environments.`,
+    fullDescription: `The project is located at Nyhavna–Trondheim's historic industrial waterfront—and integrates vertical textile production with retail and office programs. By deploying innovative manufacturing methods, it reduces environmental impact while opening new avenues for sustainable urban and workplace development. The project investigates architecture's capacity to cultivate compact, flexible work environments.`,
     description: `Vertical textile production integrated with retail and office at Nyhavna, Trondheim.`,
     floorPlan: '/assets/3d_printing_diagram.png',
     details: [
@@ -42,7 +48,13 @@ export const projects = [
     ],
     gallery: [
       '/assets/skippergata_11.png',
-      '/assets/3d_printing_diagram.png'
+      '/assets/parkgata_11_cross_section.png',
+      '/assets/west_facade.png'
+    ],
+    imageCaptions: [
+      'hovedbilde',
+      'tverrsnitt',
+      'vestfasade'
     ]
   },
   {
@@ -67,7 +79,21 @@ export const projects = [
     ],
     gallery: [
       '/assets/moholt_student_housing.png',
-      '/assets/floor_plan.jpg'
+      '/assets/floor_plan.jpg',
+      '/assets/compactness.png',
+      '/assets/thermal_storage.png',
+      '/assets/Thermal_buffer.png',
+      '/assets/internal_temperatures.png',
+      '/assets/heat_gains.png'
+    ],
+    imageCaptions: [
+      'hovedbilde',
+      'plantegning',
+      'kompakthet',
+      'termisk lagring',
+      'termisk buffer',
+      'interne temperaturer',
+      'varmegevinster og -tap'
     ]
   },
   {
@@ -88,7 +114,18 @@ The construction sector faces significant challenges—stagnant productivity, ri
       { label: 'status', value: 'master thesis' }
     ],
     gallery: [
-      '/assets/additiv.png'
+      '/assets/additiv.png',
+      '/assets/grasshopper_script.png',
+      '/assets/concrete.png',
+      '/assets/stress.png',
+      '/assets/deformation.png'
+    ],
+    imageCaptions: [
+      'hovedbilde',
+      'grasshopper-skript',
+      'bygningselement',
+      'spenning før herding',
+      'deformasjon før herding'
     ]
   },
 
@@ -132,4 +169,4 @@ export const getProjectById = (id) => {
 
 export const getAllProjects = () => {
   return projects;
-}; 
+};
