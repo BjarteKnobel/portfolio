@@ -9,6 +9,7 @@ import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 import useClickOutside from '../hooks/useClickOutside';
+import bjarteImage from '../public/assets/bjarte_image.png';
 
 export default function About() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -133,15 +134,16 @@ export default function About() {
           <div className={styles.leftColumn}>
           <div className={styles.imageContainer}>
               <FadeInImage
-                src="/assets/bjarte_image.png"
+                src={bjarteImage}
                 alt="bjarte knobel"
                 width={306}
                 height={461}
                 className={styles.profileImage}
                 priority
-                quality={85}
-                sizes="(max-width: 900px) 100vw, 326px"
+                quality={70}
+                sizes="(max-width: 900px) 100vw, 306px"
                 fetchPriority="high"
+                placeholder="blur"
               />
           </div>
           

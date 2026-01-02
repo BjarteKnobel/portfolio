@@ -13,9 +13,7 @@ export const projects = [
       { label: 'type', value: 'transformation' },
       { label: 'location', value: 'sverresborg alle 13' },
       { label: 'status', value: 'student project' },
-      { label: 'size', value: '200 sqm' },
       { label: 'date', value: '2020' },
-      { label: 'collaborators', value: 'none' },
     ],
     gallery: [
       '/assets/render_sverresborg_ferieleiligheter.png',
@@ -23,9 +21,9 @@ export const projects = [
       '/assets/sverresborg_hotel.png'
     ],
     imageCaptions: [
-      'render, ferieleiligheter',
-      'plantegning, 1. etasje',
-      'hovedfasade'
+      'render, weekend apartments',
+      'floor plan, 1st floor',
+      'main facade'
     ]
   },
   {
@@ -42,9 +40,7 @@ export const projects = [
       { label: 'type', value: 'commercial real estate' },
       { label: 'location', value: 'skippergata 11' },
       { label: 'status', value: 'student project' },
-      { label: 'size', value: '200 sqm' },
       { label: 'date', value: '2020' },
-      { label: 'collaborators', value: '—' },
     ],
     gallery: [
       '/assets/skippergata_11.png',
@@ -52,9 +48,9 @@ export const projects = [
       '/assets/west_facade.png'
     ],
     imageCaptions: [
-      'hovedbilde',
-      'tverrsnitt',
-      'vestfasade'
+      'main image',
+      'cross section',
+      'west facade'
     ]
   },
   {
@@ -73,9 +69,7 @@ export const projects = [
       { label: 'type', value: 'sustainable architecture' },
       { label: 'location', value: 'sverresborg alle 13' },
       { label: 'status', value: 'student project' },
-      { label: 'size', value: '85 sqm' },
       { label: 'date', value: '2023' },
-      { label: 'collaborators', value: 'landscape collective' },
     ],
     gallery: [
       '/assets/moholt_student_housing.png',
@@ -87,13 +81,13 @@ export const projects = [
       '/assets/heat_gains.png'
     ],
     imageCaptions: [
-      'hovedbilde',
-      'plantegning',
-      'kompakthet',
-      'termisk lagring',
-      'termisk buffer',
-      'interne temperaturer',
-      'varmegevinster og -tap'
+      'main image',
+      'floor plan',
+      'compactness',
+      'thermal storage',
+      'thermal buffer',
+      'internal temperatures',
+      'heat gains and losses'
     ]
   },
   {
@@ -115,17 +109,17 @@ The construction sector faces significant challenges—stagnant productivity, ri
     ],
     gallery: [
       '/assets/additiv.png',
-      '/assets/grasshopper_script.png',
       '/assets/concrete.png',
+      '/assets/grasshopper_script.png',
       '/assets/stress.png',
       '/assets/deformation.png'
     ],
     imageCaptions: [
-      'hovedbilde',
-      'grasshopper-skript',
-      'bygningselement',
-      'spenning før herding',
-      'deformasjon før herding'
+      'main image',
+      'building element',
+      'grasshoper script concrete geometry',
+      'stress before hardening analysis',
+      'deformation before hardening analysis'
     ]
   },
 
@@ -135,17 +129,17 @@ The construction sector faces significant challenges—stagnant productivity, ri
     image: '/assets/plan1.png',
     type: 'interior',
     location: 'torshov',
-    year: '2024',
-    status: 'project',
-    program: 'interiør',
-    fullDescription: `Vi ble kontaktet med et skisseprosjekt for et lite bad på Bislett. Sammen med kunden diskuterte vi flyt, fargevalg og løsninger for å forbedre badets funksjonalitet. For å holde et rent visuelt uttrykk er vaskemaskinen skjult bak en semitransparent skyvedør som også er badets dusjforheng.`,
-    description: `Skisseprosjekt for et lite bad på Torshov.`,
+    year: '2026',
+    status: 'under construction',
+    program: 'interior',
+    fullDescription: `Total renovation of a toilet in Torshov that required complete refurbishment. The project involved a comprehensive redesign of the space, addressing both functional and aesthetic improvements. Working closely with the client.`,
+    description: `Sketch project for a small bathroom at Torshov.`,
     floorPlan: '/assets/plan1.png',
     details: [
       { label: 'location', value: 'torshov' },
-      { label: 'year', value: '2024' },
-      { label: 'status', value: 'project' },
-      { label: 'program', value: 'interiør' },
+      { label: 'year', value: '2026' },
+      { label: 'status', value: 'under construction' },
+      { label: 'program', value: 'interior' },
     ],
     gallery: [
       '/assets/oppriss-11.png',
@@ -154,10 +148,10 @@ The construction sector faces significant challenges—stagnant productivity, ri
       '/assets/detalj1.png',
     ],
     imageCaptions: [
-      'oppriss, vask',
-      'oppriss, toalett',
-      'plantegning, bad',
-      'snitt, toalett',
+      'elevation, sink',
+      'elevation, toilet',
+      'floor plan, bathroom',
+      'section, toilet',
     ],
   },
   

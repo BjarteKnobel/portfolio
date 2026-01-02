@@ -78,7 +78,7 @@ export default function ProjectCarousel() {
 
           {currentProject.imageCaptions && currentProject.imageCaptions.length > 0 && (
             <div className={styles.splitCaptionsSection}>
-              <p className={styles.splitCaptionsTitle}>Bilder fra topp til bunn:</p>
+              <p className={styles.splitCaptionsTitle}>Images from top to bottom:</p>
               <ul className={styles.splitCaptionsList}>
                 {currentProject.imageCaptions.map((caption, idx) => (
                   <li key={idx} className={styles.splitCaptionItem}>
@@ -92,17 +92,21 @@ export default function ProjectCarousel() {
 
         {/* Right: Scrollable gallery */}
         <div className={styles.galleryPanel}>
-          {currentProject.gallery.map((imageSrc, idx) => (
-            <FadeInImage
-              key={idx}
-              src={imageSrc}
-              alt={currentProject.imageCaptions?.[idx] || `${currentProject.title} image ${idx + 1}`}
-              width={800}
-              height={600}
-              className={styles.galleryImage}
-              style={{ objectFit: 'contain' }}
-            />
-          ))}
+          {currentProject.gallery.map((imageSrc, idx) => {
+            // First image is hero (full-width) for all projects except toilet torshov (id: 5)
+            const isHeroImage = idx === 0 && currentProject.id !== 5;
+            return (
+              <FadeInImage
+                key={idx}
+                src={imageSrc}
+                alt={currentProject.imageCaptions?.[idx] || `${currentProject.title} image ${idx + 1}`}
+                width={800}
+                height={600}
+                className={isHeroImage ? styles.galleryHeroImage : styles.galleryImage}
+                style={{ objectFit: 'contain' }}
+              />
+            );
+          })}
         </div>
       </div>
 

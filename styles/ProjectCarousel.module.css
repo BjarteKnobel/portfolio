@@ -51,7 +51,7 @@
   padding: 0;
   text-decoration: none;
   font-family: 'PP Mondwest', 'Azeret Mono', monospace;
-  font-size: 52px;
+  font-size: 79px;
   font-weight: 400;
   line-height: 1;
   color: #000;
@@ -234,6 +234,13 @@
   object-fit: contain;
 }
 
+.galleryHeroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 /* Responsive media queries */
 @media (max-width: 900px) {
   .splitLayout {
@@ -255,9 +262,17 @@
     width: 42%;
   }
   
+  .galleryHeroImage {
+    width: 100%;
+  }
+  
   .splitProjectTitle {
     font-size: 24px;
   }
+}
+
+@media (max-width: 1200px) {
+  .closeBtn { font-size: clamp(47px, 5.3vw, 79px); }
 }
 
 @media (max-width: 768px) {
@@ -278,7 +293,7 @@
     line-height: 1;
   }
 
-  .closeBtn { font-size: 44px; }
+  .closeBtn { font-size: clamp(42px, 4.6vw, 64px); }
 }
 
 @media (max-width: 600px) {
@@ -296,6 +311,10 @@
     width: 56%;
   }
   
+  .galleryHeroImage {
+    width: 100%;
+  }
+  
   .splitProjectTitle {
     font-size: 20px;
   }
@@ -306,11 +325,18 @@
   .splitCaptionItem {
     font-size: 9px;
   }
+  
+  .closeBtn { font-size: clamp(42px, 4.6vw, 47px); }
 }
 
 @media (max-width: 480px) {
   .logo { font-size: clamp(14px, 6vw, 22px); }
   .projectTitle { font-size: clamp(12px, 5.5vw, 20px); }
+  .closeBtn { font-size: 42px; }
+}
+
+@media (max-width: 400px) {
+  .closeBtn { font-size: 47px; }
 }
 
 /* Large screen optimizations */
