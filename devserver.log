@@ -1,0 +1,23 @@
+
+> nettside-mcp@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1093ms
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ○ Compiling /about ...
+ ✓ Compiled /about in 1271ms (378 modules)
+Image with src "/assets/bjarte_image.png" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+ GET /about?ts=1735480000 200 in 1298ms
+Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+ GET /about?ts=1735480000 200 in 12ms
+ ✓ Compiled / in 98ms (384 modules)
+ ✓ Compiled /_error in 52ms (386 modules)
+ GET / 404 in 158ms
+[?25h
