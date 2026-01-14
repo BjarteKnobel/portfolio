@@ -19,6 +19,7 @@ const CursorOverlay = memo(({ imgRef, src, alt }) => (
     />
   </div>
 ));
+CursorOverlay.displayName = 'CursorOverlay';
 
 export default function Home() {
   const [cursorVisible, setCursorVisible] = useState(false);
@@ -158,7 +159,7 @@ export default function Home() {
             
             
             <p ref={secondParaRef} className={`${styles.revealBlur} ${styles.featureParagraph}`}>
-              I'm driven to solve productivity challenges in the AEC sector
+              I&apos;m driven to solve productivity challenges in the AEC sector
               through innovation, aiming to create a future where architectural
               quality and cost efficiency go hand in hand.
             </p>

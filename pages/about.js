@@ -353,7 +353,7 @@ export default function About() {
               
               <div className={styles.experienceItem}>
                 <div className={styles.experienceHeader}>
-                  <h3 className={styles.companyName}>master's degree in architecture</h3>
+                  <h3 className={styles.companyName}>master&apos;s degree in architecture</h3>
                   <span className={styles.period}>2018 - 2023</span>
                 </div>
                 <p className={styles.role}>norwegian university of science and technology (ntnu)</p>
