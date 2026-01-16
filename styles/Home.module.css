@@ -707,7 +707,7 @@ a.logoEmphasis:focus {
 @media (min-width: 2560px) {
   .header { padding: 60px var(--page-side-padding); }
   .bodyText { max-width: calc(2400px + (var(--page-side-padding) * 2)); padding: 200px var(--page-side-padding) 0; margin-bottom: 360px; }
-  .featureParagraph { font-size: 58px; line-height: 75px; max-width: 1400px; margin: 0 0 40px 0; }
+  .featureParagraph { font-size: 58px; line-height: 75px; max-width: none; margin: 0 0 40px 0; }
   .emphasisText { font-size: 58px; line-height: 75px; }
   .heroMedia { min-height: 700px; }
 }
